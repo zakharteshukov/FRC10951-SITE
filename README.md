@@ -34,7 +34,7 @@ npm run build
 ## Project Structure
 
 ```
-FRC10951-website/
+FRC10951-SITE/
 ├── public/          # Static assets
 ├── src/             # Source code
 ├── components/       # React components
