@@ -3,9 +3,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: frc10951-website
+    container_name: FRC10951
     ports:
-      - "3000:3000"
+      - "3001:3000"
     volumes:
       - .:/app
       - /app/node_modules
@@ -18,4 +18,6 @@ services:
 networks:
   frc10951-network:
     driver: bridge
+
+
 
