@@ -1,0 +1,5 @@
+{
+    "[javascript][javascriptreact][typescript][typescriptreact][svelte]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+}
