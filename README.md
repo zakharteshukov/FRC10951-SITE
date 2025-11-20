@@ -1,144 +1,177 @@
-# FRC Team 10951 Website
+# SvelteKit Website Template
 
-A modern, high-performance website for FRC Team 10951 built with Next.js 14, TypeScript, and Tailwind CSS, containerized with Docker.
+A modern, production-ready website template built with SvelteKit, TypeScript, and Tailwind CSS.
 
-## Technology Stack
+## 🚀 Features
 
-- **Next.js 14** - React framework with App Router
+- **SvelteKit** - Full-stack Svelte framework with file-based routing
 - **TypeScript** - Type-safe development
-- **Tailwind CSS** - Utility-first CSS framework
-- **Markdown** - Content management via markdown files
-- **Docker** - Containerization for easy deployment
+- **Tailwind CSS** - Utility-first CSS framework with dark mode
+- **Responsive Design** - Mobile-first, fully responsive layout
+- **Modern UI** - Clean, professional design with smooth animations
+- **SEO Ready** - Optimized for search engines
+- **Fast Performance** - Static generation and code splitting
+- **Docker Support** - Containerized deployment ready
 
-## Features
+## 📦 Tech Stack
 
-- 🎨 Dark mode by default
-- 📱 Fully responsive design
-- ⚡ Optimized performance with static generation
-- 📝 Markdown-based content system
-- 🐳 Docker containerization
-- 🔒 Type-safe with TypeScript
+- [SvelteKit](https://kit.svelte.dev) - Web framework
+- [TypeScript](https://www.typescriptlang.org) - Type safety
+- [Tailwind CSS](https://tailwindcss.com) - Styling
+- [Vite](https://vitejs.dev) - Build tool
 
-## Domain
-
-The website is configured to serve at **10951.team** and **www.10951.team**.
-
-## Quick Start
+## 🏃 Quick Start
 
 ### Prerequisites
 
-- Node.js 18+ (for local development)
-- Docker and Docker Compose (for containerized deployment)
+- Node.js 18+ installed
+- npm or yarn package manager
 
-### Local Development
+### Installation
 
 ```bash
+# Clone or download this template
+# Navigate to the project directory
+cd your-project-name
+
 # Install dependencies
 npm install
 
 # Start development server
 npm run dev
-
-# Build for production
-npm run build
-
-# Start production server
-npm start
-
-# Run linting
-npm run lint
 ```
 
-The development server will be available at `http://localhost:3000`
+The website will be available at `http://localhost:5173`
 
-### Docker Deployment
+## 📁 Project Structure
+
+```
+.
+├── src/
+│   ├── routes/              # Pages (file-based routing)
+│   │   ├── +page.svelte     # Homepage (/)
+│   │   ├── about/           # About page (/about)
+│   │   └── contact/         # Contact page (/contact)
+│   ├── lib/
+│   │   └── components/      # Reusable components
+│   │       ├── Nav.svelte   # Navigation component
+│   │       └── Footer.svelte # Footer component
+│   ├── app.css              # Global styles
+│   └── app.html             # HTML template
+├── public/                  # Static assets
+├── package.json
+└── tailwind.config.js       # Tailwind configuration
+```
+
+## 🛠️ Available Scripts
+
+- `npm run dev` - Start development server with hot-reloading
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build locally
+- `npm run check` - Run Svelte type checking
+- `npm run lint` - Run ESLint
+- `npm run format` - Format code with Prettier
+
+## 🎨 Customization
+
+### Changing Colors
+
+Edit `tailwind.config.js` to customize the color scheme:
+
+```js
+colors: {
+  primary: {
+    DEFAULT: '#4a9eff',  // Your primary color
+    dark: '#0066cc',
+  },
+  // ... other colors
+}
+```
+
+### Adding Pages
+
+Create new files in `src/routes/`:
+- `src/routes/services/+page.svelte` → `/services`
+- `src/routes/blog/+page.svelte` → `/blog`
+
+### Modifying Navigation
+
+Edit `src/lib/components/Nav.svelte` to add/remove menu items:
+
+```svelte
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  // Add your pages here
+];
+```
+
+### Updating Content
+
+- **Homepage**: Edit `src/routes/+page.svelte`
+- **About Page**: Edit `src/routes/about/+page.svelte`
+- **Contact Page**: Edit `src/routes/contact/+page.svelte`
+- **Footer**: Edit `src/lib/components/Footer.svelte`
+
+## 🐳 Docker Deployment
+
+### Build and Run
 
 ```bash
-# Build and run container
+# Build the image
+docker build -t my-website .
+
+# Run the container
+docker run -p 3000:3000 my-website
+```
+
+### Using Docker Compose
+
+```bash
+# Start the container
 docker-compose up -d
 
 # View logs
 docker-compose logs -f
 
-# Rebuild after changes
-docker-compose up -d --build
-
-# Stop container
+# Stop the container
 docker-compose down
 ```
 
-### Environment Variables
+## 📝 Content Management
 
-- `NAME`: Container name (default: `frc10951-website`)
-- `HOST_PORT`: Host port to map to container port 3000 (default: `3001`)
+This template includes support for Markdown content. Add markdown files to `src/content/` and use the markdown utilities in `src/lib/markdown.ts` to process them.
 
-Example:
-```bash
-HOST_PORT=3001 docker-compose up -d
-```
+## 🚢 Deployment
 
-## Project Structure
+### Vercel (Recommended)
 
-```
-FRC10951-SITE/
-├── src/
-│   ├── app/              # Next.js App Router pages
-│   ├── components/       # React components
-│   ├── lib/             # Utility functions
-│   └── content/         # Markdown content files
-├── public/              # Static assets
-├── Dockerfile           # Docker build configuration
-├── docker-compose.yml   # Docker Compose configuration
-└── package.json         # Dependencies
-```
+1. Push your code to GitHub
+2. Import your repository on [Vercel](https://vercel.com)
+3. Vercel will automatically detect SvelteKit and deploy
 
-## Content Management
+### Other Platforms
 
-Content is managed through Markdown files in the `src/content/` directory:
+- **Netlify** - Supports SvelteKit out of the box
+- **Cloudflare Pages** - Great for static sites
+- **Docker** - Use the included Dockerfile for containerized deployment
+- **Traditional Hosting** - Build with `npm run build` and serve the output
 
-- `blog/` - Blog posts and news articles
-- `team/` - Team member profiles
-- `seasons/` - Season information
+## 📚 Learn More
 
-Each markdown file can include frontmatter for metadata:
+- [SvelteKit Documentation](https://kit.svelte.dev/docs)
+- [Svelte Tutorial](https://svelte.dev/tutorial)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [TypeScript Documentation](https://www.typescriptlang.org/docs)
 
-```markdown
----
-title: "Post Title"
-date: "2024-11-10"
-excerpt: "Brief description"
----
+## 📄 License
 
-# Content here
-```
+This template is free to use for personal and commercial projects.
 
-## Health Check
+## 🤝 Contributing
 
-The container includes a health check endpoint at `/api/health` that returns a JSON response when the service is running correctly.
-
-## Performance
-
-- Static Site Generation (SSG) for optimal performance
-- Image optimization
-- Code splitting
-- Gzip compression
-- Static asset caching
-
-## Documentation
-
-For detailed technical specifications, see [TECHNICAL.md](./TECHNICAL.md).
-
-## Contributing
-
-1. Make changes to the codebase
-2. Test locally with `npm run dev`
-3. Build and test with Docker: `docker-compose up -d --build`
-4. Submit changes for review
-
-## License
-
-[Add your license here]
+Feel free to customize this template for your needs. If you make improvements that could benefit others, consider sharing them!
 
 ---
 
-**Last Updated**: November 2024
+**Happy Building! 🎉**

@@ -1,13 +1,13 @@
 services:
-  frc10951-site:
+  website:
     build: .
-    container_name: ${NAME:-frc10951-website}
+    container_name: ${NAME:-sveltekit-website}
     ports:
       - "${HOST_PORT:-3001}:3000"
     restart: unless-stopped
     environment:
       - NODE_ENV=production
-      - NEXT_TELEMETRY_DISABLED=1
+      - PORT=3000
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost:3000/api/health"]
       interval: 30s
@@ -26,4 +26,3 @@ services:
 networks:
   default:
     driver: bridge
-

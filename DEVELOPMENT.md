@@ -2,130 +2,260 @@
 
 ## Getting Started
 
-This is a Next.js 14 application for the FRC10951 team website, containerized with Docker for easy local development.
+This is a SvelteKit website template. Follow this guide to set up your development environment and start building.
 
 ## Prerequisites
 
-- Docker and Docker Compose installed
-- Git (for cloning the repository)
+- **Node.js 18+** - [Download here](https://nodejs.org/)
+- **npm** or **yarn** - Comes with Node.js
+- **Git** (optional) - For version control
 
-## Quick Start
+## Setup
 
-### Option 1: Using Docker (Recommended)
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-```bash
-# Clone the repository
-git clone https://github.com/zakharteshukov/FRC10951-SITE.git
-cd FRC10951-SITE
+2. **Start development server:**
+   ```bash
+   npm run dev
+   ```
 
-# Build and start the container
-docker-compose up -d
+3. **Open your browser:**
+   Navigate to `http://localhost:5173`
 
-# View logs
-docker-compose logs -f
+## Development Workflow
 
-# Stop the container
-docker-compose down
+### File-Based Routing
+
+SvelteKit uses file-based routing. Create files in `src/routes/` to create pages:
+
+- `src/routes/+page.svelte` → `/` (homepage)
+- `src/routes/about/+page.svelte` → `/about`
+- `src/routes/contact/+page.svelte` → `/contact`
+
+### Components
+
+Reusable components go in `src/lib/components/`:
+
+```svelte
+<!-- src/lib/components/MyComponent.svelte -->
+<script>
+  export let title;
+</script>
+
+<div class="card">
+  <h2>{title}</h2>
+</div>
 ```
 
-The website will be available at http://localhost:3000
+Import and use them:
 
-### Option 2: Local Development (Without Docker)
+```svelte
+<script>
+  import MyComponent from '$lib/components/MyComponent.svelte';
+</script>
 
-```bash
-# Clone the repository
-git clone https://github.com/zakharteshukov/FRC10951-SITE.git
-cd FRC10951-SITE
-
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
+<MyComponent title="Hello" />
 ```
 
-The website will be available at http://localhost:3000
+### Styling
+
+- **Global styles**: Edit `src/app.css`
+- **Tailwind utilities**: Use directly in components
+- **Custom classes**: Define in `app.css` using `@layer components`
+
+### TypeScript
+
+All files support TypeScript. Add type annotations:
+
+```typescript
+<script lang="ts">
+  let count: number = 0;
+  
+  function increment(): void {
+    count++;
+  }
+</script>
+```
 
 ## Project Structure
 
 ```
-FRC10951-SITE/
-├── src/
-│   ├── app/              # Next.js app directory
-│   │   ├── layout.tsx    # Root layout
-│   │   ├── page.tsx      # Home page
-│   │   ├── globals.css   # Global styles
-│   │   └── page.module.css
-│   └── components/       # Reusable components
-├── public/               # Static assets
-├── docker-compose.yml    # Docker configuration
-├── Dockerfile            # Container definition
-└── package.json          # Dependencies
-
+src/
+├── routes/              # Pages and routes
+│   ├── +layout.svelte   # Root layout (wraps all pages)
+│   ├── +page.svelte     # Homepage
+│   ├── about/
+│   │   └── +page.svelte # About page
+│   └── contact/
+│       └── +page.svelte # Contact page
+├── lib/                 # Reusable code
+│   └── components/      # Svelte components
+├── content/             # Markdown content (optional)
+├── app.css              # Global styles
+└── app.html             # HTML template
 ```
 
 ## Available Scripts
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview production build |
+| `npm run check` | Type check with svelte-check |
+| `npm run lint` | Run ESLint |
+| `npm run format` | Format code with Prettier |
 
-## Development Tips
+## Hot Reloading
 
-1. The Docker setup includes hot-reloading, so changes will be reflected immediately
-2. Volumes are mounted so your local files sync with the container
-3. The `node_modules` volume prevents overwriting the container's dependencies
+The development server includes hot module replacement (HMR). Changes to your files will automatically refresh in the browser.
+
+## Type Checking
+
+Run type checking:
+
+```bash
+npm run check
+```
+
+Or watch mode:
+
+```bash
+npm run check:watch
+```
+
+## Linting and Formatting
+
+- **Lint**: `npm run lint`
+- **Format**: `npm run format`
+
+## Adding New Pages
+
+1. Create a new directory in `src/routes/`:
+   ```bash
+   mkdir src/routes/services
+   ```
+
+2. Create `+page.svelte`:
+   ```svelte
+   <!-- src/routes/services/+page.svelte -->
+   <section class="section">
+     <div class="container">
+       <h1>Services</h1>
+       <!-- Your content here -->
+     </div>
+   </section>
+   ```
+
+3. Add to navigation in `src/lib/components/Nav.svelte`:
+   ```svelte
+   const navItems = [
+     { href: '/', label: 'Home' },
+     { href: '/services', label: 'Services' }, // Add this
+   ];
+   ```
+
+## API Routes
+
+Create API endpoints in `src/routes/api/`:
+
+```typescript
+// src/routes/api/hello/+server.ts
+import { json } from '@sveltejs/kit';
+import type { RequestHandler } from './$types';
+
+export const GET: RequestHandler = async () => {
+  return json({ message: 'Hello from API!' });
+};
+```
+
+Access at `/api/hello`
+
+## Environment Variables
+
+Create a `.env` file for environment variables:
+
+```env
+PUBLIC_API_URL=https://api.example.com
+```
+
+Access in code:
+
+```typescript
+import { env } from '$env/dynamic/public';
+const apiUrl = env.PUBLIC_API_URL;
+```
 
 ## Troubleshooting
 
-### Port already in use
+### Port Already in Use
 
-If port 3000 is already in use, modify the port mapping in `docker-compose.yml`:
-
-```yaml
-ports:
-  - "3001:3000"  # Use port 3001 instead
-```
-
-### Container won't start
-
-Check the logs:
-```bash
-docker-compose logs web
-```
-
-### Rebuild the container
+If port 5173 is in use, Vite will try the next available port. Or specify a port:
 
 ```bash
-docker-compose up -d --build
+npm run dev -- --port 3000
 ```
 
-## Contributing
+### Type Errors
 
-1. Create a feature branch
-2. Make your changes
-3. Commit and push to your fork
-4. Create a pull request
+Run type checking:
 
-## Production Deployment
-
-For production deployment, you can use:
-- Vercel (recommended for Next.js)
-- Docker on any cloud provider
-- Traditional hosting with Node.js
-
-Build the production image:
 ```bash
-docker build -t frc10951-site .
+npm run check
 ```
 
-Run the production container:
+### Build Errors
+
+Clear the build cache:
+
 ```bash
-docker run -p 3000:3000 frc10951-site
+rm -rf .svelte-kit build
+npm run build
 ```
 
+### Module Not Found
 
+Reinstall dependencies:
 
+```bash
+rm -rf node_modules package-lock.json
+npm install
+```
 
+## Production Build
 
+1. **Build the project:**
+   ```bash
+   npm run build
+   ```
+
+2. **Preview the build:**
+   ```bash
+   npm run preview
+   ```
+
+3. **Deploy:**
+   - The `build/` directory contains the production build
+   - Deploy according to your hosting platform's requirements
+
+## Best Practices
+
+1. **Component Organization**: Keep components small and focused
+2. **Type Safety**: Use TypeScript for better code quality
+3. **Performance**: Use SvelteKit's built-in optimizations
+4. **Accessibility**: Follow WCAG guidelines
+5. **SEO**: Use proper meta tags and semantic HTML
+
+## Resources
+
+- [SvelteKit Docs](https://kit.svelte.dev/docs)
+- [Svelte Tutorial](https://svelte.dev/tutorial)
+- [Tailwind CSS Docs](https://tailwindcss.com/docs)
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
+
+---
+
+Happy coding! 🚀
