@@ -1,6 +1,6 @@
 <section class="motto">
 	<h3>motto</h3>
-	<p>Lorem ipsum lorem ipsum</p>
+	<p>Making history with every light-year!</p>
 </section>
 
 <style>

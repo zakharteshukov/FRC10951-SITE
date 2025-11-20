@@ -43,6 +43,7 @@
 	main {
 		overflow-x: hidden;
 		position: relative;
+		background: white;
 	}
 
 	.features-grid {

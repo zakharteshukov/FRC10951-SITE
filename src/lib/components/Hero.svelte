@@ -1,9 +1,26 @@
 <script>
 	import { fade } from 'svelte/transition';
+	import { onMount } from 'svelte';
+
+	let imageLoaded = false;
+	const heroImage = '/hero.jpg';
+
+	onMount(() => {
+		const img = new Image();
+		img.src = heroImage;
+		img.onload = () => {
+			imageLoaded = true;
+		};
+		img.onerror = () => {
+			console.error('Failed to load hero image:', heroImage);
+		};
+	});
 </script>
 
 <section class="hero">
-	<div class="hero-bg"></div>
+	<div class="hero-bg">
+		<img src={heroImage} alt="Team 10951 Hero" class="hero-image" />
+	</div>
 	<div class="hero-overlay"></div>
 	<div class="hero-content" transition:fade={{ duration: 800, delay: 200 }}>
 		<h1 class="team-number">10951</h1>
@@ -23,22 +40,38 @@
 		color: white;
 		overflow: hidden;
 		margin-top: 0;
+		background-color: #1a1a1a;
 	}
 
 	.hero-bg {
 		position: absolute;
 		inset: 0;
-		background-image: url('/hero.jpg');
-		background-size: cover;
-		background-position: center;
-		background-repeat: no-repeat;
 		z-index: 0;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+
+	.hero-image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+		display: block;
+		filter: brightness(0.8) contrast(1.1) saturate(1.1);
+		transition: transform 0.3s ease, filter 0.3s ease;
+		transform: scale(1);
+	}
+
+	.hero:hover .hero-image {
+		transform: scale(1.05);
+		filter: brightness(0.85) contrast(1.15) saturate(1.15);
 	}
 
 	.hero-overlay {
 		position: absolute;
 		inset: 0;
-		background: rgba(0, 0, 0, 0.5);
+		background: rgba(0, 0, 0, 0.4);
 		z-index: 1;
 	}
 
@@ -89,4 +122,3 @@
 		}
 	}
 </style>
-
