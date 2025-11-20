@@ -1,2 +1,9 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script>
+	import Hero from '$lib/components/Hero.svelte';
+</script>
+
+<Hero
+	title="10951"
+	subtitle="SSIS Dragons"
+	body="Team 10951 presents Saigon South International School's state-of-the-art technology and talent."
+/>
