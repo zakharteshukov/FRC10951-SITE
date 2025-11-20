@@ -1,9 +1,4 @@
-<script>
-	const bg = '/hero.jpg';
-</script>
-
 <section class="full-steam">
-	<div class="bg" style="background-image: url('{bg}');"></div>
 	<div class="content">
 		<h3>Full STEAM Ahead</h3>
 		<p>
@@ -12,57 +7,64 @@
 		</p>
 		<button>Learn More</button>
 	</div>
-	<div class="decorative">
-		<div class="circle"></div>
-	</div>
 </section>
 
 <style>
 	.full-steam {
 		position: relative;
-		padding: 4rem 2rem;
-		min-height: 400px;
+		padding: 6rem 2rem;
+		min-height: 600px;
 		display: flex;
 		align-items: center;
 		overflow: hidden;
+		border: 2px solid rgba(255, 255, 255, 0.3);
 	}
 
-	.bg {
+	.full-steam::before {
+		content: '';
 		position: absolute;
 		inset: 0;
+		background-image: url('/full-STEAM-ahead.jpg');
 		background-size: cover;
 		background-position: center;
-		filter: blur(3px) saturate(0.95);
+		background-repeat: no-repeat;
+		filter: brightness(0.85);
 		z-index: 0;
-		opacity: 0.3;
+	}
+
+	.full-steam::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.5);
+		z-index: 1;
 	}
 
 	.content {
 		position: relative;
-		z-index: 1;
+		z-index: 2;
 		max-width: 600px;
-		color: #333;
 	}
 
 	.content h3 {
 		font-size: 3rem;
 		font-weight: 300;
 		margin: 0 0 1.5rem 0;
-		color: #333;
+		color: white;
 	}
 
 	.content p {
 		font-size: 1.1rem;
 		line-height: 1.8;
-		color: #555;
+		color: rgba(255, 255, 255, 0.9);
 		margin: 0 0 2rem 0;
 	}
 
 	.content button {
 		padding: 0.75rem 2rem;
-		border: 2px solid #333;
+		border: 2px solid white;
 		background: transparent;
-		color: #333;
+		color: white;
 		font-size: 1rem;
 		cursor: pointer;
 		transition: all 0.3s ease;
@@ -70,24 +72,8 @@
 	}
 
 	.content button:hover {
-		background: #333;
-		color: white;
-	}
-
-	.decorative {
-		position: absolute;
-		right: 5%;
-		top: 50%;
-		transform: translateY(-50%);
-		z-index: 1;
-	}
-
-	.circle {
-		width: 200px;
-		height: 200px;
-		border-radius: 50%;
-		background: rgba(255, 255, 255, 0.9);
-		border: 3px solid #333;
+		background: white;
+		color: #333;
 	}
 
 	@media (max-width: 968px) {
@@ -96,13 +82,8 @@
 			text-align: center;
 		}
 
-		.decorative {
-			display: none;
-		}
-
 		.content {
 			max-width: 100%;
 		}
 	}
 </style>
-

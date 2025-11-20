@@ -1,74 +1,32 @@
 <script>
-	import { onMount, onDestroy } from 'svelte';
-	import { currentIndex, rotateInterval } from '$lib/stores/carousel';
-
-	let i = 0;
-	let timer;
-	let isHovered = false;
-
-	// Placeholder sponsor images - replace with actual sponsor images
+	// Sponsor logos from static folder
 	const slides = [
-		{ src: 'https://via.placeholder.com/200x100?text=Sponsor+1', alt: 'Sponsor 1' },
-		{ src: 'https://via.placeholder.com/200x100?text=Sponsor+2', alt: 'Sponsor 2' },
-		{ src: 'https://via.placeholder.com/200x100?text=Sponsor+3', alt: 'Sponsor 3' }
+		{ src: '/coca-cola-logo.png', alt: 'Coca-Cola' },
+		{ src: '/frc-logo.png', alt: 'FIRST Robotics Competition' },
+		{ src: '/ssis-logo.png', alt: 'Saigon South International School' },
+		{ src: '/WIPLib-logo.webp', alt: 'WIPLib' },
+		{ src: '/lockheed-martin-logo.png', alt: 'Lockheed Martin' },
+		{ src: '/palantir-logo.png', alt: 'Palantir' },
+		{ src: '/boeing-logo.png', alt: 'Boeing' }
 	];
 
-	function go(n) {
-		i = (n + slides.length) % slides.length;
-		currentIndex.set(i);
-	}
-
-	function startTimer() {
-		if (!isHovered) {
-			timer = setInterval(() => {
-				go(i + 1);
-			}, rotateInterval);
-		}
-	}
-
-	function stopTimer() {
-		if (timer) {
-			clearInterval(timer);
-			timer = null;
-		}
-	}
-
-	onMount(() => {
-		startTimer();
-	});
-
-	onDestroy(() => {
-		stopTimer();
-	});
+	// Duplicate slides for seamless loop
+	const duplicatedSlides = [...slides, ...slides];
 </script>
 
 <section class="sponsors">
-	<div
-		class="carousel"
-		on:mouseenter={() => {
-			isHovered = true;
-			stopTimer();
-		}}
-		on:mouseleave={() => {
-			isHovered = false;
-			startTimer();
-		}}
-	>
-		{#each slides as slide, idx}
-			<img src={slide.src} alt={slide.alt} class:active={idx === i} />
-		{/each}
-		<button class="nav left" on:click={() => go(i - 1)} aria-label="Previous sponsor">
-			&lt;
-		</button>
-		<button class="nav right" on:click={() => go(i + 1)} aria-label="Next sponsor">&gt;</button>
-		<div class="dots">
-			{#each slides as _, idx}
-				<button
-					class="dot"
-					class:active={idx === i}
-					on:click={() => go(idx)}
-					aria-label="Go to sponsor {idx + 1}"
-				></button>
+	<div class="carousel-wrapper">
+		<div class="carousel-track">
+			{#each duplicatedSlides as slide}
+				<div class="logo-item">
+					<img src={slide.src} alt={slide.alt} />
+				</div>
+			{/each}
+			<!-- Duplicate for seamless loop -->
+			{#each duplicatedSlides as slide}
+				<div class="logo-item">
+					<img src={slide.src} alt={slide.alt} />
+				</div>
 			{/each}
 		</div>
 	</div>
@@ -77,97 +35,72 @@
 <style>
 	.sponsors {
 		padding: 3rem 2rem;
-		text-align: center;
 		background: #f8f8f8;
-	}
-
-	.carousel {
-		position: relative;
-		display: inline-block;
-		width: 100%;
-		max-width: 900px;
-		height: 150px;
 		overflow: hidden;
 	}
 
-	.carousel img {
-		position: absolute;
-		inset: 0;
-		margin: auto;
-		width: auto;
-		height: 100%;
-		max-width: 200px;
-		object-fit: contain;
-		opacity: 0;
-		transition: opacity 0.6s ease;
+	.carousel-wrapper {
+		width: 100%;
+		max-width: 1200px;
+		margin: 0 auto;
+		overflow: hidden;
+		position: relative;
 	}
 
-	.carousel img.active {
-		opacity: 1;
-	}
-
-	.nav {
-		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
-		background: rgba(255, 255, 255, 0.9);
-		border: 1px solid #ddd;
-		font-size: 1.5rem;
-		padding: 0.5rem 0.75rem;
-		cursor: pointer;
-		z-index: 10;
-		transition: all 0.3s ease;
-		border-radius: 4px;
-	}
-
-	.nav:hover {
-		background: white;
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-	}
-
-	.nav.left {
-		left: 1rem;
-	}
-
-	.nav.right {
-		right: 1rem;
-	}
-
-	.dots {
-		position: absolute;
-		bottom: 1rem;
-		left: 50%;
-		transform: translateX(-50%);
+	.carousel-track {
 		display: flex;
-		gap: 0.5rem;
-		z-index: 10;
+		align-items: center;
+		gap: 4rem;
+		animation: scroll 40s linear infinite;
+		will-change: transform;
 	}
 
-	.dot {
-		width: 8px;
-		height: 8px;
-		border-radius: 50%;
-		border: none;
-		background: rgba(255, 255, 255, 0.5);
-		cursor: pointer;
-		transition: all 0.3s ease;
+	.carousel-wrapper:hover .carousel-track {
+		animation-play-state: paused;
 	}
 
-	.dot.active {
-		background: white;
-		width: 24px;
-		border-radius: 4px;
+	.logo-item {
+		flex-shrink: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 120px;
+		width: 200px;
+	}
+
+	.logo-item img {
+		max-width: 100%;
+		max-height: 100%;
+		object-fit: contain;
+		filter: grayscale(0.3);
+		transition: filter 0.3s ease;
+	}
+
+	.logo-item:hover img {
+		filter: grayscale(0);
+	}
+
+	@keyframes scroll {
+		0% {
+			transform: translateX(0);
+		}
+		100% {
+			transform: translateX(-50%);
+		}
 	}
 
 	@media (max-width: 768px) {
-		.carousel {
-			height: 120px;
+		.sponsors {
+			padding: 2rem 1rem;
 		}
 
-		.nav {
-			font-size: 1.2rem;
-			padding: 0.4rem 0.6rem;
+		.logo-item {
+			height: 80px;
+			width: 150px;
+		}
+
+		.carousel-track {
+			gap: 2rem;
 		}
 	}
 </style>
-

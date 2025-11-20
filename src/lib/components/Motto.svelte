@@ -1,5 +1,5 @@
 <section class="motto">
-	<h3>motto</h3>
+	<h3>Team Slogan</h3>
 	<p>Making history with every light-year!</p>
 </section>
 
@@ -16,7 +16,6 @@
 		font-size: 1.5rem;
 		font-weight: 400;
 		margin: 0 0 1rem 0;
-		text-transform: lowercase;
 		color: #333;
 	}
 
