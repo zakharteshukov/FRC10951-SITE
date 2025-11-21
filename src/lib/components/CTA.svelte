@@ -11,15 +11,18 @@
 
 <style>
 	.cta-section {
-		padding: 5rem 2rem;
+		padding: 5rem 0;
 		background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
 		text-align: center;
 		color: white;
+		margin: 0;
+		width: 100%;
 	}
 
 	.content {
 		max-width: 800px;
 		margin: 0 auto;
+		padding: 0 2rem;
 	}
 
 	.content h3 {
@@ -84,7 +87,11 @@
 
 	@media (max-width: 768px) {
 		.cta-section {
-			padding: 4rem 1.5rem;
+			padding: 4rem 0;
+		}
+
+		.content {
+			padding: 0 1.5rem;
 		}
 
 		.content h3 {

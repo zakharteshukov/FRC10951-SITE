@@ -12,12 +12,14 @@
 <style>
 	.full-steam {
 		position: relative;
-		padding: 6rem 2rem;
+		padding: 6rem 0;
 		min-height: 600px;
 		display: flex;
 		align-items: center;
 		overflow: hidden;
-		border: 2px solid rgba(255, 255, 255, 0.3);
+		border: none;
+		margin: 0;
+		width: 100%;
 	}
 
 	.full-steam::before {
@@ -44,6 +46,9 @@
 		position: relative;
 		z-index: 2;
 		max-width: 600px;
+		padding: 0 2rem;
+		margin: 0 auto;
+		width: 100%;
 	}
 
 	.content h3 {
@@ -80,12 +85,13 @@
 		.full-steam {
 			flex-direction: column;
 			text-align: center;
-			padding: 4rem 1.5rem;
+			padding: 4rem 0;
 			min-height: 500px;
 		}
 
 		.content {
 			max-width: 100%;
+			padding: 0 1.5rem;
 		}
 
 		.content h3 {

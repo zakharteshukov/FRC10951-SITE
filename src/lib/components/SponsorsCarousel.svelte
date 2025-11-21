@@ -51,7 +51,7 @@
 		display: flex;
 		align-items: center;
 		gap: 4rem;
-		animation: scroll 40s linear infinite;
+		animation: scroll 22.86s linear infinite;
 		will-change: transform;
 	}
 
