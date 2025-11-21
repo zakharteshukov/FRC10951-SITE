@@ -6,9 +6,19 @@
 			International School. We compete in FIRST Robotics Competition, bringing together students
 			passionate about STEM, engineering, and innovation.
 		</p>
-		<div class="stat">
-			<span class="number">67</span>
-			<small>Students</small>
+		<div class="stats">
+			<div class="stat">
+				<span class="number">67</span>
+				<small>Students</small>
+			</div>
+			<div class="stat">
+				<span class="number">5</span>
+				<small>Coaches</small>
+			</div>
+			<div class="stat">
+				<span class="number">3</span>
+				<small>Sponsors</small>
+			</div>
 		</div>
 	</div>
 	<div class="photo">
@@ -43,8 +53,16 @@
 		margin: 0 0 2rem 0;
 	}
 
-	.stat {
+	.stats {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 2rem;
 		margin-top: 2rem;
+	}
+
+	.stat {
+		display: flex;
+		flex-direction: column;
 	}
 
 	.stat .number {
@@ -60,6 +78,7 @@
 		color: #666;
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
+		margin-top: 0.5rem;
 	}
 
 	.photo {
@@ -90,6 +109,11 @@
 
 		.text p {
 			font-size: 1rem;
+		}
+
+		.stats {
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
 		}
 
 		.stat .number {

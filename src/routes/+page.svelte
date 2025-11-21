@@ -8,7 +8,7 @@
 	import VexFeature from '$lib/components/VexFeature.svelte';
 	import EmpowerTechCard from '$lib/components/EmpowerTechCard.svelte';
 	import RobokidsCard from '$lib/components/RobokidsCard.svelte';
-	import FullSteamAhead from '$lib/components/FullSteamAhead.svelte';
+	import Events from '$lib/components/Events.svelte';
 	import CommunityProjects from '$lib/components/CommunityProjects.svelte';
 	import CTA from '$lib/components/CTA.svelte';
 </script>
@@ -43,7 +43,7 @@
 	</section>
 
 	<CommunityProjects />
-	<FullSteamAhead />
+	<Events />
 	<CTA />
 </main>
 
