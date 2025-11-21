@@ -2,6 +2,15 @@
 	import { fade } from 'svelte/transition';
 
 	const navItems = ['SSIS', 'Team', 'Media', 'Outreach', 'Our Projects', 'Contact'];
+	let mobileMenuOpen = $state(false);
+
+	function toggleMobileMenu() {
+		mobileMenuOpen = !mobileMenuOpen;
+	}
+
+	function closeMobileMenu() {
+		mobileMenuOpen = false;
+	}
 </script>
 
 <header class="site-header" transition:fade={{ duration: 500 }}>
@@ -9,6 +18,16 @@
 	<nav>
 		{#each navItems as item}
 			<a href="#" class="nav-link">{item}</a>
+		{/each}
+	</nav>
+	<button class="mobile-menu-toggle" onclick={toggleMobileMenu} aria-label="Toggle menu">
+		<span class="hamburger-line" class:open={mobileMenuOpen}></span>
+		<span class="hamburger-line" class:open={mobileMenuOpen}></span>
+		<span class="hamburger-line" class:open={mobileMenuOpen}></span>
+	</button>
+	<nav class="mobile-nav" class:open={mobileMenuOpen}>
+		{#each navItems as item}
+			<a href="#" class="nav-link" onclick={closeMobileMenu}>{item}</a>
 		{/each}
 	</nav>
 </header>
