@@ -80,4 +80,26 @@
 		background: white;
 		color: #333;
 	}
+
+	@media (max-width: 768px) {
+		.robokids {
+			min-height: 350px;
+			padding: 1.5rem;
+		}
+
+		.robokids h5 {
+			font-size: 1.25rem;
+		}
+
+		.robokids p {
+			font-size: 0.95rem;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.robokids {
+			min-height: 300px;
+			padding: 1.25rem;
+		}
+	}
 </style>

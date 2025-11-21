@@ -80,4 +80,26 @@
 		background: white;
 		color: #333;
 	}
+
+	@media (max-width: 768px) {
+		.empower {
+			min-height: 350px;
+			padding: 1.5rem;
+		}
+
+		.empower h5 {
+			font-size: 1.25rem;
+		}
+
+		.empower p {
+			font-size: 0.95rem;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.empower {
+			min-height: 300px;
+			padding: 1.25rem;
+		}
+	}
 </style>
