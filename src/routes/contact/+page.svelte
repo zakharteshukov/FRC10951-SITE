@@ -1,7 +1,8 @@
-<script>
-	function handleSubmit(e) {
+<script lang="ts">
+	function handleSubmit(e: Event) {
 		e.preventDefault();
-		const formData = new FormData(e.target);
+		const target = e.target as HTMLFormElement;
+		const formData = new FormData(target);
 		const data = {
 			name: formData.get('name'),
 			email: formData.get('email'),
@@ -10,7 +11,7 @@
 
 		console.log('Form submitted:', data);
 		alert('Thank you for your message! We will get back to you soon.');
-		e.target.reset();
+		target.reset();
 	}
 </script>
 

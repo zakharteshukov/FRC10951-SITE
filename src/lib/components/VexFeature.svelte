@@ -6,8 +6,8 @@
 		</div>
 		<div class="logo">VEX V5</div>
 		<div class="actions">
-			<button>Learn More</button>
-			<button>Past Reasons 2</button>
+			<a href="/vex/1599w" class="action-btn">Learn More</a>
+			<a href="/vex" class="action-btn">VEX Overview</a>
 		</div>
 	</div>
 </section>
@@ -80,7 +80,7 @@
 		flex-wrap: wrap;
 	}
 
-	.actions button {
+	.action-btn {
 		padding: 0.75rem 2rem;
 		border: 2px solid white;
 		background: transparent;
@@ -89,9 +89,11 @@
 		cursor: pointer;
 		transition: all 0.3s ease;
 		font-weight: 500;
+		text-decoration: none;
+		display: inline-block;
 	}
 
-	.actions button:hover {
+	.action-btn:hover {
 		background: white;
 		color: #333;
 	}
@@ -118,7 +120,7 @@
 			flex-direction: column;
 		}
 
-		.actions button {
+		.action-btn {
 			width: 100%;
 		}
 	}

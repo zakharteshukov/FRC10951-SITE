@@ -1,36 +1,40 @@
 <footer class="footer">
-	<div class="cols">
+	<div class="footer-content">
 		<div class="brand">
-			<h6>Saigon South Dragons</h6>
-			<p>Address line<br />Saigon</p>
+			<h6>SSIS Dragons</h6>
+			<p>Team 10951<br />Saigon South International School<br />Saigon, Vietnam</p>
 		</div>
 		<div class="links">
 			<h6>Robotics</h6>
 			<ul>
-				<li><a href="/" aria-label="FRC">FRC</a></li>
-				<li><a href="/" aria-label="VEX">VEX</a></li>
-				<li><a href="/" aria-label="STEM Community">STEM Community</a></li>
+				<li><a href="/frc" aria-label="FRC">FRC</a></li>
+				<li><a href="/vex" aria-label="VEX">VEX</a></li>
+				<li><a href="/stem-community" aria-label="STEM Community">STEM Community</a></li>
 			</ul>
 		</div>
 		<div class="links">
-			<h6>10951 Teams</h6>
+			<h6>Team 10951</h6>
 			<ul>
-				<li><a href="/about" aria-label="Team">Team</a></li>
-				<li><a href="/" aria-label="Media">Media</a></li>
+				<li><a href="/about" aria-label="About">About</a></li>
+				<li><a href="/media" aria-label="Media">Media</a></li>
 				<li><a href="/contact" aria-label="Contact">Contact</a></li>
 			</ul>
 		</div>
 		<div class="links">
 			<h6>VEX Teams</h6>
 			<ul>
-				<li><a href="/" aria-label="1599W">1599W</a></li>
+				<li><a href="/vex/1599v" aria-label="1599V">1599V</a></li>
+				<li><a href="/vex/1599w" aria-label="1599W">1599W</a></li>
+				<li><a href="/vex/1599x" aria-label="1599X">1599X</a></li>
+				<li><a href="/vex/1599y" aria-label="1599Y">1599Y</a></li>
+				<li><a href="/vex/1599z" aria-label="1599Z">1599Z</a></li>
 			</ul>
 		</div>
 		<div class="links">
 			<h6>Projects</h6>
 			<ul>
-				<li><a href="/" aria-label="EmpowerTech">EmpowerTech</a></li>
-				<li><a href="/" aria-label="RoboKids">RoboKids</a></li>
+				<li><a href="/projects/empowertech" aria-label="EmpowerTech">EmpowerTech</a></li>
+				<li><a href="/projects/robokids" aria-label="RoboKids">RoboKids</a></li>
 			</ul>
 		</div>
 		<div class="social">
@@ -88,44 +92,50 @@
 			</div>
 		</div>
 	</div>
+	<div class="footer-bottom">
+		<p>&copy; {new Date().getFullYear()} Team 10951 - Saigon South Dragons. All rights reserved.</p>
+	</div>
 </footer>
 
 <style>
 	.footer {
-		padding: 3rem 2rem;
+		padding: 4rem 2rem 2rem;
 		border-top: 1px solid #e5e5e5;
-		background: white;
+		background: linear-gradient(to bottom, #fafafa, #ffffff);
+		margin-top: 4rem;
 	}
 
-	.cols {
+	.footer-content {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-		gap: 2rem;
+		grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+		gap: 2.5rem;
 		max-width: 1200px;
-		margin: 0 auto;
+		margin: 0 auto 2rem;
 	}
 
 	.brand h6 {
-		font-size: 1.1rem;
-		font-weight: 600;
-		margin: 0 0 0.75rem 0;
-		color: #333;
+		font-size: 1.2rem;
+		font-weight: 700;
+		margin: 0 0 1rem 0;
+		color: #1a1a1a;
+		letter-spacing: -0.02em;
 	}
 
 	.brand p {
 		font-size: 0.9rem;
 		color: #666;
-		line-height: 1.6;
+		line-height: 1.7;
 		margin: 0;
 	}
 
 	.links h6 {
-		font-size: 0.95rem;
+		font-size: 0.9rem;
 		font-weight: 600;
-		margin: 0 0 0.75rem 0;
-		color: #333;
+		margin: 0 0 1rem 0;
+		color: #1a1a1a;
 		text-transform: uppercase;
-		letter-spacing: 0.05em;
+		letter-spacing: 0.08em;
+		font-size: 0.85rem;
 	}
 
 	.links ul {
@@ -135,38 +145,56 @@
 	}
 
 	.links li {
-		margin-bottom: 0.5rem;
+		margin-bottom: 0.65rem;
 	}
 
 	.links a {
 		font-size: 0.9rem;
 		color: #666;
 		text-decoration: none;
-		transition: color 0.3s ease;
+		transition: all 0.2s ease;
+		display: inline-block;
+		position: relative;
 	}
 
 	.links a:hover {
-		color: #333;
+		color: #1a1a1a;
+		transform: translateX(4px);
+	}
+
+	.links a::after {
+		content: '';
+		position: absolute;
+		bottom: -2px;
+		left: 0;
+		width: 0;
+		height: 1px;
+		background-color: #1a1a1a;
+		transition: width 0.2s ease;
+	}
+
+	.links a:hover::after {
+		width: 100%;
 	}
 
 	.social {
 		display: flex;
 		flex-direction: column;
-		gap: 0.75rem;
+		gap: 1rem;
 	}
 
 	.social h6 {
-		font-size: 0.95rem;
+		font-size: 0.85rem;
 		font-weight: 600;
 		margin: 0;
-		color: #333;
+		color: #1a1a1a;
 		text-transform: uppercase;
-		letter-spacing: 0.05em;
+		letter-spacing: 0.08em;
 	}
 
 	.social-icons {
 		display: flex;
-		gap: 0.5rem;
+		gap: 0.75rem;
 		align-items: center;
 	}
 
@@ -174,30 +202,33 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: 40px;
-		height: 40px;
-		border-radius: 8px;
-		color: hsl(0, 0%, 45%);
-		background-color: transparent;
-		border: 1px solid hsl(0, 0%, 89%);
+		width: 42px;
+		height: 42px;
+		border-radius: 10px;
+		color: #666;
+		background-color: #ffffff;
+		border: 1.5px solid #e5e5e5;
 		text-decoration: none;
 		transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 		cursor: pointer;
 		position: relative;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 	}
 
 	.btn-icon:hover {
-		color: hsl(0, 0%, 9%);
-		background-color: hsl(0, 0%, 96%);
-		border-color: hsl(0, 0%, 89%);
+		color: #1a1a1a;
+		background-color: #f5f5f5;
+		border-color: #d0d0d0;
+		transform: translateY(-2px);
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	}
 
 	.btn-icon:active {
-		transform: scale(0.95);
+		transform: translateY(0);
 	}
 
 	.btn-icon:focus-visible {
-		outline: 2px solid hsl(0, 0%, 9%);
+		outline: 2px solid #1a1a1a;
 		outline-offset: 2px;
 	}
 
@@ -207,10 +238,48 @@
 		flex-shrink: 0;
 	}
 
+	.footer-bottom {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding-top: 2rem;
+		border-top: 1px solid #e5e5e5;
+		text-align: center;
+	}
+
+	.footer-bottom p {
+		font-size: 0.85rem;
+		color: #999;
+		margin: 0;
+	}
+
 	@media (max-width: 768px) {
-		.cols {
+		.footer {
+			padding: 3rem 1.5rem 1.5rem;
+		}
+
+		.footer-content {
 			grid-template-columns: repeat(2, 1fr);
+			gap: 2rem;
+		}
+
+		.brand {
+			grid-column: 1 / -1;
+		}
+
+		.social {
+			grid-column: 1 / -1;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.footer-content {
+			grid-template-columns: 1fr;
 			gap: 1.5rem;
+		}
+
+		.brand,
+		.social {
+			grid-column: 1;
 		}
 	}
 </style>

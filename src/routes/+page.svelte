@@ -15,13 +15,7 @@
 
 <main>
 	<Header />
-	<Hero 
-		title="10951"
-		subtitle="SSIS Dragons"
-		body="Pioneering FIRST Robotics in Vietnam, Team 10951 presents Saigon South International School's state-of-the-art technology and talent"
-		bgImage="hero.webp"
-		bgAlt=""
-	/>
+	<Hero />
 	<Motto />
 	<SponsorsCarousel />
 	<About />

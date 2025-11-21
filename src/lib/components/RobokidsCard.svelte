@@ -1,7 +1,7 @@
 <section class="robokids">
 	<h5>Robokids</h5>
 	<p>Inspiring the next generation of robotics enthusiasts through hands-on learning.</p>
-	<button>Learn More</button>
+	<a href="/projects/robokids" class="learn-more-btn">Learn More</a>
 </section>
 
 <style>
@@ -62,7 +62,7 @@
 		flex-grow: 1;
 	}
 
-	.robokids button {
+	.learn-more-btn {
 		position: relative;
 		z-index: 2;
 		padding: 0.75rem 1.5rem;
@@ -74,9 +74,11 @@
 		transition: all 0.3s ease;
 		font-weight: 500;
 		align-self: flex-start;
+		text-decoration: none;
+		display: inline-block;
 	}
 
-	.robokids button:hover {
+	.learn-more-btn:hover {
 		background: white;
 		color: #333;
 	}
@@ -95,7 +97,7 @@
 			font-size: 0.9rem;
 		}
 
-		.robokids button {
+		.learn-more-btn {
 			font-size: 0.85rem;
 			padding: 0.65rem 1.25rem;
 		}
