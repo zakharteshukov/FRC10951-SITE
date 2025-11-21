@@ -6,23 +6,13 @@
 			International School. We compete in FIRST Robotics Competition, bringing together students
 			passionate about STEM, engineering, and innovation.
 		</p>
-		<div class="stats">
-			<div class="stat">
-				<span class="number">68</span>
-				<small>Students</small>
-			</div>
-			<div class="stat">
-				<span class="number">5</span>
-				<small>Coaches</small>
-			</div>
-			<div class="stat">
-				<span class="number">3</span>
-				<small>Administrators</small>
-			</div>
+		<div class="stat">
+			<span class="number">67</span>
+			<small>Students</small>
 		</div>
 	</div>
 	<div class="photo">
-		<img src="/team.jpg" alt="Team 10951" loading="lazy" />
+		<img src="/hero.jpg" alt="Team 10951" loading="lazy" />
 	</div>
 </section>
 
@@ -53,16 +43,8 @@
 		margin: 0 0 2rem 0;
 	}
 
-	.stats {
-		margin-top: 2rem;
-		display: flex;
-		gap: 3rem;
-		flex-wrap: wrap;
-	}
-
 	.stat {
-		flex: 1;
-		min-width: 120px;
+		margin-top: 2rem;
 	}
 
 	.stat .number {
@@ -95,52 +77,10 @@
 		.about {
 			grid-template-columns: 1fr;
 			gap: 2rem;
-			padding: 3rem 1.5rem;
 		}
 
 		.photo {
 			order: -1;
-		}
-
-		.title {
-			font-size: 2rem;
-		}
-
-		.text p {
-			font-size: 1rem;
-		}
-
-		.stats {
-			gap: 2rem;
-		}
-
-		.stat .number {
-			font-size: 3rem;
-		}
-	}
-
-	@media (max-width: 480px) {
-		.about {
-			padding: 2rem 1rem;
-		}
-
-		.title {
-			font-size: 1.75rem;
-		}
-
-		.stats {
-			flex-direction: column;
-			gap: 1.5rem;
-			align-items: center;
-			text-align: center;
-		}
-
-		.stat {
-			min-width: auto;
-		}
-
-		.stat .number {
-			font-size: 2.5rem;
 		}
 	}
 </style>

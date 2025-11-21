@@ -103,19 +103,4 @@
 			gap: 2rem;
 		}
 	}
-
-	@media (max-width: 480px) {
-		.sponsors {
-			padding: 1.5rem 0.5rem;
-		}
-
-		.logo-item {
-			height: 60px;
-			width: 120px;
-		}
-
-		.carousel-track {
-			gap: 1.5rem;
-		}
-	}
 </style>

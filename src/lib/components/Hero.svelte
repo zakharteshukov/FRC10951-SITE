@@ -28,7 +28,6 @@
 		<p class="micro">Competing in FIRST Robotics Competition, representing Saigon South International School</p>
 	</div>
 </section>
-
 <style>
 	.hero {
 		position: relative;
@@ -109,46 +108,17 @@
 	}
 
 	@media (max-width: 768px) {
-		.hero {
-			min-height: 500px;
-			height: 100vh;
-			max-height: 100vh;
-		}
-
-		.hero-content {
-			padding: 1.5rem;
-		}
-
 		.team-number {
-			font-size: 4.5rem;
+			font-size: 5rem;
 		}
 
 		.team-name {
-			font-size: 1.5rem;
+			font-size: 1.75rem;
 		}
 
 		.micro {
-			font-size: 0.85rem;
-			padding: 0 1rem;
-		}
-	}
-
-	@media (max-width: 480px) {
-		.hero {
-			min-height: 400px;
-		}
-
-		.team-number {
-			font-size: 3.5rem;
-			letter-spacing: 0.05em;
-		}
-
-		.team-name {
-			font-size: 1.25rem;
-		}
-
-		.micro {
-			font-size: 0.8rem;
+			font-size: 0.9rem;
 		}
 	}
 </style>
+

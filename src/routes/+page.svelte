@@ -10,7 +10,6 @@
 	import RobokidsCard from '$lib/components/RobokidsCard.svelte';
 	import FullSteamAhead from '$lib/components/FullSteamAhead.svelte';
 	import CommunityProjects from '$lib/components/CommunityProjects.svelte';
-	import CTA from '$lib/components/CTA.svelte';
 </script>
 
 <main>
@@ -36,11 +35,9 @@
 		</div>
 	</section>
 
-	<CommunityProjects />
 	<FullSteamAhead />
-	<CTA />
+	<CommunityProjects />
 </main>
-
 <style>
 	main {
 		overflow-x: hidden;
@@ -76,17 +73,11 @@
 	@media (max-width: 968px) {
 		.features-grid {
 			grid-template-columns: 1fr;
-			min-height: auto;
 		}
 
 		.right {
 			grid-column: 1;
 		}
 	}
-
-	@media (max-width: 480px) {
-		.features-grid {
-			min-height: auto;
-		}
-	}
 </style>
+
