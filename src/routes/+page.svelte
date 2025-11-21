@@ -27,19 +27,23 @@
 	<About />
 	<FirstAge />
 
-	<h2 class="stem-community-heading">STEM Community</h2>
-
-	<!-- Feature Cards Section: asymmetric grid -->
-	<section class="features-grid">
-		<div class="left">
-			<VexFeature />
-		</div>
-		<div class="right">
-			<div class="quarter-top">
-				<EmpowerTechCard />
-			</div>
-			<div class="quarter-bottom">
-				<RobokidsCard />
+	<!-- STEM Community Section: Card-based layout -->
+	<section class="stem-community">
+		<h2 class="stem-community-heading">STEM Community</h2>
+		<div class="stem-community-content">
+			<!-- Feature Cards Section: asymmetric grid -->
+			<div class="features-grid">
+				<div class="left">
+					<VexFeature />
+				</div>
+				<div class="right">
+					<div class="quarter-top">
+						<EmpowerTechCard />
+					</div>
+					<div class="quarter-bottom">
+						<RobokidsCard />
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -63,12 +67,14 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		min-height: 500px;
-		background: white;
+		background: transparent;
 		gap: 0;
 		margin: 0;
 		padding: 0;
 		width: 100%;
 		border: none;
+		border-radius: 8px;
+		overflow: hidden;
 	}
 
 	.features-grid :global(section) {
@@ -79,6 +85,8 @@
 		grid-column: 1;
 		margin: 0;
 		padding: 0;
+		border-radius: 8px 0 0 8px;
+		overflow: hidden;
 	}
 
 	.right {
@@ -88,18 +96,24 @@
 		margin: 0;
 		padding: 0;
 		gap: 0;
+		border-radius: 0 8px 8px 0;
+		overflow: hidden;
 	}
 
 	.quarter-top {
 		grid-row: 1;
 		margin: 0;
 		padding: 0;
+		border-radius: 0 8px 0 0;
+		overflow: hidden;
 	}
 
 	.quarter-bottom {
 		grid-row: 2;
 		margin: 0;
 		padding: 0;
+		border-radius: 0 0 8px 0;
+		overflow: hidden;
 	}
 
 	@media (max-width: 968px) {
@@ -123,19 +137,45 @@
 		}
 	}
 
+	.stem-community {
+		background: white;
+		border-radius: 12px;
+		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+		margin: 4rem auto;
+		padding: 3rem 2rem;
+		max-width: 95%;
+		width: 100%;
+		transition: box-shadow 0.3s ease, transform 0.3s ease;
+	}
+
+	.stem-community:hover {
+		box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+		transform: translateY(-2px);
+	}
+
 	.stem-community-heading {
 		font-size: 2.5rem;
 		font-weight: 300;
 		text-align: center;
-		margin: 4rem 0 3rem 0;
+		margin: 0 0 3rem 0;
 		color: #333;
-		padding: 0 2rem;
+		padding: 0;
+	}
+
+	.stem-community-content {
+		width: 100%;
 	}
 
 	@media (max-width: 768px) {
+		.stem-community {
+			margin: 3rem auto;
+			padding: 2rem 1.5rem;
+			border-radius: 8px;
+		}
+
 		.stem-community-heading {
 			font-size: 2rem;
-			margin: 3rem 0 2rem 0;
+			margin-bottom: 2rem;
 		}
 	}
 </style>
