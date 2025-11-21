@@ -9,15 +9,23 @@
 </script>
 
 <div
-	class="10951-hero flex min-h-screen w-screen flex-col items-center justify-center bg-blue-100 p-10"
+	class="ssis-hero flex min-h-[90vh] w-screen flex-col items-center justify-center gap-2 bg-blue-100 p-10 text-center text-balance"
 >
-	<h1 class="text-8xl">{title}</h1>
+	<h1 class="ssis-hero-header font-extrabold">{title}</h1>
 
 	{#if subtitle}
-		<span class="text-3xl">{subtitle}</span>
+		<span class="font-mono text-2xl">{subtitle}</span>
 	{/if}
 
-	<p>
+	<p class="max-w-[40ch] text-2xl">
 		{body}
 	</p>
 </div>
+
+<style>
+	.ssis-hero {
+		--font-size: calc(10vw + 5rem);
+		font-size: var(--font-size);
+		line-height: calc(var(--font-size) * 1.2);
+	}
+</style>

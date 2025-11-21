@@ -1,1 +1,23 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@font-face {
+	font-family: IBMPlexMono; /* set name */
+	font-weight: 400;
+	src: url('./lib/assets/fonts/IBMPlexMono-Regular.ttf'); /* url of the font */
+}
+
+@font-face {
+	font-family: PlayfairDisplay; /* set name */
+	src: url('./lib/assets/fonts/PlayfairDisplay.ttf'); /* url of the font */
+}
+
+@font-face {
+	font-family: NewHeterodoxMono; /* set name */
+	src: url('./lib/assets/fonts/NewHeterodoxMono-Bold.otf'); /* url of the font */
+}
+
+@theme {
+	--font-sans: PlayfairDisplay, sans-serif;
+	--font-mono: IBMPlexMono, monospace;
+	/*--font-mono: NewHeterodoxMono, monospace;*/
+}
