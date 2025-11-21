@@ -1,0 +1,113 @@
+/* Playfair Display */
+
+@font-face {
+	src: url('./lib/assets/fonts/PlayfairDisplay-VariableFont_wght.ttf');
+	font-family: 'PlayfairDisplay';
+	font-style: normal;
+}
+
+@font-face {
+	src: url('./lib/assets/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf');
+	font-family: 'PlayfairDisplay';
+	font-style: italic;
+}
+
+/* IBMPlexMono */
+
+@font-face {
+	src: url('./lib/assets/fonts/');
+	font-family: 'IBMPlexMono';
+	font-weight: 100;
+	font-style: normal;
+}
+
+@font-face {
+	src: url('./lib/assets/fonts/');
+	font-family: 'IBMPlexMono';
+	font-weight: 200;
+	font-style: normal;
+}
+
+@font-face {
+	src: url('./lib/assets/fonts/');
+	font-family: 'IBMPlexMono';
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	src: url('./lib/assets/fonts/');
+	font-family: 'IBMPlexMono';
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	src: url('./lib/assets/fonts/');
+	font-family: 'IBMPlexMono';
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	src: url('./lib/assets/fonts/');
+	font-family: 'IBMPlexMono';
+	font-weight: 600;
+	font-style: normal;
+}
+
+@font-face {
+	src: url('./lib/assets/fonts/');
+	font-family: 'IBMPlexMono';
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	src: url('./lib/assets/fonts/');
+	font-family: 'IBMPlexMono';
+	font-weight: 100;
+	font-style: italic;
+}
+
+@font-face {
+	src: url('./lib/assets/fonts/');
+	font-family: 'IBMPlexMono';
+	font-weight: 200;
+	font-style: italic;
+}
+
+@font-face {
+	src: url('./lib/assets/fonts/');
+	font-family: 'IBMPlexMono';
+	font-weight: 300;
+	font-style: italic;
+}
+
+@font-face {
+	src: url('./lib/assets/fonts/');
+	font-family: 'IBMPlexMono';
+	font-weight: 400;
+	font-style: italic;
+}
+
+@font-face {
+	src: url('./lib/assets/fonts/');
+	font-family: 'IBMPlexMono';
+	font-weight: 500;
+	font-style: italic;
+}
+
+@font-face {
+	src: url('./lib/assets/fonts/');
+	font-family: 'IBMPlexMono';
+	font-weight: 600;
+	font-style: italic;
+}
+
+@font-face {
+	src: url('./lib/assets/fonts/');
+	font-family: 'IBMPlexMono';
+	font-weight: 700;
+	font-style: italic;
+}
