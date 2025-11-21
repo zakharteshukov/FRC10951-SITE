@@ -12,7 +12,7 @@
 		</div>
 	</div>
 	<div class="photo">
-		<img src="/hero.jpg" alt="Team 10951" loading="lazy" />
+		<img src="/team.jpg" alt="Team 10951" loading="lazy" />
 	</div>
 </section>
 
@@ -77,11 +77,23 @@
 		.about {
 			grid-template-columns: 1fr;
 			gap: 2rem;
+			padding: 3rem 1.5rem;
 		}
 
 		.photo {
 			order: -1;
 		}
+
+		.title {
+			font-size: 2rem;
+		}
+
+		.text p {
+			font-size: 1rem;
+		}
+
+		.stat .number {
+			font-size: 3rem;
+		}
 	}
 </style>
-

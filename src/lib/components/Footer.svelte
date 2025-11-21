@@ -7,38 +7,38 @@
 		<div class="links">
 			<h6>Robotics</h6>
 			<ul>
-				<li><a href="#">FRC</a></li>
-				<li><a href="#">VEX</a></li>
-				<li><a href="#">STEM Community</a></li>
+				<li><a href="/" aria-label="FRC">FRC</a></li>
+				<li><a href="/" aria-label="VEX">VEX</a></li>
+				<li><a href="/" aria-label="STEM Community">STEM Community</a></li>
 			</ul>
 		</div>
 		<div class="links">
 			<h6>10951 Teams</h6>
 			<ul>
-				<li><a href="#">Team</a></li>
-				<li><a href="#">Media</a></li>
-				<li><a href="#">Contact</a></li>
+				<li><a href="/about" aria-label="Team">Team</a></li>
+				<li><a href="/" aria-label="Media">Media</a></li>
+				<li><a href="/contact" aria-label="Contact">Contact</a></li>
 			</ul>
 		</div>
 		<div class="links">
 			<h6>VEX Teams</h6>
 			<ul>
-				<li><a href="#">1599W</a></li>
+				<li><a href="/" aria-label="1599W">1599W</a></li>
 			</ul>
 		</div>
 		<div class="links">
 			<h6>Projects</h6>
 			<ul>
-				<li><a href="#">EmpowerTech</a></li>
-				<li><a href="#">RoboKids</a></li>
+				<li><a href="/" aria-label="EmpowerTech">EmpowerTech</a></li>
+				<li><a href="/" aria-label="RoboKids">RoboKids</a></li>
 			</ul>
 		</div>
 		<div class="social">
 			<h6>Follow Us</h6>
 			<div class="social-icons">
 				<a
-					href="#"
-					class="social-icon"
+					href="https://instagram.com"
+					class="btn-icon"
 					aria-label="Instagram"
 					target="_blank"
 					rel="noopener noreferrer"
@@ -53,6 +53,7 @@
 						stroke-width="2"
 						stroke-linecap="round"
 						stroke-linejoin="round"
+						class="icon"
 					>
 						<rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
 						<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
@@ -60,8 +61,8 @@
 					</svg>
 				</a>
 				<a
-					href="#"
-					class="social-icon"
+					href="https://youtube.com"
+					class="btn-icon"
 					aria-label="YouTube"
 					target="_blank"
 					rel="noopener noreferrer"
@@ -76,6 +77,7 @@
 						stroke-width="2"
 						stroke-linecap="round"
 						stroke-linejoin="round"
+						class="icon"
 					>
 						<path
 							d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"
@@ -87,6 +89,7 @@
 		</div>
 	</div>
 </footer>
+
 <style>
 	.footer {
 		padding: 3rem 2rem;
@@ -163,40 +166,45 @@
 
 	.social-icons {
 		display: flex;
-		gap: 0.75rem;
+		gap: 0.5rem;
 		align-items: center;
 	}
 
-	.social-icon {
+	.btn-icon {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
 		width: 40px;
 		height: 40px;
 		border-radius: 8px;
-		color: #666;
-		background: transparent;
-		border: 1px solid #e5e5e5;
+		color: hsl(0, 0%, 45%);
+		background-color: transparent;
+		border: 1px solid hsl(0, 0%, 89%);
 		text-decoration: none;
-		transition: all 0.2s ease;
+		transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 		cursor: pointer;
+		position: relative;
 	}
 
-	.social-icon:hover {
-		color: white;
-		background: #333;
-		border-color: #333;
-		transform: translateY(-2px);
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	.btn-icon:hover {
+		color: hsl(0, 0%, 9%);
+		background-color: hsl(0, 0%, 96%);
+		border-color: hsl(0, 0%, 89%);
 	}
 
-	.social-icon:active {
-		transform: translateY(0);
+	.btn-icon:active {
+		transform: scale(0.95);
 	}
 
-	.social-icon:focus-visible {
-		outline: 2px solid #333;
+	.btn-icon:focus-visible {
+		outline: 2px solid hsl(0, 0%, 9%);
 		outline-offset: 2px;
+	}
+
+	.btn-icon .icon {
+		width: 20px;
+		height: 20px;
+		flex-shrink: 0;
 	}
 
 	@media (max-width: 768px) {
@@ -206,4 +214,3 @@
 		}
 	}
 </style>
-

@@ -5,8 +5,8 @@
 			<h4>About Projects</h4>
 			<p>
 				Our community projects are initiatives that extend beyond competition. We work with local
-				schools, organize workshops, and create educational resources to inspire the next
-				generation of engineers and innovators.
+				schools, organize workshops, and create educational resources to inspire the next generation
+				of engineers and innovators.
 			</p>
 		</article>
 		<article class="card">
@@ -26,6 +26,7 @@
 		<button>View All Projects</button>
 	</div>
 </section>
+
 <style>
 	.projects {
 		padding: 4rem 2rem;
@@ -54,7 +55,9 @@
 		padding: 2rem;
 		border-radius: 8px;
 		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-		transition: transform 0.3s ease, box-shadow 0.3s ease;
+		transition:
+			transform 0.3s ease,
+			box-shadow 0.3s ease;
 	}
 
 	.card:hover {
@@ -108,15 +111,45 @@
 	}
 
 	@media (max-width: 768px) {
+		.projects {
+			padding: 3rem 1.5rem;
+		}
+
+		.projects > h3 {
+			font-size: 2rem;
+			margin-bottom: 2rem;
+		}
+
 		.grid {
 			grid-template-columns: 1fr;
 			grid-auto-rows: auto;
+			gap: 1rem;
+			margin-bottom: 2rem;
+		}
+
+		.card {
+			padding: 1.5rem;
 		}
 
 		.card.big {
 			grid-row: span 1;
 		}
+
+		.card h4 {
+			font-size: 1.5rem;
+		}
+
+		.card h5 {
+			font-size: 1.25rem;
+		}
+
+		.card p {
+			font-size: 0.9rem;
+		}
+
+		.cta button {
+			font-size: 0.9rem;
+			padding: 0.65rem 1.5rem;
+		}
 	}
 </style>
-
-

@@ -46,6 +46,7 @@
 	<FullSteamAhead />
 	<CTA />
 </main>
+
 <style>
 	main {
 		overflow-x: hidden;
@@ -81,11 +82,21 @@
 	@media (max-width: 968px) {
 		.features-grid {
 			grid-template-columns: 1fr;
+			min-height: auto;
+		}
+
+		.left {
+			grid-column: 1;
 		}
 
 		.right {
 			grid-column: 1;
 		}
 	}
-</style>
 
+	@media (max-width: 480px) {
+		.features-grid {
+			gap: 0;
+		}
+	}
+</style>

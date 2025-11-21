@@ -1,67 +1,152 @@
-<script lang="ts">
+<script>
 	import { fade } from 'svelte/transition';
-	import { onMount, type Snippet } from 'svelte';
+	import { onMount } from 'svelte';
 
-	export interface Props {
-		title: string;
-		subtitle?: string;
-		body: string;
-		bgImage: string;
-		bgAlt: string;
-		children: Snippet
-	} 
+	const heroImage = '/hero.jpg';
 
-	const { title, subtitle, body, bgImage, children }: Props = $props();
-
-	let imageLoaded = false;
-	
 	onMount(() => {
 		const img = new Image();
-		img.src = bgImage;
-		img.onload = () => {
-			imageLoaded = true;
-		};
+		img.src = heroImage;
 		img.onerror = () => {
-			console.error('Failed to load hero image:', bgImage);
+			console.error('Failed to load hero image:', heroImage);
 		};
 	});
 </script>
 
-<section class="relative flex flex-col items-center justify-center ssis-hero h-screen text-center text-white text-2xl p-1 gap-1" style={`--hero-background-image: url("${bgImage}")`} >
-	<h1 class="ssis-hero-title font-extrabold">{title}</h1>
-	{#if subtitle}
-		<p class="font-mono">{subtitle}</p>
-	{/if}
-	<p class="">{body}</p>
-	{@render children?.()}
+<section class="hero">
+	<div class="hero-bg">
+		<img src={heroImage} alt="Team 10951 Hero" class="hero-image" />
+	</div>
+	<div class="hero-overlay"></div>
+	<div class="hero-content" transition:fade={{ duration: 800, delay: 200 }}>
+		<h1 class="team-number">10951</h1>
+		<h2 class="team-name">Saigon South Dragons</h2>
+		<p class="micro">
+			Competing in FIRST Robotics Competition, representing Saigon South International School
+		</p>
+	</div>
 </section>
 
 <style>
-	.ssis-hero-title {
-		--font-size: calc(10vw + 5rem);
-		font-size: var(--font-size);
-		line-height: 0;
-		margin-bottom: calc(var(--font-size) / 2 + var(--spacing) * 6);
+	.hero {
+		position: relative;
+		height: 100vh;
+		min-height: 600px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: white;
+		overflow: hidden;
+		margin-top: 0;
+		background-color: #1a1a1a;
 	}
 
-	.ssis-hero h1, .ssis-hero p {
-		z-index: 1;
-		max-width: 40ch;
-	}
-
-	.ssis-hero::after {
-		content: "";
-		display: block;
-
-		height: 100%;
-		width: 100%;
+	.hero-bg {
 		position: absolute;
+		inset: 0;
+		z-index: 0;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
 
-		background-image: var(--hero-background-image);
-		background-size: cover;
-		background-position: center;
-		background-attachment: fixed;
+	.hero-image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+		display: block;
+		filter: brightness(0.8) contrast(1.1) saturate(1.1);
+		transition:
+			transform 0.3s ease,
+			filter 0.3s ease;
+		transform: scale(1);
+	}
 
-		filter: brightness(33.33%) contrast(110%);
+	.hero:hover .hero-image {
+		transform: scale(1.05);
+		filter: brightness(0.85) contrast(1.15) saturate(1.15);
+	}
+
+	.hero-overlay {
+		position: absolute;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.4);
+		z-index: 1;
+	}
+
+	.hero-content {
+		position: relative;
+		z-index: 2;
+		text-align: center;
+		padding: 2rem;
+	}
+
+	.team-number {
+		font-size: 9rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		margin: 0;
+		line-height: 1;
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+	}
+
+	.team-name {
+		font-size: 2.5rem;
+		font-weight: 600;
+		margin: 1rem 0 0.5rem 0;
+		letter-spacing: 0.02em;
+	}
+
+	.micro {
+		font-size: 1rem;
+		opacity: 0.9;
+		margin: 0.5rem 0 0 0;
+		font-weight: 300;
+		max-width: 600px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	@media (max-width: 768px) {
+		.hero {
+			min-height: 500px;
+			height: 100vh;
+			max-height: 100vh;
+		}
+
+		.hero-content {
+			padding: 1.5rem;
+		}
+
+		.team-number {
+			font-size: 4rem;
+		}
+
+		.team-name {
+			font-size: 1.5rem;
+		}
+
+		.micro {
+			font-size: 0.85rem;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.hero {
+			min-height: 400px;
+		}
+
+		.team-number {
+			font-size: 3rem;
+		}
+
+		.team-name {
+			font-size: 1.25rem;
+		}
+
+		.micro {
+			font-size: 0.8rem;
+		}
 	}
 </style>
