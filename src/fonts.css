@@ -1,16 +1,5 @@
-/* Playfair Display */
-
-@font-face {
-	src: url('./lib/assets/fonts/PlayfairDisplay-VariableFont_wght.ttf');
-	font-family: 'Playfair Display';
-	font-style: normal;
-}
-
-@font-face {
-	src: url('./lib/assets/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf');
-	font-family: 'Playfair Display';
-	font-style: italic;
-}
+/* System Font - .SF NS (San Francisco) */
+/* System fonts are used throughout the site via -apple-system, BlinkMacSystemFont, etc. */
 
 /* IBM Plex Mono */
 
