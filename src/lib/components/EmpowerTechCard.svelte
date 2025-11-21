@@ -16,8 +16,10 @@
 			transform 0.3s ease,
 			box-shadow 0.3s ease;
 		position: relative;
-		border: 2px solid rgba(255, 255, 255, 0.3);
+		border: none;
+		border-bottom: 1px solid black;
 		overflow: hidden;
+		margin: 0;
 	}
 
 	.empower::before {

@@ -21,8 +21,10 @@
 		align-items: center;
 		justify-content: center;
 		position: relative;
-		border: 2px solid rgba(255, 255, 255, 0.3);
+		border: none;
+		border-right: 1px solid black;
 		overflow: hidden;
+		margin: 0;
 	}
 
 	.vex-feature::before {
@@ -43,6 +45,10 @@
 		inset: 0;
 		background: rgba(0, 0, 0, 0.4);
 		z-index: 1;
+	}
+
+	.vex-feature {
+		box-shadow: inset -1px 0 0 0 black;
 	}
 
 	.content {

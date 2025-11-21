@@ -52,6 +52,9 @@
 		overflow-x: hidden;
 		position: relative;
 		background: white;
+		margin: 0;
+		padding: 0;
+		width: 100%;
 	}
 
 	.features-grid {
@@ -59,24 +62,42 @@
 		grid-template-columns: 1fr 1fr;
 		min-height: 500px;
 		background: white;
+		gap: 0;
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		border: none;
+	}
+
+	.features-grid :global(section) {
+		margin: 0 !important;
 	}
 
 	.left {
 		grid-column: 1;
+		margin: 0;
+		padding: 0;
 	}
 
 	.right {
 		grid-column: 2;
 		display: grid;
 		grid-template-rows: 1fr 1fr;
+		margin: 0;
+		padding: 0;
+		gap: 0;
 	}
 
 	.quarter-top {
 		grid-row: 1;
+		margin: 0;
+		padding: 0;
 	}
 
 	.quarter-bottom {
 		grid-row: 2;
+		margin: 0;
+		padding: 0;
 	}
 
 	@media (max-width: 968px) {

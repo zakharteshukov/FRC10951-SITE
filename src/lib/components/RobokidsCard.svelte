@@ -16,8 +16,9 @@
 			transform 0.3s ease,
 			box-shadow 0.3s ease;
 		position: relative;
-		border: 2px solid rgba(255, 255, 255, 0.3);
+		border: none;
 		overflow: hidden;
+		margin: 0;
 	}
 
 	.robokids::before {
