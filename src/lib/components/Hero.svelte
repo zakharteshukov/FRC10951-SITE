@@ -2,7 +2,7 @@
 	import { fade, fly } from 'svelte/transition';
 	import { onMount } from 'svelte';
 
-	const heroImage = '/hero.jpg';
+	const heroImage = '/hero.webp';
 	let heroElement;
 	let isVisible = false;
 

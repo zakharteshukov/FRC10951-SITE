@@ -25,7 +25,7 @@
 		content: '';
 		position: absolute;
 		inset: 0;
-		background-image: url('/robokids.jpg');
+		background-image: url('/robokids.webp');
 		background-size: cover;
 		background-position: center;
 		background-repeat: no-repeat;

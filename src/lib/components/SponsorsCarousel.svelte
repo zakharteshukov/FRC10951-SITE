@@ -1,13 +1,13 @@
 <script>
 	// Sponsor logos from static folder
 	const slides = [
-		{ src: '/coca-cola-logo.png', alt: 'Coca-Cola' },
-		{ src: '/frc-logo.png', alt: 'FIRST Robotics Competition' },
-		{ src: '/ssis-logo.png', alt: 'Saigon South International School' },
+		{ src: '/coca-cola-logo.webp', alt: 'Coca-Cola' },
+		{ src: '/frc-logo.webp', alt: 'FIRST Robotics Competition' },
+		{ src: '/ssis-logo.webp', alt: 'Saigon South International School' },
 		{ src: '/WIPLib-logo.webp', alt: 'WIPLib' },
-		{ src: '/lockheed-martin-logo.png', alt: 'Lockheed Martin' },
-		{ src: '/palantir-logo.png', alt: 'Palantir' },
-		{ src: '/boeing-logo.png', alt: 'Boeing' },
+		{ src: '/lockheed-martin-logo.webp', alt: 'Lockheed Martin' },
+		{ src: '/palantir-logo.webp', alt: 'Palantir' },
+		{ src: '/boeing-logo.webp', alt: 'Boeing' },
 	];
 
 	// Duplicate slides for seamless loop

@@ -26,7 +26,7 @@
 		content: '';
 		position: absolute;
 		inset: 0;
-		background-image: url('/empowertech.jpg');
+		background-image: url('/empowertech.webp');
 		background-size: cover;
 		background-position: center;
 		background-repeat: no-repeat;

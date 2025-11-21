@@ -26,7 +26,7 @@
 		content: '';
 		position: absolute;
 		inset: 0;
-		background-image: url('/full-STEAM-ahead.jpg');
+		background-image: url('/full-STEAM-ahead.webp');
 		background-size: cover;
 		background-position: center;
 		background-repeat: no-repeat;

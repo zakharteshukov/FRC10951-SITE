@@ -97,7 +97,7 @@
 	}
 
 	.card.project-1 {
-		background-image: url('/project-1.jpg');
+		background-image: url('/project-1.webp');
 		background-size: cover;
 		background-position: center;
 		grid-column: 1 / 3;
@@ -105,7 +105,7 @@
 	}
 
 	.card.project-2 {
-		background-image: url('/project-2.jpg');
+		background-image: url('/project-2.webp');
 		background-size: cover;
 		background-position: center;
 		grid-column: 3;

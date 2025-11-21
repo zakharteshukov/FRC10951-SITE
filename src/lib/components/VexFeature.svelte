@@ -31,7 +31,7 @@
 		content: '';
 		position: absolute;
 		inset: 0;
-		background-image: url('/vex.jpg');
+		background-image: url('/vex.webp');
 		background-size: cover;
 		background-position: center;
 		background-repeat: no-repeat;
