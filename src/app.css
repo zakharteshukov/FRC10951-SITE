@@ -3,8 +3,8 @@
 @import 'fonts.css';
 
 @theme {
-	--font-mono: IBMPlexMono, monospace;
-	--font-serif: PlayfairDisplay, monospace;
+	--font-mono: "IBM Plex Mono", monospace;
+	--font-serif: "Playfair Display", monospace;
 }
 
 @layer base {

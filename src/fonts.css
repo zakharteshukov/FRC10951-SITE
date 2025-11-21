@@ -2,112 +2,112 @@
 
 @font-face {
 	src: url('./lib/assets/fonts/PlayfairDisplay-VariableFont_wght.ttf');
-	font-family: 'PlayfairDisplay';
+	font-family: 'Playfair Display';
 	font-style: normal;
 }
 
 @font-face {
 	src: url('./lib/assets/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf');
-	font-family: 'PlayfairDisplay';
+	font-family: 'Playfair Display';
 	font-style: italic;
 }
 
-/* IBMPlexMono */
+/* IBM Plex Mono */
 
 @font-face {
 	src: url('./lib/assets/fonts/');
-	font-family: 'IBMPlexMono';
+	font-family: 'IBM Plex Mono';
 	font-weight: 100;
 	font-style: normal;
 }
 
 @font-face {
 	src: url('./lib/assets/fonts/');
-	font-family: 'IBMPlexMono';
+	font-family: 'IBM Plex Mono';
 	font-weight: 200;
 	font-style: normal;
 }
 
 @font-face {
 	src: url('./lib/assets/fonts/');
-	font-family: 'IBMPlexMono';
+	font-family: 'IBM Plex Mono';
 	font-weight: 300;
 	font-style: normal;
 }
 
 @font-face {
 	src: url('./lib/assets/fonts/');
-	font-family: 'IBMPlexMono';
+	font-family: 'IBM Plex Mono';
 	font-weight: 400;
 	font-style: normal;
 }
 
 @font-face {
 	src: url('./lib/assets/fonts/');
-	font-family: 'IBMPlexMono';
+	font-family: 'IBM Plex Mono';
 	font-weight: 500;
 	font-style: normal;
 }
 
 @font-face {
 	src: url('./lib/assets/fonts/');
-	font-family: 'IBMPlexMono';
+	font-family: 'IBM Plex Mono';
 	font-weight: 600;
 	font-style: normal;
 }
 
 @font-face {
 	src: url('./lib/assets/fonts/');
-	font-family: 'IBMPlexMono';
+	font-family: 'IBM Plex Mono';
 	font-weight: 700;
 	font-style: normal;
 }
 
 @font-face {
 	src: url('./lib/assets/fonts/');
-	font-family: 'IBMPlexMono';
+	font-family: 'IBM Plex Mono';
 	font-weight: 100;
 	font-style: italic;
 }
 
 @font-face {
 	src: url('./lib/assets/fonts/');
-	font-family: 'IBMPlexMono';
+	font-family: 'IBM Plex Mono';
 	font-weight: 200;
 	font-style: italic;
 }
 
 @font-face {
 	src: url('./lib/assets/fonts/');
-	font-family: 'IBMPlexMono';
+	font-family: 'IBM Plex Mono';
 	font-weight: 300;
 	font-style: italic;
 }
 
 @font-face {
 	src: url('./lib/assets/fonts/');
-	font-family: 'IBMPlexMono';
+	font-family: 'IBM Plex Mono';
 	font-weight: 400;
 	font-style: italic;
 }
 
 @font-face {
 	src: url('./lib/assets/fonts/');
-	font-family: 'IBMPlexMono';
+	font-family: 'IBM Plex Mono';
 	font-weight: 500;
 	font-style: italic;
 }
 
 @font-face {
 	src: url('./lib/assets/fonts/');
-	font-family: 'IBMPlexMono';
+	font-family: 'IBM Plex Mono';
 	font-weight: 600;
 	font-style: italic;
 }
 
 @font-face {
 	src: url('./lib/assets/fonts/');
-	font-family: 'IBMPlexMono';
+	font-family: 'IBM Plex Mono';
 	font-weight: 700;
 	font-style: italic;
 }

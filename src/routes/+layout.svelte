@@ -10,12 +10,3 @@
 
 {@render children?.()}
 <Footer />
-<style>
-	:global(body) {
-		margin: 0;
-		padding: 0;
-		background: white;
-		color: #333;
-	}
-</style>
-
