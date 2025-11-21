@@ -4,7 +4,7 @@
 	const navItems = [
 		{ href: '/', label: 'Home' },
 		{ href: '/about', label: 'About' },
-		{ href: '/contact', label: 'Contact' }
+		{ href: '/contact', label: 'Contact' },
 	];
 </script>
 
@@ -17,10 +17,7 @@
 			<ul class="hidden md:flex gap-8">
 				{#each navItems as item}
 					<li>
-						<a
-							href={item.href}
-							class="text-text hover:text-primary transition-colors font-medium"
-						>
+						<a href={item.href} class="text-text hover:text-primary transition-colors font-medium">
 							{item.label}
 						</a>
 					</li>

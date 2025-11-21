@@ -3,6 +3,7 @@
 	<p>Empowering communities through technology education and innovation.</p>
 	<button>Learn More</button>
 </section>
+
 <style>
 	.empower {
 		padding: 2rem;
@@ -11,7 +12,9 @@
 		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
 		display: flex;
 		flex-direction: column;
-		transition: transform 0.3s ease, box-shadow 0.3s ease;
+		transition:
+			transform 0.3s ease,
+			box-shadow 0.3s ease;
 		position: relative;
 		border: 2px solid rgba(255, 255, 255, 0.3);
 		overflow: hidden;
@@ -100,4 +103,3 @@
 		}
 	}
 </style>
-

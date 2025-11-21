@@ -1,7 +1,7 @@
 ---
-title: "Welcome to Our Blog"
-date: "2024-11-10"
-excerpt: "This is an example blog post to demonstrate the markdown content system."
+title: 'Welcome to Our Blog'
+date: '2024-11-10'
+excerpt: 'This is an example blog post to demonstrate the markdown content system.'
 ---
 
 # Welcome to Our Blog
@@ -21,4 +21,3 @@ This is an example blog post. You can create new blog posts by adding markdown f
 2. Add frontmatter with title, date, and excerpt
 3. Write your content in markdown
 4. The blog system will automatically pick it up!
-

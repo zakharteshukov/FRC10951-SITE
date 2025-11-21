@@ -1,7 +1,14 @@
 <script>
 	import { fade } from 'svelte/transition';
 
-	const navItems = ['SSIS', 'Team', 'Media', 'Outreach', 'Our Projects', 'Contact'];
+	const navItems = [
+		{ label: 'SSIS', href: '/' },
+		{ label: 'Team', href: '/about' },
+		{ label: 'Media', href: '#' },
+		{ label: 'Outreach', href: '#' },
+		{ label: 'Our Projects', href: '#' },
+		{ label: 'Contact', href: '/contact' },
+	];
 	let mobileMenuOpen = false;
 
 	function toggleMobileMenu() {
@@ -17,13 +24,13 @@
 	<div class="logo">FRC10951</div>
 	<nav class="desktop-nav">
 		{#each navItems as item}
-			<a href="#" class="nav-link">{item}</a>
+			<a href={item.href} class="nav-link">{item.label}</a>
 		{/each}
 	</nav>
 	<button
 		class="mobile-menu-toggle"
 		class:open={mobileMenuOpen}
-		onclick={toggleMobileMenu}
+		on:click={toggleMobileMenu}
 		aria-label={mobileMenuOpen ? 'Close menu' : 'Toggle menu'}
 	>
 		<span class="hamburger-icon">
@@ -49,16 +56,24 @@
 		</span>
 	</button>
 	{#if mobileMenuOpen}
-		<div class="mobile-overlay" onclick={closeMobileMenu}></div>
+		<div
+			class="mobile-overlay"
+			role="button"
+			tabindex="0"
+			aria-label="Close menu"
+			on:click={closeMobileMenu}
+			on:keydown={(e) => e.key === 'Enter' && closeMobileMenu()}
+		></div>
 		<nav class="mobile-nav">
 			<div class="mobile-nav-content">
 				{#each navItems as item}
-					<a href="#" class="mobile-nav-link" onclick={closeMobileMenu}>{item}</a>
+					<a href={item.href} class="mobile-nav-link" on:click={closeMobileMenu}>{item.label}</a>
 				{/each}
 			</div>
 		</nav>
 	{/if}
 </header>
+
 <style>
 	.site-header {
 		display: flex;
@@ -111,7 +126,9 @@
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		transition: opacity 0s, visibility 0s;
+		transition:
+			opacity 0s,
+			visibility 0s;
 		width: 25px;
 		height: 18px;
 		display: flex;
@@ -199,7 +216,6 @@
 		}
 	}
 
-
 	.mobile-nav-content {
 		display: flex;
 		flex-direction: column;
@@ -217,7 +233,9 @@
 		font-weight: 500;
 		padding: 1.5rem 0;
 		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-		transition: opacity 0.3s ease, padding-left 0.3s ease;
+		transition:
+			opacity 0.3s ease,
+			padding-left 0.3s ease;
 		display: block;
 	}
 
@@ -282,5 +300,3 @@
 		}
 	}
 </style>
-
-

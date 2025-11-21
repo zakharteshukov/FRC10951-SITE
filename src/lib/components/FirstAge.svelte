@@ -13,6 +13,7 @@
 		</div>
 	</div>
 </section>
+
 <style>
 	.first-age {
 		padding: 4rem 2rem;
@@ -113,5 +114,3 @@
 		}
 	}
 </style>
-
-

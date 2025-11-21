@@ -5,7 +5,7 @@
 		const data = {
 			name: formData.get('name'),
 			email: formData.get('email'),
-			message: formData.get('message')
+			message: formData.get('message'),
 		};
 
 		console.log('Form submitted:', data);
@@ -20,17 +20,15 @@
 		<div class="max-w-2xl mx-auto">
 			<div class="card mb-8">
 				<p class="text-lg text-text-light mb-6">
-					Have a question or want to get in touch? Fill out the form below and we'll get back to
-					you as soon as possible.
+					Have a question or want to get in touch? Fill out the form below and we'll get back to you
+					as soon as possible.
 				</p>
 			</div>
 
 			<form on:submit={handleSubmit} class="card">
 				<div class="space-y-6">
 					<div>
-						<label for="name" class="block text-sm font-medium mb-2 text-text">
-							Your Name
-						</label>
+						<label for="name" class="block text-sm font-medium mb-2 text-text"> Your Name </label>
 						<input
 							type="text"
 							id="name"
@@ -42,9 +40,7 @@
 					</div>
 
 					<div>
-						<label for="email" class="block text-sm font-medium mb-2 text-text">
-							Your Email
-						</label>
+						<label for="email" class="block text-sm font-medium mb-2 text-text"> Your Email </label>
 						<input
 							type="email"
 							id="email"

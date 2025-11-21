@@ -32,7 +32,7 @@ export async function getPostBySlug(slug: string, folder: string): Promise<Post 
 		title: data.title || slug,
 		date: data.date || '',
 		content: contentHtml,
-		excerpt: data.excerpt
+		excerpt: data.excerpt,
 	};
 }
 

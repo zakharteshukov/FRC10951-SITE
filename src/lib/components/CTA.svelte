@@ -3,12 +3,8 @@
 		<h3>Get Involved</h3>
 		<p>Join us in building the future of STEAM education and innovation.</p>
 		<div class="buttons">
-			<a href="/contact" class="btn-primary">
-				Sponsor Us
-			</a>
-			<a href="/about" class="btn-secondary">
-				Learn More
-			</a>
+			<a href="/contact" class="btn-primary"> Sponsor Us </a>
+			<a href="/about" class="btn-secondary"> Learn More </a>
 		</div>
 	</div>
 </section>

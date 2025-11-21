@@ -7,7 +7,7 @@
 		{ src: '/WIPLib-logo.webp', alt: 'WIPLib' },
 		{ src: '/lockheed-martin-logo.png', alt: 'Lockheed Martin' },
 		{ src: '/palantir-logo.png', alt: 'Palantir' },
-		{ src: '/boeing-logo.png', alt: 'Boeing' }
+		{ src: '/boeing-logo.png', alt: 'Boeing' },
 	];
 
 	// Duplicate slides for seamless loop

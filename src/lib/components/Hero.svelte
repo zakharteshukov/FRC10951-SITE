@@ -2,15 +2,11 @@
 	import { fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
 
-	let imageLoaded = false;
 	const heroImage = '/hero.jpg';
 
 	onMount(() => {
 		const img = new Image();
 		img.src = heroImage;
-		img.onload = () => {
-			imageLoaded = true;
-		};
 		img.onerror = () => {
 			console.error('Failed to load hero image:', heroImage);
 		};
@@ -25,9 +21,12 @@
 	<div class="hero-content" transition:fade={{ duration: 800, delay: 200 }}>
 		<h1 class="team-number">10951</h1>
 		<h2 class="team-name">Saigon South Dragons</h2>
-		<p class="micro">Competing in FIRST Robotics Competition, representing Saigon South International School</p>
+		<p class="micro">
+			Competing in FIRST Robotics Competition, representing Saigon South International School
+		</p>
 	</div>
 </section>
+
 <style>
 	.hero {
 		position: relative;
@@ -58,7 +57,9 @@
 		object-position: center;
 		display: block;
 		filter: brightness(0.8) contrast(1.1) saturate(1.1);
-		transition: transform 0.3s ease, filter 0.3s ease;
+		transition:
+			transform 0.3s ease,
+			filter 0.3s ease;
 		transform: scale(1);
 	}
 
@@ -149,4 +150,3 @@
 		}
 	}
 </style>
-

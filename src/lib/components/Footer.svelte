@@ -7,37 +7,37 @@
 		<div class="links">
 			<h6>Robotics</h6>
 			<ul>
-				<li><a href="#">FRC</a></li>
-				<li><a href="#">VEX</a></li>
-				<li><a href="#">STEM Community</a></li>
+				<li><a href="/" aria-label="FRC">FRC</a></li>
+				<li><a href="/" aria-label="VEX">VEX</a></li>
+				<li><a href="/" aria-label="STEM Community">STEM Community</a></li>
 			</ul>
 		</div>
 		<div class="links">
 			<h6>10951 Teams</h6>
 			<ul>
-				<li><a href="#">Team</a></li>
-				<li><a href="#">Media</a></li>
-				<li><a href="#">Contact</a></li>
+				<li><a href="/about" aria-label="Team">Team</a></li>
+				<li><a href="/" aria-label="Media">Media</a></li>
+				<li><a href="/contact" aria-label="Contact">Contact</a></li>
 			</ul>
 		</div>
 		<div class="links">
 			<h6>VEX Teams</h6>
 			<ul>
-				<li><a href="#">1599W</a></li>
+				<li><a href="/" aria-label="1599W">1599W</a></li>
 			</ul>
 		</div>
 		<div class="links">
 			<h6>Projects</h6>
 			<ul>
-				<li><a href="#">EmpowerTech</a></li>
-				<li><a href="#">RoboKids</a></li>
+				<li><a href="/" aria-label="EmpowerTech">EmpowerTech</a></li>
+				<li><a href="/" aria-label="RoboKids">RoboKids</a></li>
 			</ul>
 		</div>
 		<div class="social">
 			<h6>Follow Us</h6>
 			<div class="social-icons">
 				<a
-					href="#"
+					href="https://instagram.com"
 					class="btn-icon"
 					aria-label="Instagram"
 					target="_blank"
@@ -61,7 +61,7 @@
 					</svg>
 				</a>
 				<a
-					href="#"
+					href="https://youtube.com"
 					class="btn-icon"
 					aria-label="YouTube"
 					target="_blank"
@@ -89,6 +89,7 @@
 		</div>
 	</div>
 </footer>
+
 <style>
 	.footer {
 		padding: 3rem 2rem;

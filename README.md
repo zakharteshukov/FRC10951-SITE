@@ -91,6 +91,7 @@ colors: {
 ### Adding Pages
 
 Create new files in `src/routes/`:
+
 - `src/routes/services/+page.svelte` → `/services`
 - `src/routes/blog/+page.svelte` → `/blog`
 

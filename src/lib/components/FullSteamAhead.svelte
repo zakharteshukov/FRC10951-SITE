@@ -8,6 +8,7 @@
 		<button>Learn More</button>
 	</div>
 </section>
+
 <style>
 	.full-steam {
 		position: relative;
@@ -101,4 +102,3 @@
 		}
 	}
 </style>
-

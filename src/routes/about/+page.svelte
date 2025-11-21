@@ -9,8 +9,8 @@
 					about your organization, mission, and values.
 				</p>
 				<p class="text-text-light">
-					You can customize this page to tell your story, share your history, and connect with
-					your audience.
+					You can customize this page to tell your story, share your history, and connect with your
+					audience.
 				</p>
 			</div>
 

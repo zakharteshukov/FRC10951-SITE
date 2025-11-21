@@ -11,6 +11,7 @@
 		</div>
 	</div>
 </section>
+
 <style>
 	.vex-feature {
 		height: 100%;
@@ -120,4 +121,3 @@
 		}
 	}
 </style>
-

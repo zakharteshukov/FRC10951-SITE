@@ -7,20 +7,24 @@ This document outlines the technical stack, architecture, and implementation det
 ## Technology Stack
 
 ### Core Framework
+
 - **SvelteKit 2.0+** - Full-stack Svelte framework
 - **Svelte 4.2+** - Component framework
 - **TypeScript 5.3+** - Type safety
 
 ### Build Tools
+
 - **Vite 5.0+** - Build tool and dev server
 - **PostCSS** - CSS processing
 - **Autoprefixer** - CSS vendor prefixing
 
 ### Styling
+
 - **Tailwind CSS 3.4+** - Utility-first CSS framework
 - **Dark Mode** - Built-in dark theme support
 
 ### Content
+
 - **Markdown** - Content management (optional)
 - **gray-matter** - Frontmatter parsing
 - **remark** - Markdown processing
@@ -53,6 +57,7 @@ This document outlines the technical stack, architecture, and implementation det
 ### Routing
 
 SvelteKit uses file-based routing:
+
 - Files in `src/routes/` automatically become routes
 - `+page.svelte` files are page components
 - `+layout.svelte` files wrap child routes
@@ -88,6 +93,7 @@ SvelteKit uses file-based routing:
 ### Adapter
 
 Uses `@sveltejs/adapter-node` for Node.js deployment:
+
 - Standalone Node.js server
 - Docker-ready
 - Production optimized
@@ -95,6 +101,7 @@ Uses `@sveltejs/adapter-node` for Node.js deployment:
 ### Docker
 
 Multi-stage build process:
+
 1. Dependencies installation
 2. Application build
 3. Production runtime
@@ -144,18 +151,20 @@ Multi-stage build process:
 ## API Routes
 
 API endpoints in `src/routes/api/`:
+
 - RESTful endpoints
 - Type-safe request/response handling
 - Server-side logic
 
 Example:
+
 ```typescript
 // src/routes/api/health/+server.ts
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = async () => {
-  return json({ status: 'healthy' });
+	return json({ status: 'healthy' });
 };
 ```
 
@@ -171,6 +180,7 @@ export const GET: RequestHandler = async () => {
 ### Custom Classes
 
 Defined in `src/app.css`:
+
 - `.container` - Max-width container
 - `.btn-primary` - Primary button style
 - `.section` - Section spacing
@@ -181,6 +191,7 @@ Defined in `src/app.css`:
 ### Markdown Support
 
 Optional markdown content system:
+
 - Files in `src/content/`
 - Frontmatter parsing
 - HTML conversion
@@ -189,6 +200,7 @@ Optional markdown content system:
 ## Testing
 
 Currently no test suite included. Can be added:
+
 - Vitest for unit tests
 - Playwright for E2E tests
 - Testing Library for component tests
@@ -202,6 +214,7 @@ Currently no test suite included. Can be added:
 ## Future Enhancements
 
 Potential additions:
+
 - Blog system with markdown
 - Authentication system
 - Database integration

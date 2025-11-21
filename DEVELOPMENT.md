@@ -13,11 +13,13 @@ This is a SvelteKit website template. Follow this guide to set up your developme
 ## Setup
 
 1. **Install dependencies:**
+
    ```bash
    npm install
    ```
 
 2. **Start development server:**
+
    ```bash
    npm run dev
    ```
@@ -42,11 +44,11 @@ Reusable components go in `src/lib/components/`:
 ```svelte
 <!-- src/lib/components/MyComponent.svelte -->
 <script>
-  export let title;
+	export let title;
 </script>
 
 <div class="card">
-  <h2>{title}</h2>
+	<h2>{title}</h2>
 </div>
 ```
 
@@ -54,7 +56,7 @@ Import and use them:
 
 ```svelte
 <script>
-  import MyComponent from '$lib/components/MyComponent.svelte';
+	import MyComponent from '$lib/components/MyComponent.svelte';
 </script>
 
 <MyComponent title="Hello" />
@@ -73,7 +75,7 @@ All files support TypeScript. Add type annotations:
 ```typescript
 <script lang="ts">
   let count: number = 0;
-  
+
   function increment(): void {
     count++;
   }
@@ -100,14 +102,14 @@ src/
 
 ## Available Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm run preview` | Preview production build |
-| `npm run check` | Type check with svelte-check |
-| `npm run lint` | Run ESLint |
-| `npm run format` | Format code with Prettier |
+| Command           | Description                  |
+| ----------------- | ---------------------------- |
+| `npm run dev`     | Start development server     |
+| `npm run build`   | Build for production         |
+| `npm run preview` | Preview production build     |
+| `npm run check`   | Type check with svelte-check |
+| `npm run lint`    | Run ESLint                   |
+| `npm run format`  | Format code with Prettier    |
 
 ## Hot Reloading
 
@@ -135,18 +137,20 @@ npm run check:watch
 ## Adding New Pages
 
 1. Create a new directory in `src/routes/`:
+
    ```bash
    mkdir src/routes/services
    ```
 
 2. Create `+page.svelte`:
+
    ```svelte
    <!-- src/routes/services/+page.svelte -->
    <section class="section">
-     <div class="container">
-       <h1>Services</h1>
-       <!-- Your content here -->
-     </div>
+   	<div class="container">
+   		<h1>Services</h1>
+   		<!-- Your content here -->
+   	</div>
    </section>
    ```
 
@@ -168,7 +172,7 @@ import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = async () => {
-  return json({ message: 'Hello from API!' });
+	return json({ message: 'Hello from API!' });
 };
 ```
 
@@ -228,11 +232,13 @@ npm install
 ## Production Build
 
 1. **Build the project:**
+
    ```bash
    npm run build
    ```
 
 2. **Preview the build:**
+
    ```bash
    npm run preview
    ```
