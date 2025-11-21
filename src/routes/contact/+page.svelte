@@ -25,7 +25,7 @@
 				</p>
 			</div>
 
-			<form on:submit={handleSubmit} class="card">
+			<form onsubmit={handleSubmit} class="card">
 				<div class="space-y-6">
 					<div>
 						<label for="name" class="block text-sm font-medium mb-2 text-text">
@@ -66,7 +66,7 @@
 							rows="5"
 							class="w-full px-4 py-3 bg-background border-2 border-border rounded-lg text-text focus:outline-none focus:border-primary transition-colors resize-vertical"
 							placeholder="Your Message"
-						/>
+						></textarea>
 					</div>
 
 					<button type="submit" class="btn-primary w-full">Send Message</button>
