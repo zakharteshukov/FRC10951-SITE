@@ -12,7 +12,7 @@
 		</div>
 	</div>
 	<div class="photo">
-		<img src="/hero.jpg" alt="Team 10951" loading="lazy" />
+		<img src="/team.jpg" alt="Team 10951" loading="lazy" />
 	</div>
 </section>
 
