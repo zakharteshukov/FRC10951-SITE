@@ -1,5 +1,5 @@
 <script>
-	let mobileMenuOpen = $state(false);
+	let mobileMenuOpen = false;
 
 	const navItems = [
 		{ href: '/', label: 'Home' },
@@ -27,7 +27,7 @@
 			<!-- Mobile Menu Toggle -->
 			<button
 				class="md:hidden flex flex-col gap-1.5"
-				onclick={() => (mobileMenuOpen = !mobileMenuOpen)}
+				on:click={() => (mobileMenuOpen = !mobileMenuOpen)}
 				aria-label="Toggle menu"
 			>
 				<span
@@ -56,7 +56,7 @@
 						<a
 							href={item.href}
 							class="block text-text hover:text-primary transition-colors font-medium"
-							onclick={() => (mobileMenuOpen = false)}
+							on:click={() => (mobileMenuOpen = false)}
 						>
 							{item.label}
 						</a>
