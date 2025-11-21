@@ -9,7 +9,7 @@
 		<div class="stats">
 			<div class="stat">
 				<span class="number">67</span>
-				<small>Students</small>
+				<small>Engineers</small>
 			</div>
 			<div class="stat">
 				<span class="number">5</span>
@@ -63,6 +63,8 @@
 	.stat {
 		display: flex;
 		flex-direction: column;
+		align-items: center;
+		text-align: center;
 	}
 
 	.stat .number {
@@ -112,12 +114,30 @@
 		}
 
 		.stats {
-			grid-template-columns: 1fr;
+			grid-template-columns: repeat(2, 1fr);
 			gap: 1.5rem;
+		}
+
+		.stat:last-child {
+			grid-column: 1 / -1;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 		}
 
 		.stat .number {
 			font-size: 3rem;
+		}
+	}
+
+	@media (max-width: 600px) {
+		.stats {
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+		}
+
+		.stat:last-child {
+			grid-column: 1;
 		}
 	}
 </style>
