@@ -80,17 +80,36 @@
 	}
 
 	@media (max-width: 768px) {
+		.first-age {
+			padding: 3rem 1.5rem;
+		}
+
 		.content {
 			grid-template-columns: 1fr;
 			text-align: center;
+			gap: 2rem;
 		}
 
 		.decorative {
 			display: none;
 		}
 
+		.meta h3 {
+			font-size: 2rem;
+		}
+
+		.year {
+			font-size: 1.25rem;
+		}
+
 		.cta {
 			justify-content: center;
+			flex-wrap: wrap;
+		}
+
+		.cta button {
+			font-size: 0.9rem;
+			padding: 0.65rem 1.5rem;
 		}
 	}
 </style>

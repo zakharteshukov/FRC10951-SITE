@@ -108,13 +108,45 @@
 	}
 
 	@media (max-width: 768px) {
+		.projects {
+			padding: 3rem 1.5rem;
+		}
+
+		.projects > h3 {
+			font-size: 2rem;
+			margin-bottom: 2rem;
+		}
+
 		.grid {
 			grid-template-columns: 1fr;
 			grid-auto-rows: auto;
+			gap: 1rem;
+			margin-bottom: 2rem;
+		}
+
+		.card {
+			padding: 1.5rem;
 		}
 
 		.card.big {
 			grid-row: span 1;
+		}
+
+		.card h4 {
+			font-size: 1.5rem;
+		}
+
+		.card h5 {
+			font-size: 1.25rem;
+		}
+
+		.card p {
+			font-size: 0.9rem;
+		}
+
+		.cta button {
+			font-size: 0.9rem;
+			padding: 0.65rem 1.5rem;
 		}
 	}
 </style>

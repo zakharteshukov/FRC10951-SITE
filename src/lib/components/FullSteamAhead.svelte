@@ -79,10 +79,25 @@
 		.full-steam {
 			flex-direction: column;
 			text-align: center;
+			padding: 4rem 1.5rem;
+			min-height: 500px;
 		}
 
 		.content {
 			max-width: 100%;
+		}
+
+		.content h3 {
+			font-size: 2rem;
+		}
+
+		.content p {
+			font-size: 1rem;
+		}
+
+		.content button {
+			font-size: 0.9rem;
+			padding: 0.65rem 1.5rem;
 		}
 	}
 </style>

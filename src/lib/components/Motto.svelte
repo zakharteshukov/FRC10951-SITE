@@ -25,5 +25,19 @@
 		margin: 0;
 		line-height: 1.6;
 	}
+
+	@media (max-width: 768px) {
+		.motto {
+			padding: 2.5rem 1.5rem;
+		}
+
+		.motto h3 {
+			font-size: 1.25rem;
+		}
+
+		.motto p {
+			font-size: 1rem;
+		}
+	}
 </style>
 

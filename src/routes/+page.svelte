@@ -75,10 +75,21 @@
 	@media (max-width: 968px) {
 		.features-grid {
 			grid-template-columns: 1fr;
+			min-height: auto;
+		}
+
+		.left {
+			grid-column: 1;
 		}
 
 		.right {
 			grid-column: 1;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.features-grid {
+			gap: 0;
 		}
 	}
 </style>

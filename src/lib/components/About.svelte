@@ -77,10 +77,23 @@
 		.about {
 			grid-template-columns: 1fr;
 			gap: 2rem;
+			padding: 3rem 1.5rem;
 		}
 
 		.photo {
 			order: -1;
+		}
+
+		.title {
+			font-size: 2rem;
+		}
+
+		.text p {
+			font-size: 1rem;
+		}
+
+		.stat .number {
+			font-size: 3rem;
 		}
 	}
 </style>

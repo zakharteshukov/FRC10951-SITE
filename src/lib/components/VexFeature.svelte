@@ -92,5 +92,32 @@
 		background: white;
 		color: #333;
 	}
+
+	@media (max-width: 768px) {
+		.vex-feature {
+			min-height: 400px;
+			padding: 2rem 1.5rem;
+		}
+
+		.header h4 {
+			font-size: 2rem;
+		}
+
+		.header p {
+			font-size: 1rem;
+		}
+
+		.logo {
+			font-size: 1.5rem;
+		}
+
+		.actions {
+			flex-direction: column;
+		}
+
+		.actions button {
+			width: 100%;
+		}
+	}
 </style>
 
