@@ -27,6 +27,8 @@
 	<About />
 	<FirstAge />
 
+	<h2 class="stem-community-heading">STEM Community</h2>
+
 	<!-- Feature Cards Section: asymmetric grid -->
 	<section class="features-grid">
 		<div class="left">
@@ -118,6 +120,22 @@
 	@media (max-width: 480px) {
 		.features-grid {
 			gap: 0;
+		}
+	}
+
+	.stem-community-heading {
+		font-size: 2.5rem;
+		font-weight: 300;
+		text-align: center;
+		margin: 4rem 0 3rem 0;
+		color: #333;
+		padding: 0 2rem;
+	}
+
+	@media (max-width: 768px) {
+		.stem-community-heading {
+			font-size: 2rem;
+			margin: 3rem 0 2rem 0;
 		}
 	}
 </style>

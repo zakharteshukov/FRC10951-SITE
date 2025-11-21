@@ -80,7 +80,7 @@
 		background: white;
 		padding: 2.5rem;
 		grid-column: 1 / 3;
-		grid-row: 3;
+		grid-row: 1;
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
@@ -101,7 +101,7 @@
 		background-size: cover;
 		background-position: center;
 		grid-column: 1 / 3;
-		grid-row: 1 / 3;
+		grid-row: 2 / 4;
 	}
 
 	.card.project-2 {
@@ -109,7 +109,7 @@
 		background-size: cover;
 		background-position: center;
 		grid-column: 3;
-		grid-row: 1;
+		grid-row: 3;
 	}
 
 	.card.project-3 {
@@ -117,7 +117,7 @@
 		background-size: cover;
 		background-position: center;
 		grid-column: 3;
-		grid-row: 2 / 4;
+		grid-row: 1 / 3;
 	}
 
 	.card .content {
