@@ -21,8 +21,7 @@
 		align-items: center;
 		justify-content: center;
 		position: relative;
-		border: none;
-		border-right: 1px solid black;
+		border: 2px solid black;
 		overflow: hidden;
 		margin: 0;
 	}
@@ -47,9 +46,6 @@
 		z-index: 1;
 	}
 
-	.vex-feature {
-		box-shadow: inset -1px 0 0 0 black;
-	}
 
 	.content {
 		position: relative;

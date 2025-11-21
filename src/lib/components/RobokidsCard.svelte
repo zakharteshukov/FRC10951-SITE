@@ -12,11 +12,8 @@
 		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
 		display: flex;
 		flex-direction: column;
-		transition:
-			transform 0.3s ease,
-			box-shadow 0.3s ease;
 		position: relative;
-		border: none;
+		border: 2px solid black;
 		overflow: hidden;
 		margin: 0;
 	}
@@ -31,6 +28,7 @@
 		background-repeat: no-repeat;
 		filter: brightness(0.85);
 		z-index: 0;
+		transition: transform 0.3s ease;
 	}
 
 	.robokids::after {
@@ -41,9 +39,8 @@
 		z-index: 1;
 	}
 
-	.robokids:hover {
-		transform: translateY(-4px);
-		box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+	.robokids:hover::before {
+		transform: scale(1.02);
 	}
 
 	.robokids h5 {
