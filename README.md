@@ -47,7 +47,7 @@ The website will be available at `http://localhost:5173`
 
 ```
 .
-├── src/
+├── src/                      # Source code
 │   ├── routes/              # Pages (file-based routing)
 │   │   ├── +page.svelte     # Homepage (/)
 │   │   ├── about/           # About page (/about)
@@ -58,7 +58,18 @@ The website will be available at `http://localhost:5173`
 │   │       └── Footer.svelte # Footer component
 │   ├── app.css              # Global styles
 │   └── app.html             # HTML template
-├── public/                  # Static assets
+├── static/                   # Static assets (images, etc.)
+├── public/                   # Public assets
+├── docs/                     # Documentation
+│   ├── DEVELOPMENT.md       # Development guide
+│   ├── TECHNICAL.md         # Technical specifications
+│   └── structure.md         # Project structure details
+├── deployment/                # Deployment configuration
+│   ├── Dockerfile           # Docker build configuration
+│   ├── docker-compose.yml   # Docker Compose config
+│   └── nginx.conf           # Nginx configuration
+├── scripts/                   # Utility scripts
+│   └── deploy.sh            # Deployment script
 ├── package.json
 └── tailwind.config.js       # Tailwind configuration
 ```
@@ -119,8 +130,8 @@ const navItems = [
 ### Build and Run
 
 ```bash
-# Build the image
-docker build -t my-website .
+# Build the image (from project root)
+docker build -f deployment/Dockerfile -t my-website .
 
 # Run the container
 docker run -p 3000:3000 my-website
@@ -130,13 +141,13 @@ docker run -p 3000:3000 my-website
 
 ```bash
 # Start the container
-docker-compose up -d
+docker-compose -f deployment/docker-compose.yml up -d
 
 # View logs
-docker-compose logs -f
+docker-compose -f deployment/docker-compose.yml logs -f
 
 # Stop the container
-docker-compose down
+docker-compose -f deployment/docker-compose.yml down
 ```
 
 ## 📝 Content Management

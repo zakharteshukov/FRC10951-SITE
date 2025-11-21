@@ -30,7 +30,7 @@ print_info() {
 # Step 1: Ensure Dockerfile has package-lock.json copy (before stashing)
 print_info "Verifying Dockerfile configuration..."
 DOCKERFILE_NEEDS_FIX=false
-if ! grep -q "package-lock.json" Dockerfile; then
+if ! grep -q "package-lock.json" deployment/Dockerfile; then
     DOCKERFILE_NEEDS_FIX=true
     print_info "Dockerfile needs package-lock.json fix (will apply after pull)..."
 fi
@@ -41,7 +41,7 @@ HAS_LOCAL_CHANGES=false
 if ! git diff-index --quiet HEAD --; then
     # Check if only Dockerfile is modified (our fix)
     MODIFIED_FILES=$(git diff --name-only HEAD)
-    if [ "$MODIFIED_FILES" = "Dockerfile" ] && [ "$DOCKERFILE_NEEDS_FIX" = true ]; then
+    if [ "$MODIFIED_FILES" = "deployment/Dockerfile" ] && [ "$DOCKERFILE_NEEDS_FIX" = true ]; then
         print_info "Only Dockerfile fix detected, will reapply after pull..."
         HAS_LOCAL_CHANGES=false
     else
@@ -69,13 +69,13 @@ LATEST_COMMIT=$(git log -1 --oneline)
 print_info "Latest commit: $LATEST_COMMIT"
 
 # Step 5: Apply Dockerfile fix if needed
-if ! grep -q "package-lock.json" Dockerfile; then
+if ! grep -q "package-lock.json" deployment/Dockerfile; then
     print_info "Applying Dockerfile fix..."
     # Backup Dockerfile
-    cp Dockerfile Dockerfile.bak 2>/dev/null || true
+    cp deployment/Dockerfile deployment/Dockerfile.bak 2>/dev/null || true
     
     # Add package-lock.json copy line if missing
-    sed -i '/COPY --from=builder \/app\/package.json/a COPY --from=builder /app/package-lock.json ./package-lock.json' Dockerfile
+    sed -i '/COPY --from=builder \/app\/package.json/a COPY --from=builder /app/package-lock.json ./package-lock.json' deployment/Dockerfile
     
     print_success "Dockerfile updated"
 fi
@@ -126,7 +126,7 @@ fi
 
 # Step 8: Build Docker image (with --no-cache to ensure fresh build)
 print_info "Building Docker image (this may take a few minutes)..."
-if docker-compose build --no-cache; then
+if docker-compose -f deployment/docker-compose.yml build --no-cache; then
     print_success "Docker image built successfully"
 else
     print_error "Docker build failed"
@@ -146,11 +146,11 @@ fi
 
 # Step 9: Stop and remove old container
 print_info "Stopping old container..."
-docker-compose down 2>/dev/null || true
+docker-compose -f deployment/docker-compose.yml down 2>/dev/null || true
 
 # Step 10: Start new container
 print_info "Starting new container with updated image..."
-if docker-compose up -d; then
+if docker-compose -f deployment/docker-compose.yml up -d; then
     print_success "Container started successfully"
 else
     print_error "Failed to start container"

@@ -1,6 +1,8 @@
 services:
   website:
-    build: .
+    build:
+      context: ..
+      dockerfile: deployment/Dockerfile
     container_name: ${NAME:-sveltekit-website}
     ports:
       - '${HOST_PORT:-3001}:3000'
