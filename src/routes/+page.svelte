@@ -62,13 +62,13 @@
 		grid-template-columns: 1fr 1fr;
 		min-height: 500px;
 		background: transparent;
-		gap: 0;
+		gap: 1.5rem;
 		margin: 0;
 		padding: 0;
 		width: 100%;
 		border: none;
 		border-radius: 8px;
-		overflow: hidden;
+		overflow: visible;
 	}
 
 	.features-grid :global(section) {
@@ -79,7 +79,7 @@
 		grid-column: 1;
 		margin: 0;
 		padding: 0;
-		border-radius: 8px 0 0 8px;
+		border-radius: 8px;
 		overflow: hidden;
 	}
 
@@ -89,16 +89,16 @@
 		grid-template-rows: 1fr 1fr;
 		margin: 0;
 		padding: 0;
-		gap: 0;
-		border-radius: 0 8px 8px 0;
-		overflow: hidden;
+		gap: 1.5rem;
+		border-radius: 8px;
+		overflow: visible;
 	}
 
 	.quarter-top {
 		grid-row: 1;
 		margin: 0;
 		padding: 0;
-		border-radius: 0 8px 0 0;
+		border-radius: 8px;
 		overflow: hidden;
 	}
 
@@ -106,7 +106,7 @@
 		grid-row: 2;
 		margin: 0;
 		padding: 0;
-		border-radius: 0 0 8px 0;
+		border-radius: 8px;
 		overflow: hidden;
 	}
 
@@ -114,6 +114,7 @@
 		.features-grid {
 			grid-template-columns: 1fr;
 			min-height: auto;
+			gap: 1.5rem;
 		}
 
 		.left {
@@ -127,7 +128,11 @@
 
 	@media (max-width: 480px) {
 		.features-grid {
-			gap: 0;
+			gap: 1rem;
+		}
+
+		.right {
+			gap: 1rem;
 		}
 	}
 
