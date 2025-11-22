@@ -29,11 +29,6 @@
 		color: white;
 	}
 
-	.container {
-		max-width: 1200px;
-		margin: 0 auto;
-	}
-
 	.stats-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

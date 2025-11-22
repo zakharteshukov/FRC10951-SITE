@@ -70,29 +70,7 @@
 		background: #f8f8f8;
 	}
 
-	.container {
-		max-width: 1200px;
-		margin: 0 auto;
-	}
-
-	.section-header {
-		text-align: center;
-		margin-bottom: 3rem;
-	}
-
-	.section-header h2 {
-		font-size: 2.5rem;
-		font-weight: 300;
-		margin: 0 0 1rem 0;
-		color: #333;
-	}
-
-	.section-header p {
-		font-size: 1.1rem;
-		line-height: 1.8;
-		color: #666;
-		margin: 0;
-	}
+	/* Section header uses global .section-header class */
 
 	.pricing-grid {
 		display: grid;
@@ -198,36 +176,10 @@
 		font-weight: 600;
 	}
 
+	/* Button styles use global .btn classes */
 	.btn-primary,
 	.btn-outline {
 		width: 100%;
-		padding: 0.75rem 2rem;
-		border-radius: 4px;
-		font-size: 1rem;
-		font-weight: 500;
-		cursor: pointer;
-		transition: all 0.3s ease;
-		border: 2px solid #333;
-	}
-
-	.btn-primary {
-		background: #333;
-		color: white;
-	}
-
-	.btn-primary:hover {
-		background: transparent;
-		color: #333;
-	}
-
-	.btn-outline {
-		background: transparent;
-		color: #333;
-	}
-
-	.btn-outline:hover {
-		background: #333;
-		color: white;
 	}
 
 	@media (max-width: 968px) {

@@ -58,29 +58,7 @@
 		background: #f8f8f8;
 	}
 
-	.container {
-		max-width: 1200px;
-		margin: 0 auto;
-	}
-
-	.section-header {
-		text-align: center;
-		margin-bottom: 3rem;
-	}
-
-	.section-header h2 {
-		font-size: 2.5rem;
-		font-weight: 300;
-		margin: 0 0 1rem 0;
-		color: #333;
-	}
-
-	.section-header p {
-		font-size: 1.1rem;
-		line-height: 1.8;
-		color: #666;
-		margin: 0;
-	}
+	/* Section header uses global .section-header class */
 
 	.gallery-grid {
 		display: grid;

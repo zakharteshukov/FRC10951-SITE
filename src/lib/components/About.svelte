@@ -1,47 +1,48 @@
-<section class="about">
-	<div class="text">
-		<h3 class="title">About the Team</h3>
-		<p>
-			Team 10951, the Saigon South Dragons, is a competitive robotics team representing Saigon South
-			International School. We compete in FIRST Robotics Competition, bringing together students
-			passionate about STEM, engineering, and innovation.
-		</p>
-		<div class="stats">
-			<div class="stat">
-				<span class="number">67</span>
-				<small>Engineers</small>
+<section class="section bg-white">
+	<div class="container">
+		<div class="about-grid">
+			<div class="text">
+				<h3 class="title">About the Team</h3>
+				<p class="text-lead mb-4">
+					Team 10951, the Saigon South Dragons, is a competitive robotics team representing Saigon South
+					International School. We compete in FIRST Robotics Competition, bringing together students
+					passionate about STEM, engineering, and innovation.
+				</p>
+				<div class="stats-grid">
+					<div class="stat">
+						<span class="number">67</span>
+						<small>Engineers</small>
+					</div>
+					<div class="stat">
+						<span class="number">5</span>
+						<small>Coaches</small>
+					</div>
+					<div class="stat stat-last">
+						<span class="number">3</span>
+						<small>Sponsors</small>
+					</div>
+				</div>
 			</div>
-			<div class="stat">
-				<span class="number">5</span>
-				<small>Coaches</small>
-			</div>
-			<div class="stat">
-				<span class="number">3</span>
-				<small>Sponsors</small>
+			<div class="photo">
+				<img
+					src="/team.webp"
+					alt="Team 10951"
+					loading="lazy"
+					decoding="async"
+					width="420"
+					height="280"
+					class="img-responsive img-rounded img-shadow-lg"
+				/>
 			</div>
 		</div>
-	</div>
-	<div class="photo">
-		<img
-			src="/team.webp"
-			alt="Team 10951"
-			loading="lazy"
-			decoding="async"
-			width="420"
-			height="280"
-		/>
 	</div>
 </section>
 
 <style>
-	.about {
+	.about-grid {
 		display: grid;
 		grid-template-columns: 1fr 420px;
 		gap: 3rem;
-		padding: 4rem 2rem;
-		max-width: 1200px;
-		margin: 0 auto;
-		background: white;
 	}
 
 	.title {
@@ -50,7 +51,7 @@
 		margin: 0 0 1.5rem 0;
 		font-family: 'Georgia', serif;
 		font-style: italic;
-		color: #333;
+		color: var(--color-text-dark);
 	}
 
 	.text p {
@@ -60,7 +61,7 @@
 		margin: 0 0 2rem 0;
 	}
 
-	.stats {
+	.stats-grid {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		gap: 2rem;
@@ -78,13 +79,13 @@
 		font-size: 4rem;
 		font-weight: 700;
 		display: block;
-		color: #333;
+		color: var(--color-text-dark);
 		line-height: 1;
 	}
 
 	.stat small {
 		font-size: 1rem;
-		color: #666;
+		color: var(--color-text-muted);
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
 		margin-top: 0.5rem;
@@ -95,18 +96,13 @@
 	}
 
 	.photo img {
-		width: 100%;
-		height: auto;
-		border-radius: 8px;
-		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 		aspect-ratio: 3 / 2;
 	}
 
 	@media (max-width: 968px) {
-		.about {
+		.about-grid {
 			grid-template-columns: 1fr;
 			gap: 2rem;
-			padding: 3rem 1.5rem;
 		}
 
 		.photo {
@@ -121,16 +117,13 @@
 			font-size: 1rem;
 		}
 
-		.stats {
+		.stats-grid {
 			grid-template-columns: repeat(2, 1fr);
 			gap: 1.5rem;
 		}
 
-		.stat:last-child {
+		.stat-last {
 			grid-column: 1 / -1;
-			display: flex;
-			align-items: center;
-			justify-content: center;
 		}
 
 		.stat .number {
@@ -139,12 +132,12 @@
 	}
 
 	@media (max-width: 600px) {
-		.stats {
+		.stats-grid {
 			grid-template-columns: 1fr;
 			gap: 1.5rem;
 		}
 
-		.stat:last-child {
+		.stat-last {
 			grid-column: 1;
 		}
 	}

@@ -86,21 +86,13 @@
 		height: 700px;
 	}
 
+	/* Card uses global .card class with component-specific overrides */
 	.card {
-		border-radius: 8px;
-		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-		transition:
-			transform 0.3s ease,
-			box-shadow 0.3s ease;
 		position: relative;
 		overflow: hidden;
 		display: flex;
 		flex-direction: column;
-	}
-
-	.card:hover {
-		transform: translateY(-4px);
-		box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+		padding: 0; /* Override global padding for image cards */
 	}
 
 	.card.about {

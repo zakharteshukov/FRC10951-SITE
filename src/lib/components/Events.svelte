@@ -82,18 +82,7 @@
 		width: 100%;
 	}
 
-	.container {
-		max-width: 1200px;
-		margin: 0 auto;
-	}
-
-	.section-title {
-		font-size: 2.5rem;
-		font-weight: 300;
-		text-align: center;
-		margin: 0 0 3rem 0;
-		color: #333;
-	}
+	/* Section title uses global .section-title class */
 
 	.events-grid {
 		display: grid;

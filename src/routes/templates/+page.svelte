@@ -134,11 +134,6 @@
 		text-align: center;
 	}
 
-	.container {
-		max-width: 1200px;
-		margin: 0 auto;
-	}
-
 	.page-header h1 {
 		font-size: 2.5rem;
 		font-weight: 300;

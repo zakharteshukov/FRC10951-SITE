@@ -22,12 +22,6 @@
 		width: 100%;
 	}
 
-	.container {
-		max-width: 800px;
-		margin: 0 auto;
-		padding: 0 2rem;
-	}
-
 	.cta-content {
 		text-align: center;
 	}
@@ -53,19 +47,7 @@
 		flex-wrap: wrap;
 	}
 
-	.btn-primary,
-	.btn-secondary {
-		padding: 1rem 2.5rem;
-		font-size: 1.1rem;
-		font-weight: 500;
-		cursor: pointer;
-		transition: all 0.3s ease;
-		border: 2px solid white;
-		border-radius: 4px;
-		text-decoration: none;
-		display: inline-block;
-	}
-
+	/* Button styles use global .btn classes */
 	.btn-primary {
 		background: white;
 		color: #1a1a1a;
@@ -75,7 +57,6 @@
 	.btn-primary:hover {
 		background: transparent;
 		color: white;
-		transform: translateY(-2px);
 		box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
 	}
 
@@ -88,17 +69,12 @@
 	.btn-secondary:hover {
 		background: white;
 		color: #1a1a1a;
-		transform: translateY(-2px);
 		box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
 	}
 
 	@media (max-width: 968px) {
 		.template-cta {
 			padding: 4rem 0;
-		}
-
-		.container {
-			padding: 0 1.5rem;
 		}
 
 		.cta-content h2 {

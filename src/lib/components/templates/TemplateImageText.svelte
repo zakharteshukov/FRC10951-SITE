@@ -46,11 +46,6 @@
 		background: white;
 	}
 
-	.container {
-		max-width: 1200px;
-		margin: 0 auto;
-	}
-
 	.content-block {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
@@ -126,16 +121,11 @@
 		font-weight: 600;
 	}
 
+	/* Button styles use global .btn classes */
 	.btn-primary {
-		padding: 0.75rem 2rem;
 		background: transparent;
 		color: #333;
-		border: 2px solid #333;
-		border-radius: 4px;
-		font-size: 1rem;
-		font-weight: 500;
-		cursor: pointer;
-		transition: all 0.3s ease;
+		border-color: #333;
 	}
 
 	.btn-primary:hover {

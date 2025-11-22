@@ -81,38 +81,28 @@
 		flex-wrap: wrap;
 	}
 
-	.btn-primary,
-	.btn-secondary {
-		padding: 0.75rem 2rem;
-		font-size: 1rem;
-		border: 2px solid white;
-		cursor: pointer;
-		transition: all 0.3s ease;
-		font-weight: 500;
-		border-radius: 4px;
-	}
-
+	/* Button styles use global .btn classes */
 	.btn-primary {
 		background: white;
 		color: #1a1a1a;
+		border-color: white;
 	}
 
 	.btn-primary:hover {
 		background: transparent;
 		color: white;
-		transform: translateY(-2px);
 		box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
 	}
 
 	.btn-secondary {
 		background: transparent;
 		color: white;
+		border-color: white;
 	}
 
 	.btn-secondary:hover {
 		background: white;
 		color: #1a1a1a;
-		transform: translateY(-2px);
 		box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
 	}
 
@@ -129,10 +119,6 @@
 			flex-direction: column;
 		}
 
-		.btn-primary,
-		.btn-secondary {
-			width: 100%;
-		}
 	}
 </style>
 

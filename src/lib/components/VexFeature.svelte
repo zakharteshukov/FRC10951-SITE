@@ -1,162 +1,32 @@
 <script>
 	import { onMount } from 'svelte';
+	import { lazyLoadImage } from '$lib/utils/imageLoader';
 
-	let imageLoaded = false;
 	/** @type {HTMLElement | null} */
 	let imageElement;
 
 	onMount(() => {
-		// Lazy load background image using Intersection Observer
-		const observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting && !imageLoaded) {
-						const img = new Image();
-						img.src = '/vex.webp';
-						img.onload = () => {
-							imageLoaded = true;
-							if (imageElement) {
-								imageElement.style.backgroundImage = "url('/vex.webp')";
-							}
-						};
-						observer.disconnect();
-					}
-				});
-			},
-			{ rootMargin: '50px' }
-		);
-
-		if (imageElement) {
-			observer.observe(imageElement);
-		}
-
-		return () => observer.disconnect();
+		if (!imageElement) return;
+		return lazyLoadImage('/vex.webp', imageElement);
 	});
 </script>
 
-<section class="vex-feature">
-	<div class="background-image" bind:this={imageElement}></div>
-	<div class="content">
-		<div class="header">
-			<h4>1599W</h4>
-			<p>cycles between all the teams</p>
+<section class="relative flex-center min-h-[570px] md:min-h-[380px] p-8 md:p-6 overflow-hidden m-0 h-full">
+	<div class="absolute inset-0 bg-cover bg-center bg-no-repeat brightness-[0.85] z-0 transition-opacity" bind:this={imageElement}></div>
+	<div class="absolute inset-0 bg-black/40 z-1"></div>
+	<div class="relative z-2 w-full max-w-[500px]">
+		<div class="mb-4">
+			<h4 class="heading-1 font-bold mb-2 text-white md:text-heading-3">1599W</h4>
+			<p class="text-lead text-white/90 mb-4 md:text-body">cycles between all the teams</p>
 		</div>
-		<div class="logo">VEX V5</div>
-		<div class="actions">
-			<a href="/vex/1599w" class="action-btn">Learn More</a>
-			<a href="/vex" class="action-btn">VEX Overview</a>
+		<div class="heading-3 font-semibold text-white mb-4 md:text-heading-4">VEX V5</div>
+		<div class="flex flex-wrap gap-4 md:flex-col">
+			<a href="/vex/1599w" class="btn btn-outline text-white border-white hover:bg-white hover:text-text-dark md:w-full">
+				Learn More
+			</a>
+			<a href="/vex" class="btn btn-outline text-white border-white hover:bg-white hover:text-text-dark md:w-full">
+				VEX Overview
+			</a>
 		</div>
 	</div>
 </section>
-
-<style>
-	.vex-feature {
-		height: 100%;
-		min-height: 570px;
-		padding: 3rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		position: relative;
-		overflow: hidden;
-		margin: 0;
-	}
-
-	.background-image {
-		position: absolute;
-		inset: 0;
-		background-size: cover;
-		background-position: center;
-		background-repeat: no-repeat;
-		filter: brightness(0.85);
-		z-index: 0;
-		transition: opacity 0.3s ease;
-	}
-
-	.vex-feature::after {
-		content: '';
-		position: absolute;
-		inset: 0;
-		background: rgba(0, 0, 0, 0.4);
-		z-index: 1;
-	}
-
-
-	.content {
-		position: relative;
-		z-index: 2;
-		width: 100%;
-		max-width: 500px;
-	}
-
-	.header h4 {
-		font-size: 3rem;
-		font-weight: 700;
-		margin: 0 0 0.5rem 0;
-		color: white;
-	}
-
-	.header p {
-		font-size: 1.1rem;
-		color: rgba(255, 255, 255, 0.9);
-		margin: 0 0 2rem 0;
-	}
-
-	.logo {
-		font-size: 2rem;
-		font-weight: 600;
-		color: white;
-		margin-bottom: 2rem;
-	}
-
-	.actions {
-		display: flex;
-		gap: 1rem;
-		flex-wrap: wrap;
-	}
-
-	.action-btn {
-		padding: 0.75rem 2rem;
-		border: 2px solid white;
-		background: transparent;
-		color: white;
-		font-size: 1rem;
-		cursor: pointer;
-		transition: all 0.3s ease;
-		font-weight: 500;
-		text-decoration: none;
-		display: inline-block;
-	}
-
-	.action-btn:hover {
-		background: white;
-		color: #333;
-	}
-
-	@media (max-width: 768px) {
-		.vex-feature {
-			min-height: 380px;
-			padding: 2rem 1.5rem;
-		}
-
-		.header h4 {
-			font-size: 2rem;
-		}
-
-		.header p {
-			font-size: 1rem;
-		}
-
-		.logo {
-			font-size: 1.5rem;
-		}
-
-		.actions {
-			flex-direction: column;
-		}
-
-		.action-btn {
-			width: 100%;
-		}
-	}
-</style>

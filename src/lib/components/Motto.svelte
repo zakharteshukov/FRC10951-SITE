@@ -1,42 +1,4 @@
-<section class="motto">
-	<h3>Team Slogan</h3>
-	<p>Engineering: The Final Frontier!</p>
+<section class="section border-y bg-white text-center">
+	<h3 class="heading-4 mb-2 text-text-dark font-normal">Team Slogan</h3>
+	<p class="text-lead text-muted mb-0">Engineering: The Final Frontier!</p>
 </section>
-
-<style>
-	.motto {
-		padding: 4rem 2rem;
-		text-align: center;
-		border-top: 1px solid #e5e5e5;
-		border-bottom: 1px solid #e5e5e5;
-		background: white;
-	}
-
-	.motto h3 {
-		font-size: 1.5rem;
-		font-weight: 400;
-		margin: 0 0 1rem 0;
-		color: #333;
-	}
-
-	.motto p {
-		font-size: 1.1rem;
-		color: #666;
-		margin: 0;
-		line-height: 1.6;
-	}
-
-	@media (max-width: 768px) {
-		.motto {
-			padding: 2.5rem 1.5rem;
-		}
-
-		.motto h3 {
-			font-size: 1.25rem;
-		}
-
-		.motto p {
-			font-size: 1rem;
-		}
-	}
-</style>

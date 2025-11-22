@@ -52,11 +52,6 @@
 		background: white;
 	}
 
-	.container {
-		max-width: 1200px;
-		margin: 0 auto;
-	}
-
 	.section-header {
 		text-align: center;
 		margin-bottom: 3rem;
@@ -147,13 +142,6 @@
 			padding: 3rem 1.5rem;
 		}
 
-		.section-header h2 {
-			font-size: 2rem;
-		}
-
-		.section-header p {
-			font-size: 1rem;
-		}
 	}
 
 	@media (max-width: 768px) {

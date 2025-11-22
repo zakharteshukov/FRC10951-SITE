@@ -52,29 +52,18 @@
 		flex-wrap: wrap;
 	}
 
-	.btn-primary,
-	.btn-secondary {
-		padding: 1rem 2.5rem;
-		font-size: 1.1rem;
-		font-weight: 500;
-		cursor: pointer;
-		transition: all 0.3s ease;
-		border: 2px solid white;
-		border-radius: 4px;
-		text-decoration: none;
-		display: inline-block;
-	}
-
+	/* Button styles use global .btn classes with context-specific overrides */
 	.btn-primary {
 		background: white;
 		color: #1a1a1a;
 		border-color: white;
+		padding: 1rem 2.5rem;
+		font-size: 1.1rem;
 	}
 
 	.btn-primary:hover {
 		background: transparent;
 		color: white;
-		transform: translateY(-2px);
 		box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
 	}
 
@@ -82,12 +71,13 @@
 		background: transparent;
 		color: white;
 		border-color: white;
+		padding: 1rem 2.5rem;
+		font-size: 1.1rem;
 	}
 
 	.btn-secondary:hover {
 		background: white;
 		color: #1a1a1a;
-		transform: translateY(-2px);
 		box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
 	}
 
