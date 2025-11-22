@@ -8,4 +8,30 @@ export default defineConfig({
 			allow: ['.'],
 		},
 	},
+	build: {
+		target: 'esnext',
+		cssCodeSplit: true,
+		sourcemap: false,
+		minify: 'esbuild',
+		rollupOptions: {
+			output: {
+				manualChunks: (id) => {
+					// Separate vendor chunks
+					if (id.includes('node_modules')) {
+						if (id.includes('svelte')) {
+							return 'vendor-svelte';
+						}
+						if (id.includes('@sveltejs')) {
+							return 'vendor-sveltekit';
+						}
+						return 'vendor';
+					}
+				},
+			},
+		},
+		chunkSizeWarningLimit: 1000,
+	},
+	optimizeDeps: {
+		include: ['svelte'],
+	},
 });

@@ -22,7 +22,7 @@
 		</div>
 	</div>
 	<div class="photo">
-		<img src="/team.webp" alt="Team 10951" loading="lazy" />
+		<img src="/team.webp" alt="Team 10951" loading="lazy" decoding="async" />
 	</div>
 </section>
 

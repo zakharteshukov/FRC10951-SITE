@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 
 	const heroImage = '/hero.webp';
+	/** @type {HTMLElement | null} */
 	let heroElement;
 	let isVisible = false;
 
@@ -13,19 +14,28 @@
 			console.error('Failed to load hero image:', heroImage);
 		};
 
-		// Parallax scroll effect
+		// Parallax scroll effect with throttling for performance
+		let ticking = false;
 		const handleScroll = () => {
-			if (!heroElement) return;
-			const rect = heroElement.getBoundingClientRect();
-			const windowHeight = window.innerHeight;
-			
-			// Only apply parallax when hero is in view
-			if (rect.bottom >= 0 && rect.top <= windowHeight) {
-				const scrollY = window.scrollY;
-				// Limit parallax effect to prevent over-scrolling
-				const parallaxOffset = Math.min(scrollY * 0.5, windowHeight * 0.3);
-				heroElement.style.setProperty('--scroll-offset', `${parallaxOffset}px`);
-			}
+			if (!heroElement || ticking) return;
+			ticking = true;
+			requestAnimationFrame(() => {
+				if (!heroElement) {
+					ticking = false;
+					return;
+				}
+				const rect = heroElement.getBoundingClientRect();
+				const windowHeight = window.innerHeight;
+				
+				// Only apply parallax when hero is in view
+				if (rect.bottom >= 0 && rect.top <= windowHeight) {
+					const scrollY = window.scrollY;
+					// Limit parallax effect to prevent over-scrolling
+					const parallaxOffset = Math.min(scrollY * 0.5, windowHeight * 0.3);
+					heroElement.style.setProperty('--scroll-offset', `${parallaxOffset}px`);
+				}
+				ticking = false;
+			});
 		};
 
 		// Intersection Observer for fade-in animation
@@ -57,7 +67,14 @@
 <section class="hero" bind:this={heroElement}>
 	<div class="hero-bg">
 		<div class="hero-image-wrapper">
-			<img src={heroImage} alt="Team 10951 Hero" class="hero-image" />
+			<img
+				src={heroImage}
+				alt="Team 10951 Hero"
+				class="hero-image"
+				loading="eager"
+				fetchpriority="high"
+				decoding="async"
+			/>
 		</div>
 		<div class="hero-gradient"></div>
 	</div>

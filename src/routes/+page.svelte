@@ -3,14 +3,59 @@
 	import Hero from '$lib/components/Hero.svelte';
 	import Motto from '$lib/components/Motto.svelte';
 	import SponsorsCarousel from '$lib/components/SponsorsCarousel.svelte';
-	import About from '$lib/components/About.svelte';
-	import FirstAge from '$lib/components/FirstAge.svelte';
-	import VexFeature from '$lib/components/VexFeature.svelte';
-	import EmpowerTechCard from '$lib/components/EmpowerTechCard.svelte';
-	import RobokidsCard from '$lib/components/RobokidsCard.svelte';
-	import Events from '$lib/components/Events.svelte';
-	import CommunityProjects from '$lib/components/CommunityProjects.svelte';
-	import CTA from '$lib/components/CTA.svelte';
+	import { onMount } from 'svelte';
+
+	// Lazy load below-the-fold components
+	/** @type {typeof import('$lib/components/About.svelte').default | null} */
+	let About = null;
+	/** @type {typeof import('$lib/components/FirstAge.svelte').default | null} */
+	let FirstAge = null;
+	/** @type {typeof import('$lib/components/VexFeature.svelte').default | null} */
+	let VexFeature = null;
+	/** @type {typeof import('$lib/components/EmpowerTechCard.svelte').default | null} */
+	let EmpowerTechCard = null;
+	/** @type {typeof import('$lib/components/RobokidsCard.svelte').default | null} */
+	let RobokidsCard = null;
+	/** @type {typeof import('$lib/components/Events.svelte').default | null} */
+	let Events = null;
+	/** @type {typeof import('$lib/components/CommunityProjects.svelte').default | null} */
+	let CommunityProjects = null;
+	/** @type {typeof import('$lib/components/CTA.svelte').default | null} */
+	let CTA = null;
+	let componentsLoaded = false;
+
+	onMount(async () => {
+		// Load components after initial render
+		const [
+			AboutModule,
+			FirstAgeModule,
+			VexFeatureModule,
+			EmpowerTechCardModule,
+			RobokidsCardModule,
+			EventsModule,
+			CommunityProjectsModule,
+			CTAModule
+		] = await Promise.all([
+			import('$lib/components/About.svelte'),
+			import('$lib/components/FirstAge.svelte'),
+			import('$lib/components/VexFeature.svelte'),
+			import('$lib/components/EmpowerTechCard.svelte'),
+			import('$lib/components/RobokidsCard.svelte'),
+			import('$lib/components/Events.svelte'),
+			import('$lib/components/CommunityProjects.svelte'),
+			import('$lib/components/CTA.svelte')
+		]);
+
+		About = AboutModule.default;
+		FirstAge = FirstAgeModule.default;
+		VexFeature = VexFeatureModule.default;
+		EmpowerTechCard = EmpowerTechCardModule.default;
+		RobokidsCard = RobokidsCardModule.default;
+		Events = EventsModule.default;
+		CommunityProjects = CommunityProjectsModule.default;
+		CTA = CTAModule.default;
+		componentsLoaded = true;
+	});
 </script>
 
 <main>
@@ -18,33 +63,35 @@
 	<Hero />
 	<Motto />
 	<SponsorsCarousel />
-	<About />
-	<FirstAge />
+	{#if componentsLoaded}
+		<svelte:component this={About} />
+		<svelte:component this={FirstAge} />
 
-	<!-- STEM Community Section: Card-based layout -->
-	<section class="stem-community">
-		<h2 class="stem-community-heading">STEM Community</h2>
-		<div class="stem-community-content">
-			<!-- Feature Cards Section: asymmetric grid -->
-			<div class="features-grid">
-				<div class="left">
-					<VexFeature />
-				</div>
-				<div class="right">
-					<div class="quarter-top">
-						<EmpowerTechCard />
+		<!-- STEM Community Section: Card-based layout -->
+		<section class="stem-community">
+			<h2 class="stem-community-heading">STEM Community</h2>
+			<div class="stem-community-content">
+				<!-- Feature Cards Section: asymmetric grid -->
+				<div class="features-grid">
+					<div class="left">
+						<svelte:component this={VexFeature} />
 					</div>
-					<div class="quarter-bottom">
-						<RobokidsCard />
+					<div class="right">
+						<div class="quarter-top">
+							<svelte:component this={EmpowerTechCard} />
+						</div>
+						<div class="quarter-bottom">
+							<svelte:component this={RobokidsCard} />
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</section>
+		</section>
 
-	<CommunityProjects />
-	<Events />
-	<CTA />
+		<svelte:component this={CommunityProjects} />
+		<svelte:component this={Events} />
+		<svelte:component this={CTA} />
+	{/if}
 </main>
 
 <style>
