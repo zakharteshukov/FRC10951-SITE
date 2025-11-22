@@ -1,5 +1,4 @@
 <script>
-	import { fade } from 'svelte/transition';
 	import { onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
 
@@ -13,23 +12,17 @@
 	];
 	let mobileMenuOpen = false;
 
+	// Manage body scroll state reactively
+	$: if (browser) {
+		document.body.style.overflow = mobileMenuOpen ? 'hidden' : '';
+	}
+
 	function toggleMobileMenu() {
 		mobileMenuOpen = !mobileMenuOpen;
-		// Prevent body scroll when menu is open (only in browser)
-		if (browser) {
-			if (mobileMenuOpen) {
-				document.body.style.overflow = 'hidden';
-			} else {
-				document.body.style.overflow = '';
-			}
-		}
 	}
 
 	function closeMobileMenu() {
 		mobileMenuOpen = false;
-		if (browser) {
-			document.body.style.overflow = '';
-		}
 	}
 
 	// Cleanup: restore body scroll on component destroy
@@ -40,7 +33,7 @@
 	});
 </script>
 
-<header class="site-header" class:menu-open={mobileMenuOpen} transition:fade={{ duration: 500 }}>
+<header class="site-header" class:menu-open={mobileMenuOpen}>
 	<div class="logo" class:menu-open={mobileMenuOpen}>FRC10951</div>
 	<nav class="desktop-nav">
 		{#each navItems as item}
@@ -52,6 +45,7 @@
 		class:open={mobileMenuOpen}
 		on:click={toggleMobileMenu}
 		aria-label={mobileMenuOpen ? 'Close menu' : 'Toggle menu'}
+		aria-expanded={mobileMenuOpen}
 	>
 		<span class="hamburger-icon">
 			<span class="hamburger-line"></span>
@@ -69,6 +63,7 @@
 				stroke-width="2"
 				stroke-linecap="round"
 				stroke-linejoin="round"
+				aria-hidden="true"
 			>
 				<line x1="18" y1="6" x2="6" y2="18" />
 				<line x1="6" y1="6" x2="18" y2="18" />
@@ -76,15 +71,7 @@
 		</span>
 	</button>
 	{#if mobileMenuOpen}
-		<div
-			class="mobile-overlay"
-			role="button"
-			tabindex="0"
-			aria-label="Close menu"
-			on:click={closeMobileMenu}
-			on:keydown={(e) => e.key === 'Enter' && closeMobileMenu()}
-		></div>
-		<nav class="mobile-nav">
+		<nav class="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
 			<div class="mobile-nav-content">
 				{#each navItems as item}
 					<a href={item.href} class="mobile-nav-link" on:click={closeMobileMenu}>{item.label}</a>
@@ -101,16 +88,12 @@
 		padding: 1.5rem 2rem;
 		background: transparent;
 		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
+		inset: 0 0 auto;
 		z-index: 100;
 	}
 
 	.site-header.menu-open {
 		position: fixed;
-		background: transparent;
-		padding: 1.5rem 2rem;
 		z-index: 1000;
 	}
 
@@ -159,15 +142,14 @@
 	.hamburger-icon,
 	.close-icon {
 		position: absolute;
-		top: 50%;
-		left: 50%;
+		inset: 50% auto auto 50%;
 		transform: translate(-50%, -50%);
-		transition: opacity 0s, visibility 0s;
 		width: 25px;
 		height: 18px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		transition: opacity 0s, visibility 0s;
 	}
 
 	.hamburger-icon {
@@ -202,32 +184,23 @@
 		width: 25px;
 		height: 2px;
 		background: white;
-		transition: none;
-	}
-
-	.mobile-overlay {
-		display: none;
 	}
 
 	.mobile-nav {
 		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
+		inset: 0;
 		width: 100vw;
 		min-width: 100vw;
-		height: 100vh;
-		height: 100dvh; /* Use dynamic viewport height for mobile browsers */
+		height: 100dvh;
 		background: rgba(0, 0, 0, 0.98);
 		z-index: 998;
 		display: flex;
 		flex-direction: column;
 		padding: 0;
 		margin: 0;
-		animation: fadeIn 0.3s ease;
 		overflow: hidden;
 		box-sizing: border-box;
+		animation: fadeIn 0.3s ease;
 	}
 
 	@keyframes fadeIn {
@@ -238,7 +211,6 @@
 			opacity: 1;
 		}
 	}
-
 
 	.mobile-nav-content {
 		display: flex;
@@ -286,11 +258,9 @@
 	.nav-link::after {
 		content: '';
 		position: absolute;
+		inset: auto 0 -4px;
 		height: 2px;
 		background: currentColor;
-		left: 0;
-		right: 0;
-		bottom: -4px;
 		transform: scaleX(0);
 		transition: transform 0.3s ease;
 	}
@@ -306,16 +276,10 @@
 
 		.mobile-menu-toggle {
 			display: flex;
-			align-items: center;
-			justify-content: center;
-			position: relative;
-			z-index: 1001;
 		}
 
-		/* Ensure full screen menu on tablet when open */
 		.site-header.menu-open {
 			position: fixed;
-			background: transparent;
 		}
 
 		.logo.menu-open {
@@ -337,23 +301,18 @@
 		}
 
 		.site-header.menu-open {
-			position: fixed;
-			background: transparent;
 			padding: 1rem;
 		}
 
 		.logo.menu-open {
-			position: fixed;
 			left: 1rem;
 			top: 1rem;
 		}
 
 		.site-header.menu-open .mobile-menu-toggle {
-			position: fixed;
 			right: 1rem;
 			top: 1rem;
 		}
 	}
 </style>
-
 

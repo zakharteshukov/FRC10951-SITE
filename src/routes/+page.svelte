@@ -11,7 +11,6 @@
 	- Call-to-action section
 -->
 <script lang="ts">
-	import Header from '$lib/components/Header.svelte';
 	import Hero from '$lib/components/Hero.svelte';
 	import Motto from '$lib/components/Motto.svelte';
 	import SponsorsCarousel from '$lib/components/SponsorsCarousel.svelte';
@@ -121,7 +120,6 @@
 </script>
 
 <main>
-	<Header />
 	<Hero />
 	<Motto />
 	<SponsorsCarousel />

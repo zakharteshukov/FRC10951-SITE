@@ -4,7 +4,6 @@
 	Description: Showcase of reusable template components for building pages
 -->
 <script lang="ts">
-	import Header from '$lib/components/Header.svelte';
 	import TemplateHero from '$lib/components/templates/TemplateHero.svelte';
 	import TemplateFeatureGrid from '$lib/components/templates/TemplateFeatureGrid.svelte';
 	import TemplateStats from '$lib/components/templates/TemplateStats.svelte';
@@ -37,8 +36,6 @@
 		}
 	}
 </script>
-
-<Header />
 
 <main class="templates-page">
 	<div class="page-header">
