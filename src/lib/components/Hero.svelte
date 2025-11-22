@@ -10,9 +10,7 @@
 	onMount(() => {
 		const img = new Image();
 		img.src = heroImage;
-		img.onerror = () => {
-			console.error('Failed to load hero image:', heroImage);
-		};
+		// Image loading is handled by the browser; error handling is optional for hero images
 
 		// Parallax scroll effect with throttling for performance
 		let ticking = false;

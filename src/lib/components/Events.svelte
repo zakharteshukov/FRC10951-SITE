@@ -1,36 +1,13 @@
 <script>
 	import { onMount } from 'svelte';
+	import { lazyLoadImage } from '$lib/utils/imageLoader';
 
-	let imageLoaded = false;
 	/** @type {HTMLElement | null} */
 	let imageElement;
 
 	onMount(() => {
-		// Lazy load background image using Intersection Observer
-		const observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting && !imageLoaded) {
-						const img = new Image();
-						img.src = '/full-STEAM-ahead.webp';
-						img.onload = () => {
-							imageLoaded = true;
-							if (imageElement) {
-								imageElement.style.backgroundImage = "url('/full-STEAM-ahead.webp')";
-							}
-						};
-						observer.disconnect();
-					}
-				});
-			},
-			{ rootMargin: '50px' }
-		);
-
-		if (imageElement) {
-			observer.observe(imageElement);
-		}
-
-		return () => observer.disconnect();
+		if (!imageElement) return;
+		return lazyLoadImage('/full-STEAM-ahead.webp', imageElement);
 	});
 </script>
 

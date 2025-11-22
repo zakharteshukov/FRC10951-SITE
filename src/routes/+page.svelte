@@ -1,11 +1,12 @@
-<script>
+<script lang="ts">
 	import Header from '$lib/components/Header.svelte';
 	import Hero from '$lib/components/Hero.svelte';
 	import Motto from '$lib/components/Motto.svelte';
 	import SponsorsCarousel from '$lib/components/SponsorsCarousel.svelte';
 	import { onMount } from 'svelte';
+	import { createLazyComponentLoader } from '$lib/utils/componentLoader';
 
-	// Lazy load below-the-fold components
+	// Lazy load below-the-fold components with Intersection Observer
 	/** @type {typeof import('$lib/components/About.svelte').default | null} */
 	let About = null;
 	/** @type {typeof import('$lib/components/FirstAge.svelte').default | null} */
@@ -22,39 +23,103 @@
 	let CommunityProjects = null;
 	/** @type {typeof import('$lib/components/CTA.svelte').default | null} */
 	let CTA = null;
-	let componentsLoaded = false;
 
-	onMount(async () => {
-		// Load components after initial render
-		const [
-			AboutModule,
-			FirstAgeModule,
-			VexFeatureModule,
-			EmpowerTechCardModule,
-			RobokidsCardModule,
-			EventsModule,
-			CommunityProjectsModule,
-			CTAModule
-		] = await Promise.all([
-			import('$lib/components/About.svelte'),
-			import('$lib/components/FirstAge.svelte'),
-			import('$lib/components/VexFeature.svelte'),
-			import('$lib/components/EmpowerTechCard.svelte'),
-			import('$lib/components/RobokidsCard.svelte'),
-			import('$lib/components/Events.svelte'),
-			import('$lib/components/CommunityProjects.svelte'),
-			import('$lib/components/CTA.svelte')
-		]);
+	/** @type {HTMLElement | null} */
+	let aboutElement;
+	/** @type {HTMLElement | null} */
+	let firstAgeElement;
+	/** @type {HTMLElement | null} */
+	let vexFeatureElement;
+	/** @type {HTMLElement | null} */
+	let empowerTechElement;
+	/** @type {HTMLElement | null} */
+	let robokidsElement;
+	/** @type {HTMLElement | null} */
+	let eventsElement;
+	/** @type {HTMLElement | null} */
+	let communityProjectsElement;
+	/** @type {HTMLElement | null} */
+	let ctaElement;
 
-		About = AboutModule.default;
-		FirstAge = FirstAgeModule.default;
-		VexFeature = VexFeatureModule.default;
-		EmpowerTechCard = EmpowerTechCardModule.default;
-		RobokidsCard = RobokidsCardModule.default;
-		Events = EventsModule.default;
-		CommunityProjects = CommunityProjectsModule.default;
-		CTA = CTAModule.default;
-		componentsLoaded = true;
+	onMount(() => {
+		const cleanup: (() => void)[] = [];
+
+		// Load components when they're about to be visible
+		cleanup.push(
+			createLazyComponentLoader(() => import('$lib/components/About.svelte')).load(
+				aboutElement,
+				(component) => {
+					About = component;
+				}
+			)
+		);
+
+		cleanup.push(
+			createLazyComponentLoader(() => import('$lib/components/FirstAge.svelte')).load(
+				firstAgeElement,
+				(component) => {
+					FirstAge = component;
+				}
+			)
+		);
+
+		cleanup.push(
+			createLazyComponentLoader(() => import('$lib/components/VexFeature.svelte')).load(
+				vexFeatureElement,
+				(component) => {
+					VexFeature = component;
+				}
+			)
+		);
+
+		cleanup.push(
+			createLazyComponentLoader(() => import('$lib/components/EmpowerTechCard.svelte')).load(
+				empowerTechElement,
+				(component) => {
+					EmpowerTechCard = component;
+				}
+			)
+		);
+
+		cleanup.push(
+			createLazyComponentLoader(() => import('$lib/components/RobokidsCard.svelte')).load(
+				robokidsElement,
+				(component) => {
+					RobokidsCard = component;
+				}
+			)
+		);
+
+		cleanup.push(
+			createLazyComponentLoader(() => import('$lib/components/Events.svelte')).load(
+				eventsElement,
+				(component) => {
+					Events = component;
+				}
+			)
+		);
+
+		cleanup.push(
+			createLazyComponentLoader(() => import('$lib/components/CommunityProjects.svelte')).load(
+				communityProjectsElement,
+				(component) => {
+					CommunityProjects = component;
+				}
+			)
+		);
+
+		cleanup.push(
+			createLazyComponentLoader(() => import('$lib/components/CTA.svelte')).load(
+				ctaElement,
+				(component) => {
+					CTA = component;
+				}
+			)
+		);
+
+		return () => {
+			cleanup.forEach((fn) => fn());
+		};
 	});
 </script>
 
@@ -63,35 +128,63 @@
 	<Hero />
 	<Motto />
 	<SponsorsCarousel />
-	{#if componentsLoaded}
-		<svelte:component this={About} />
-		<svelte:component this={FirstAge} />
+	
+	<div bind:this={aboutElement}>
+		{#if About}
+			<svelte:component this={About} />
+		{/if}
+	</div>
+	
+	<div bind:this={firstAgeElement}>
+		{#if FirstAge}
+			<svelte:component this={FirstAge} />
+		{/if}
+	</div>
 
-		<!-- STEM Community Section: Card-based layout -->
-		<section class="stem-community">
-			<h2 class="stem-community-heading">STEM Community</h2>
-			<div class="stem-community-content">
-				<!-- Feature Cards Section: asymmetric grid -->
-				<div class="features-grid">
-					<div class="left">
+	<!-- STEM Community Section: Card-based layout -->
+	<section class="stem-community" bind:this={vexFeatureElement}>
+		<h2 class="stem-community-heading">STEM Community</h2>
+		<div class="stem-community-content">
+			<!-- Feature Cards Section: asymmetric grid -->
+			<div class="features-grid">
+				<div class="left">
+					{#if VexFeature}
 						<svelte:component this={VexFeature} />
-					</div>
-					<div class="right">
-						<div class="quarter-top">
+					{/if}
+				</div>
+				<div class="right">
+					<div class="quarter-top" bind:this={empowerTechElement}>
+						{#if EmpowerTechCard}
 							<svelte:component this={EmpowerTechCard} />
-						</div>
-						<div class="quarter-bottom">
+						{/if}
+					</div>
+					<div class="quarter-bottom" bind:this={robokidsElement}>
+						{#if RobokidsCard}
 							<svelte:component this={RobokidsCard} />
-						</div>
+						{/if}
 					</div>
 				</div>
 			</div>
-		</section>
+		</div>
+	</section>
 
-		<svelte:component this={CommunityProjects} />
-		<svelte:component this={Events} />
-		<svelte:component this={CTA} />
-	{/if}
+	<div bind:this={communityProjectsElement}>
+		{#if CommunityProjects}
+			<svelte:component this={CommunityProjects} />
+		{/if}
+	</div>
+	
+	<div bind:this={eventsElement}>
+		{#if Events}
+			<svelte:component this={Events} />
+		{/if}
+	</div>
+	
+	<div bind:this={ctaElement}>
+		{#if CTA}
+			<svelte:component this={CTA} />
+		{/if}
+	</div>
 </main>
 
 <style>

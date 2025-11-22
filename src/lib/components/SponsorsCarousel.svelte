@@ -17,31 +17,18 @@
 <section class="sponsors">
 	<div class="carousel-wrapper">
 		<div class="carousel-track">
-		{#each duplicatedSlides as slide}
-			<div class="logo-item">
-				<img
-					src={slide.src}
-					alt={slide.alt}
-					loading="lazy"
-					decoding="async"
-					width="200"
-					height="120"
-				/>
-			</div>
-		{/each}
-		<!-- Duplicate for seamless loop -->
-		{#each duplicatedSlides as slide}
-			<div class="logo-item">
-				<img
-					src={slide.src}
-					alt={slide.alt}
-					loading="lazy"
-					decoding="async"
-					width="200"
-					height="120"
-				/>
-			</div>
-		{/each}
+			{#each duplicatedSlides as slide}
+				<div class="logo-item">
+					<img
+						src={slide.src}
+						alt={slide.alt}
+						loading="lazy"
+						decoding="async"
+						width="200"
+						height="120"
+					/>
+				</div>
+			{/each}
 		</div>
 	</div>
 </section>
