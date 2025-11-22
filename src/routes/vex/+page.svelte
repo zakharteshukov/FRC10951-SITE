@@ -1,3 +1,8 @@
+<!--
+	VEX ROBOTICS PAGE
+	Route: /vex
+	Description: VEX Robotics program overview and information
+-->
 <section class="section">
 	<div class="container">
 		<h1 class="text-4xl font-bold text-center mb-12 text-primary">VEX Robotics</h1>

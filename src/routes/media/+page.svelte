@@ -1,3 +1,8 @@
+<!--
+	MEDIA PAGE
+	Route: /media
+	Description: Media gallery, photos, videos, and press resources
+-->
 <section class="section">
 	<div class="container">
 		<h1 class="text-4xl font-bold text-center mb-12 text-primary">Media</h1>

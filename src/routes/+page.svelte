@@ -1,3 +1,15 @@
+<!--
+	HOMEPAGE - Main Landing Page
+	Route: / (root)
+	This is the homepage of the website, featuring:
+	- Hero section with team branding
+	- Sponsors carousel
+	- About section
+	- STEM community showcase
+	- Events calendar
+	- Community projects
+	- Call-to-action section
+-->
 <script lang="ts">
 	import Header from '$lib/components/Header.svelte';
 	import Hero from '$lib/components/Hero.svelte';
@@ -5,41 +17,26 @@
 	import SponsorsCarousel from '$lib/components/SponsorsCarousel.svelte';
 	import { onMount } from 'svelte';
 	import { createLazyComponentLoader } from '$lib/utils/componentLoader';
+	import type { ComponentType } from 'svelte';
 
 	// Lazy load below-the-fold components with Intersection Observer
-	/** @type {typeof import('$lib/components/About.svelte').default | null} */
-	let About = null;
-	/** @type {typeof import('$lib/components/FirstAge.svelte').default | null} */
-	let FirstAge = null;
-	/** @type {typeof import('$lib/components/VexFeature.svelte').default | null} */
-	let VexFeature = null;
-	/** @type {typeof import('$lib/components/EmpowerTechCard.svelte').default | null} */
-	let EmpowerTechCard = null;
-	/** @type {typeof import('$lib/components/RobokidsCard.svelte').default | null} */
-	let RobokidsCard = null;
-	/** @type {typeof import('$lib/components/Events.svelte').default | null} */
-	let Events = null;
-	/** @type {typeof import('$lib/components/CommunityProjects.svelte').default | null} */
-	let CommunityProjects = null;
-	/** @type {typeof import('$lib/components/CTA.svelte').default | null} */
-	let CTA = null;
+	let About: ComponentType | null = null;
+	let FirstAge: ComponentType | null = null;
+	let VexFeature: ComponentType | null = null;
+	let EmpowerTechCard: ComponentType | null = null;
+	let RobokidsCard: ComponentType | null = null;
+	let Events: ComponentType | null = null;
+	let CommunityProjects: ComponentType | null = null;
+	let CTA: ComponentType | null = null;
 
-	/** @type {HTMLElement | null} */
-	let aboutElement;
-	/** @type {HTMLElement | null} */
-	let firstAgeElement;
-	/** @type {HTMLElement | null} */
-	let vexFeatureElement;
-	/** @type {HTMLElement | null} */
-	let empowerTechElement;
-	/** @type {HTMLElement | null} */
-	let robokidsElement;
-	/** @type {HTMLElement | null} */
-	let eventsElement;
-	/** @type {HTMLElement | null} */
-	let communityProjectsElement;
-	/** @type {HTMLElement | null} */
-	let ctaElement;
+	let aboutElement: HTMLElement | null = null;
+	let firstAgeElement: HTMLElement | null = null;
+	let vexFeatureElement: HTMLElement | null = null;
+	let empowerTechElement: HTMLElement | null = null;
+	let robokidsElement: HTMLElement | null = null;
+	let eventsElement: HTMLElement | null = null;
+	let communityProjectsElement: HTMLElement | null = null;
+	let ctaElement: HTMLElement | null = null;
 
 	onMount(() => {
 		const cleanup: (() => void)[] = [];

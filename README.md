@@ -49,9 +49,15 @@ The website will be available at `http://localhost:5173`
 .
 ├── src/                      # Source code
 │   ├── routes/              # Pages (file-based routing)
-│   │   ├── +page.svelte     # Homepage (/)
+│   │   ├── +page.svelte     # 🏠 Homepage (/)
+│   │   ├── README.md        # Routes documentation
+│   │   ├── STRUCTURE.md     # Visual routes structure
 │   │   ├── about/           # About page (/about)
-│   │   └── contact/         # Contact page (/contact)
+│   │   ├── contact/         # Contact page (/contact)
+│   │   ├── frc/             # FRC page (/frc)
+│   │   ├── vex/             # VEX pages (/vex, /vex/1599v, etc.)
+│   │   ├── projects/        # Project pages (/projects/*)
+│   │   └── ...              # See src/routes/README.md for full structure
 │   ├── lib/
 │   │   └── components/      # Reusable components
 │   │       ├── Nav.svelte   # Navigation component
@@ -106,6 +112,10 @@ Create new files in `src/routes/`:
 - `src/routes/services/+page.svelte` → `/services`
 - `src/routes/blog/+page.svelte` → `/blog`
 
+**📖 For detailed routes documentation, see:**
+- `src/routes/README.md` - Complete routes reference
+- `src/routes/STRUCTURE.md` - Visual directory structure
+
 ### Modifying Navigation
 
 Edit `src/lib/components/Nav.svelte` to add/remove menu items:
@@ -120,9 +130,10 @@ const navItems = [
 
 ### Updating Content
 
-- **Homepage**: Edit `src/routes/+page.svelte`
+- **🏠 Homepage**: Edit `src/routes/+page.svelte` (root routes directory)
 - **About Page**: Edit `src/routes/about/+page.svelte`
 - **Contact Page**: Edit `src/routes/contact/+page.svelte`
+- **Other Pages**: See `src/routes/README.md` for all available pages
 - **Footer**: Edit `src/lib/components/Footer.svelte`
 
 ## 🐳 Docker Deployment

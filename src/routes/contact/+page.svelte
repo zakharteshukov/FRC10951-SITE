@@ -1,3 +1,8 @@
+<!--
+	CONTACT PAGE
+	Route: /contact
+	Description: Contact form for visitors to reach out to the team
+-->
 <script lang="ts">
 	function handleSubmit(e: Event) {
 		e.preventDefault();

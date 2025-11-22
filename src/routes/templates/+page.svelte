@@ -1,4 +1,9 @@
-<script>
+<!--
+	TEMPLATES SHOWCASE PAGE
+	Route: /templates
+	Description: Showcase of reusable template components for building pages
+-->
+<script lang="ts">
 	import Header from '$lib/components/Header.svelte';
 	import TemplateHero from '$lib/components/templates/TemplateHero.svelte';
 	import TemplateFeatureGrid from '$lib/components/templates/TemplateFeatureGrid.svelte';
@@ -8,9 +13,10 @@
 	import TemplatePricing from '$lib/components/templates/TemplatePricing.svelte';
 	import TemplateCTA from '$lib/components/templates/TemplateCTA.svelte';
 	import TemplateGallery from '$lib/components/templates/TemplateGallery.svelte';
+	import type { ComponentType } from 'svelte';
 
-	let activeSection = 'all';
-	const sections = [
+	let activeSection: string = 'all';
+	const sections: Array<{ id: string; name: string; component: ComponentType }> = [
 		{ id: 'hero', name: 'Hero', component: TemplateHero },
 		{ id: 'features', name: 'Features', component: TemplateFeatureGrid },
 		{ id: 'stats', name: 'Stats', component: TemplateStats },
@@ -21,7 +27,7 @@
 		{ id: 'cta', name: 'CTA', component: TemplateCTA }
 	];
 
-	function filterSections(id) {
+	function filterSections(id: string): void {
 		activeSection = id;
 		if (id !== 'all') {
 			const element = document.getElementById(id);
@@ -47,7 +53,7 @@
 			<button
 				class="nav-button"
 				class:active={activeSection === 'all'}
-				onclick={() => (activeSection = 'all')}
+				on:click={() => (activeSection = 'all')}
 			>
 				All Sections
 			</button>
@@ -55,7 +61,7 @@
 				<button
 					class="nav-button"
 					class:active={activeSection === section.id}
-					onclick={() => filterSections(section.id)}
+					on:click={() => filterSections(section.id)}
 				>
 					{section.name}
 				</button>

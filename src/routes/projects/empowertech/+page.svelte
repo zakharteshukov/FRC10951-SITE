@@ -1,3 +1,8 @@
+<!--
+	EMPOWERTECH PROJECT PAGE
+	Route: /projects/empowertech
+	Description: EmpowerTech community project information
+-->
 <section class="section">
 	<div class="container">
 		<h1 class="text-4xl font-bold text-center mb-12 text-primary">EmpowerTech</h1>

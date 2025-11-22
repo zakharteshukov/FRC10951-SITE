@@ -1,3 +1,8 @@
+<!--
+	FRC PAGE
+	Route: /frc
+	Description: FIRST Robotics Competition team information and details
+-->
 <section class="section">
 	<div class="container">
 		<h1 class="text-4xl font-bold text-center mb-12 text-primary">FIRST Robotics Competition (FRC)</h1>

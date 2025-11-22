@@ -1,3 +1,8 @@
+<!--
+	VEX SEASON PAGE - 1599V
+	Route: /vex/1599v
+	Description: VEX Robotics season 1599V information and achievements
+-->
 <section class="section">
 	<div class="container">
 		<h1 class="text-4xl font-bold text-center mb-12 text-primary">Team 1599V</h1>

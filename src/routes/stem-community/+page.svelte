@@ -1,3 +1,8 @@
+<!--
+	STEM COMMUNITY PAGE
+	Route: /stem-community
+	Description: STEM community programs and initiatives
+-->
 <section class="section">
 	<div class="container">
 		<h1 class="text-4xl font-bold text-center mb-12 text-primary">STEM Community</h1>

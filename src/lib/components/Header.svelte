@@ -185,39 +185,23 @@
 	}
 
 	.mobile-overlay {
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background: rgba(0, 0, 0, 0.5);
-		z-index: 998;
-		animation: fadeIn 0.3s ease;
+		display: none;
 	}
 
 	.mobile-nav {
 		position: fixed;
 		top: 0;
+		left: 0;
 		right: 0;
-		width: 100%;
-		max-width: 400px;
+		bottom: 0;
+		width: 100vw;
 		height: 100vh;
 		background: rgba(0, 0, 0, 0.98);
 		z-index: 999;
 		display: flex;
 		flex-direction: column;
 		padding: 0;
-		box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
-		animation: slideInRight 0.3s ease;
-	}
-
-	@keyframes slideInRight {
-		from {
-			transform: translateX(100%);
-		}
-		to {
-			transform: translateX(0);
-		}
+		animation: fadeIn 0.3s ease;
 	}
 
 	@keyframes fadeIn {
@@ -289,6 +273,38 @@
 		transform: scaleX(1);
 	}
 
+	@media (max-width: 1024px) {
+		.desktop-nav {
+			display: none;
+		}
+
+		.mobile-menu-toggle {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: relative;
+			z-index: 1001;
+		}
+
+		/* Ensure full screen menu on tablet when open */
+		.site-header.menu-open {
+			position: fixed;
+			background: rgba(0, 0, 0, 0.98);
+		}
+
+		.logo.menu-open {
+			position: fixed;
+			left: 2rem;
+			top: 1.5rem;
+		}
+
+		.site-header.menu-open .mobile-menu-toggle {
+			position: fixed;
+			right: 2rem;
+			top: 1.5rem;
+		}
+	}
+
 	@media (max-width: 768px) {
 		.site-header {
 			padding: 1rem;
@@ -304,18 +320,6 @@
 			position: fixed;
 			left: 1rem;
 			top: 1rem;
-		}
-
-		.desktop-nav {
-			display: none;
-		}
-
-		.mobile-menu-toggle {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			position: relative;
-			z-index: 1001;
 		}
 
 		.site-header.menu-open .mobile-menu-toggle {
