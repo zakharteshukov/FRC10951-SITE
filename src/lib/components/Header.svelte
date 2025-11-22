@@ -1,5 +1,7 @@
 <script>
 	import { fade } from 'svelte/transition';
+	import { onDestroy } from 'svelte';
+	import { browser } from '$app/environment';
 
 	const navItems = [
 		{ label: 'SSIS', href: '/' },
@@ -13,11 +15,29 @@
 
 	function toggleMobileMenu() {
 		mobileMenuOpen = !mobileMenuOpen;
+		// Prevent body scroll when menu is open (only in browser)
+		if (browser) {
+			if (mobileMenuOpen) {
+				document.body.style.overflow = 'hidden';
+			} else {
+				document.body.style.overflow = '';
+			}
+		}
 	}
 
 	function closeMobileMenu() {
 		mobileMenuOpen = false;
+		if (browser) {
+			document.body.style.overflow = '';
+		}
 	}
+
+	// Cleanup: restore body scroll on component destroy
+	onDestroy(() => {
+		if (browser) {
+			document.body.style.overflow = '';
+		}
+	});
 </script>
 
 <header class="site-header" class:menu-open={mobileMenuOpen} transition:fade={{ duration: 500 }}>
@@ -89,8 +109,9 @@
 
 	.site-header.menu-open {
 		position: fixed;
-		background: rgba(0, 0, 0, 0.98);
+		background: transparent;
 		padding: 1.5rem 2rem;
+		z-index: 1000;
 	}
 
 	.logo {
@@ -195,13 +216,18 @@
 		right: 0;
 		bottom: 0;
 		width: 100vw;
+		min-width: 100vw;
 		height: 100vh;
+		height: 100dvh; /* Use dynamic viewport height for mobile browsers */
 		background: rgba(0, 0, 0, 0.98);
-		z-index: 999;
+		z-index: 998;
 		display: flex;
 		flex-direction: column;
 		padding: 0;
+		margin: 0;
 		animation: fadeIn 0.3s ease;
+		overflow: hidden;
+		box-sizing: border-box;
 	}
 
 	@keyframes fadeIn {
@@ -289,7 +315,7 @@
 		/* Ensure full screen menu on tablet when open */
 		.site-header.menu-open {
 			position: fixed;
-			background: rgba(0, 0, 0, 0.98);
+			background: transparent;
 		}
 
 		.logo.menu-open {
@@ -312,7 +338,7 @@
 
 		.site-header.menu-open {
 			position: fixed;
-			background: rgba(0, 0, 0, 0.98);
+			background: transparent;
 			padding: 1rem;
 		}
 
