@@ -45,6 +45,7 @@
 					<div class="event-date">
 						<span class="month">November</span>
 						<span class="day">30</span>
+						<span class="year">2025</span>
 					</div>
 					<h3>Full STEAM Ahead</h3>
 					<p>
@@ -62,6 +63,7 @@
 					<div class="event-date">
 						<span class="month">December</span>
 						<span class="day">8</span>
+						<span class="year">2025</span>
 					</div>
 					<h3>STEM-sters United</h3>
 					<p>
@@ -79,6 +81,7 @@
 					<div class="event-date">
 						<span class="month">December</span>
 						<span class="day">28</span>
+						<span class="year">2025</span>
 					</div>
 					<h3>FRC Open-Doors</h3>
 					<p>
@@ -196,6 +199,13 @@
 		font-size: 3rem;
 		font-weight: 700;
 		line-height: 1;
+	}
+
+	.event-date .year {
+		font-size: 1rem;
+		opacity: 0.8;
+		margin-top: 0.25rem;
+		font-weight: 400;
 	}
 
 	.event-content h3 {
