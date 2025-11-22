@@ -16,7 +16,13 @@
 		text-align: center;
 		color: white;
 		margin: 0;
+		margin-bottom: 0;
 		width: 100%;
+		display: block;
+		box-sizing: border-box;
+		border: none;
+		outline: none;
+		overflow: hidden;
 	}
 
 	.content {

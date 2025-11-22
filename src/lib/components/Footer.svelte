@@ -100,9 +100,9 @@
 <style>
 	.footer {
 		padding: 4rem 2rem 2rem;
-		border-top: 1px solid #e5e5e5;
+		border-top: none;
 		background: linear-gradient(to bottom, #fafafa, #ffffff);
-		margin-top: 4rem;
+		margin: 0;
 	}
 
 	.footer-content {

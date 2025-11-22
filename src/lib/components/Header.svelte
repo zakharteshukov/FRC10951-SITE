@@ -21,7 +21,7 @@
 </script>
 
 <header class="site-header" class:menu-open={mobileMenuOpen} transition:fade={{ duration: 500 }}>
-	<div class="logo">FRC10951</div>
+	<div class="logo" class:menu-open={mobileMenuOpen}>FRC10951</div>
 	<nav class="desktop-nav">
 		{#each navItems as item}
 			<a href={item.href} class="nav-link">{item.label}</a>
@@ -90,6 +90,7 @@
 	.site-header.menu-open {
 		position: fixed;
 		background: rgba(0, 0, 0, 0.98);
+		padding: 1.5rem 2rem;
 	}
 
 	.logo {
@@ -97,6 +98,15 @@
 		font-weight: 700;
 		color: white;
 		letter-spacing: 0.05em;
+		position: relative;
+		z-index: 1001;
+		flex-shrink: 0;
+	}
+
+	.logo.menu-open {
+		position: fixed;
+		left: 2rem;
+		top: 1.5rem;
 	}
 
 	.desktop-nav {
@@ -117,6 +127,12 @@
 		height: 35px;
 		z-index: 1001;
 		position: relative;
+	}
+
+	.site-header.menu-open .mobile-menu-toggle {
+		position: fixed;
+		right: 2rem;
+		top: 1.5rem;
 	}
 
 	.hamburger-icon,
@@ -281,6 +297,13 @@
 		.site-header.menu-open {
 			position: fixed;
 			background: rgba(0, 0, 0, 0.98);
+			padding: 1rem;
+		}
+
+		.logo.menu-open {
+			position: fixed;
+			left: 1rem;
+			top: 1rem;
 		}
 
 		.desktop-nav {
@@ -293,6 +316,12 @@
 			justify-content: center;
 			position: relative;
 			z-index: 1001;
+		}
+
+		.site-header.menu-open .mobile-menu-toggle {
+			position: fixed;
+			right: 1rem;
+			top: 1rem;
 		}
 	}
 </style>
