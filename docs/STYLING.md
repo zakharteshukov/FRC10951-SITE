@@ -1,9 +1,27 @@
 # Global Styling System
 
-This document describes the global styling system that allows you to make site-wide style changes from just two files:
+This document describes the comprehensive styling system that allows you to make site-wide style changes from a centralized configuration. The styling system is built on **Tailwind CSS** with custom design tokens and global component classes.
 
-1. **`tailwind.config.js`** - Design tokens (colors, spacing, typography, breakpoints, etc.)
-2. **`src/app.css`** - Global component classes and CSS variables
+## Architecture Overview
+
+The styling system consists of three main files:
+
+1. **`tailwind.config.js`** - Design tokens (colors, spacing, typography, breakpoints, shadows, etc.)
+2. **`src/app.css`** - Global component classes, CSS variables, and utility classes
+3. **`src/fonts.css`** - Custom font face declarations (IBM Plex Mono, Playfair Display)
+
+All design tokens are available in both Tailwind classes and CSS variables, providing flexibility for different use cases.
+
+## Quick Decision Guide
+
+**When to use what?**
+
+1. **Global Component Classes** (`.btn`, `.card`, `.section`, `.container`) → For reusable, consistent components
+2. **Tailwind Utilities** (`flex`, `gap-4`, `p-6`, `bg-primary`) → For layout, spacing, simple styling
+3. **Component-Scoped CSS** → For complex animations, unique layouts, component-specific needs
+4. **CSS Variables** (`var(--color-primary)`) → For dynamic theming, runtime changes
+
+**See [STYLING_STRATEGY.md](./STYLING_STRATEGY.md) for detailed guidelines and migration recommendations.**
 
 ## Quick Start
 
@@ -12,12 +30,21 @@ This document describes the global styling system that allows you to make site-w
 **To change colors site-wide:**
 - Edit `tailwind.config.js` → `theme.extend.colors`
 - Or edit `src/app.css` → `:root` CSS variables
+- Both must be updated to keep them in sync
 
 **To change button styles site-wide:**
 - Edit `src/app.css` → `@layer components` → `.btn-primary`, `.btn-secondary`, etc.
 
 **To change container widths:**
 - Edit `src/app.css` → `@layer components` → `.container`, `.container-narrow`, `.container-wide`
+
+**To change typography:**
+- Edit `tailwind.config.js` → `theme.extend.fontSize` and `fontFamily`
+- Or edit `src/app.css` → `:root` CSS variables
+
+**To change breakpoints:**
+- Edit `tailwind.config.js` → `theme.extend.screens`
+- CSS variables in `app.css` are for reference only
 
 ## Design Tokens
 
@@ -47,21 +74,42 @@ All colors are defined in both `tailwind.config.js` and as CSS variables in `app
 
 ### Typography
 
+**Font Families:**
+
+The site uses a system font stack for body text:
+- Primary: System fonts (`-apple-system`, `BlinkMacSystemFont`, `Segoe UI`, `Roboto`, etc.)
+- Custom fonts available: `IBM Plex Mono` (monospace) and `Playfair Display` (display serif)
+- See [Fonts](#fonts) section for custom font usage
+
 **Heading Sizes:**
 - `heading-1` through `heading-6` - Predefined heading sizes
-- Responsive by default
+- Responsive by default (scales down on mobile)
+- Line heights and font weights are optimized for readability
+
+**Font Size Scale:**
+- `heading-1`: 3rem (48px) - Main page titles
+- `heading-2`: 2.5rem (40px) - Section titles
+- `heading-3`: 2rem (32px) - Subsection titles
+- `heading-4`: 1.5rem (24px) - Card titles
+- `heading-5`: 1.25rem (20px) - Small headings
+- `heading-6`: 1rem (16px) - Smallest headings
+- `lead`: 1.25rem (20px) - Lead paragraphs
+- `body`: 1rem (16px) - Body text
+- `small`: 0.875rem (14px) - Small text
 
 **Usage:**
 ```svelte
 <h1 class="heading-1">Main Title</h1>
 <h2 class="heading-2">Section Title</h2>
-<p class="text-lead">Lead paragraph</p>
-<p class="text-muted">Muted text</p>
+<p class="text-lead">Lead paragraph with larger text</p>
+<p class="text-muted">Muted secondary text</p>
 ```
 
 **Font Sizes (CSS Variables):**
 - `--font-size-heading-1` through `--font-size-heading-6`
 - `--font-size-lead`, `--font-size-body`, `--font-size-small`
+- `--line-height-heading`, `--line-height-body`, `--line-height-tight`
+- `--font-weight-normal`, `--font-weight-medium`, `--font-weight-semibold`, `--font-weight-bold`
 
 ### Spacing
 
@@ -78,13 +126,31 @@ All colors are defined in both `tailwind.config.js` and as CSS variables in `app
 
 Standardized breakpoints (defined in both Tailwind config and CSS variables):
 
-- `xs`: 480px
-- `sm`: 640px
-- `md`: 768px
-- `tablet`: 968px
-- `lg`: 1024px
-- `xl`: 1280px
-- `2xl`: 1536px
+- `xs`: 480px - Small mobile devices
+- `sm`: 640px - Large mobile devices
+- `md`: 768px - Tablets (primary mobile breakpoint)
+- `tablet`: 968px - Large tablets
+- `lg`: 1024px - Small laptops/desktops
+- `xl`: 1280px - Large desktops
+- `2xl`: 1536px - Extra large desktops
+
+**Usage with Tailwind:**
+```svelte
+<div class="text-base md:text-lg xl:text-xl">
+  Responsive text size
+</div>
+```
+
+**Usage with CSS:**
+```css
+@media (max-width: 768px) {
+  .my-element {
+    font-size: 1rem;
+  }
+}
+```
+
+**Note:** The site follows a **mobile-first** approach. Styles are written for mobile by default, then enhanced for larger screens. See [BREAKPOINTS.md](./BREAKPOINTS.md) for detailed breakpoint usage patterns.
 
 ## Global Component Classes
 
@@ -392,9 +458,71 @@ Edit `src/app.css` → `@layer components` → `.card`
 <p class="text-muted">Less important text</p>
 ```
 
+## Dark Mode
+
+The site has dark mode support configured in Tailwind (`darkMode: 'class'`), but the current implementation uses a light theme by default. The color system includes both light and dark variants:
+
+- Background colors: `background.light` (white) and `background.DEFAULT` (dark)
+- Text colors: `text.dark` (for light backgrounds) and `text.DEFAULT` (for dark backgrounds)
+
+**To enable dark mode:**
+1. Add the `dark` class to the root element
+2. Update component styles to use dark mode variants
+3. Use Tailwind's `dark:` prefix for dark mode styles
+
+**Example:**
+```svelte
+<div class="bg-white dark:bg-background text-text-dark dark:text-text">
+  Content that adapts to theme
+</div>
+```
+
+## Fonts
+
+### Custom Fonts
+
+The project includes two custom font families:
+
+1. **IBM Plex Mono** - Monospace font for code and technical content
+   - Available weights: 100-700 (Thin to Bold)
+   - Available styles: Normal and Italic
+   - Location: `src/lib/assets/fonts/IBMPlexMono-*.ttf`
+
+2. **Playfair Display** - Variable font for display/heading text
+   - Variable weight: 400-900
+   - Available styles: Normal and Italic
+   - Location: `src/lib/assets/fonts/PlayfairDisplay-*.ttf`
+
+**Using Custom Fonts:**
+
+```svelte
+<style>
+  .monospace {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  
+  .display-font {
+    font-family: 'Playfair Display', serif;
+  }
+</style>
+
+<code class="monospace">Code example</code>
+<h1 class="display-font">Elegant Heading</h1>
+```
+
+**Note:** Font face declarations are in `src/fonts.css`. Ensure font files are properly referenced in the `@font-face` declarations.
+
+### System Fonts
+
+The default body font uses a system font stack for optimal performance:
+- macOS/iOS: San Francisco (SF Pro)
+- Windows: Segoe UI
+- Android: Roboto
+- Linux: Ubuntu, Cantarell, or system default
+
 ## CSS Variables
 
-All design tokens are available as CSS variables for runtime theming:
+All design tokens are available as CSS variables for runtime theming and dynamic styling:
 
 ### Color Variables
 ```css
@@ -552,22 +680,130 @@ Components have been migrated to use global classes. If you need to override:
 
 ## Best Practices
 
-1. **Always use global classes when available** - Don't recreate `.container`, `.btn-primary`, etc.
+### 1. Use Global Classes First
+Always use global classes when available. Don't recreate `.container`, `.btn-primary`, `.card`, etc.
 
-2. **Use CSS variables for dynamic theming** - Allows runtime theme changes
+```svelte
+<!-- ✅ Good -->
+<button class="btn btn-primary">Click me</button>
 
-3. **Keep component styles minimal** - Only add styles unique to the component
+<!-- ❌ Bad -->
+<button class="custom-button">Click me</button>
+<style>
+  .custom-button {
+    /* Recreating btn-primary */
+  }
+</style>
+```
 
-4. **Use Tailwind utilities for one-off styles** - Don't create new classes for single-use cases
+### 2. Use CSS Variables for Dynamic Theming
+CSS variables allow runtime theme changes and are perfect for dynamic styling.
 
-5. **Test responsive behavior** - Global classes are responsive, but verify on different screen sizes
+```svelte
+<div style="background-color: var(--color-primary)">
+  Dynamic background
+</div>
+```
+
+### 3. Keep Component Styles Minimal
+Only add styles unique to the component. Use global classes for common patterns.
+
+```svelte
+<!-- ✅ Good -->
+<div class="card">
+  <h3 class="heading-4">Title</h3>
+  <p>Content</p>
+</div>
+<style>
+  /* Only component-specific styles */
+  .card {
+    /* Unique styling not available globally */
+  }
+</style>
+```
+
+### 4. Use Tailwind Utilities for One-Off Styles
+Don't create new classes for single-use cases. Use Tailwind utilities instead.
+
+```svelte
+<!-- ✅ Good -->
+<div class="flex items-center gap-4 p-6 bg-gray-100">
+  One-off layout
+</div>
+
+<!-- ❌ Bad -->
+<style>
+  .special-layout {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: #f3f4f6;
+  }
+</style>
+```
+
+### 5. Test Responsive Behavior
+Global classes are responsive, but always verify on different screen sizes. Use browser dev tools to test breakpoints.
+
+### 6. Maintain Design Token Consistency
+When adding new colors or spacing values:
+- Add to both `tailwind.config.js` and `app.css` `:root`
+- Use semantic names (e.g., `primary`, `success`, not `blue`, `green`)
+- Follow the existing naming conventions
+
+### 7. Use Semantic Color Names
+Prefer semantic names over color names for better maintainability.
+
+```svelte
+<!-- ✅ Good -->
+<div class="bg-primary text-white">Primary action</div>
+<div class="bg-success text-white">Success message</div>
+
+<!-- ❌ Bad -->
+<div class="bg-blue-500 text-white">Primary action</div>
+```
+
+### 8. Leverage Component Classes
+Use component classes (`.card`, `.btn`, `.section`) for consistent styling across the site.
+
+### 9. Mobile-First Approach
+Write styles for mobile first, then enhance for larger screens.
+
+```css
+/* ✅ Good - Mobile first */
+.element {
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .element {
+    padding: 2rem;
+  }
+}
+
+/* ❌ Bad - Desktop first */
+.element {
+  padding: 2rem;
+}
+
+@media (max-width: 767px) {
+  .element {
+    padding: 1rem;
+  }
+}
+```
 
 ## File Locations
 
 - **Design Tokens**: `tailwind.config.js`
 - **Global Classes & Variables**: `src/app.css`
+- **Custom Fonts**: `src/fonts.css`
+- **Font Assets**: `src/lib/assets/fonts/`
 - **Component Styles**: Individual component `<style>` blocks
 - **This Documentation**: `docs/STYLING.md`
+- **Breakpoints Reference**: `docs/BREAKPOINTS.md`
+- **Design System**: `docs/design.md`
 
 ## Quick Reference
 
@@ -616,6 +852,103 @@ Components have been migrated to use global classes. If you need to override:
   /* All buttons will now use the custom color */
 </style>
 ```
+
+## Common Patterns & Recipes
+
+### Hero Section
+```svelte
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="heading-1">Hero Title</h1>
+      <p class="text-lead text-muted">Hero description</p>
+    </div>
+  </div>
+</section>
+```
+
+### Feature Grid
+```svelte
+<section class="section bg-light">
+  <div class="container">
+    <h2 class="section-title">Features</h2>
+    <div class="grid-3">
+      <div class="card card-hover">
+        <h3 class="heading-4">Feature 1</h3>
+        <p>Description</p>
+        <button class="btn btn-primary">Learn More</button>
+      </div>
+      <!-- More cards -->
+    </div>
+  </div>
+</section>
+```
+
+### Form Layout
+```svelte
+<form class="container-narrow">
+  <label for="email" class="label">Email</label>
+  <input type="email" id="email" class="input" placeholder="your@email.com" />
+  
+  <label for="message" class="label">Message</label>
+  <textarea id="message" class="textarea" rows="5"></textarea>
+  
+  <button type="submit" class="btn btn-primary">Send</button>
+</form>
+```
+
+### Responsive Image
+```svelte
+<img 
+  src="/image.webp" 
+  alt="Description" 
+  class="img-responsive img-rounded img-shadow" 
+/>
+```
+
+### Flex Layout
+```svelte
+<div class="flex-between flex-wrap flex-gap">
+  <div>Left content</div>
+  <div>Right content</div>
+</div>
+```
+
+## Troubleshooting
+
+### Styles Not Applying
+1. **Check Tailwind content paths**: Ensure your component is included in `tailwind.config.js` → `content`
+2. **Verify class names**: Use exact class names from this documentation
+3. **Check CSS specificity**: Component-scoped styles may override global classes
+4. **Clear build cache**: Run `npm run build` to regenerate styles
+
+### Colors Not Updating
+1. **Update both locations**: Change colors in both `tailwind.config.js` and `app.css` `:root`
+2. **Restart dev server**: Some changes require a restart
+3. **Check for caching**: Hard refresh browser (Cmd+Shift+R / Ctrl+Shift+R)
+
+### Responsive Styles Not Working
+1. **Verify breakpoints**: Check that you're using the correct breakpoint values
+2. **Check media query syntax**: Ensure proper `@media` syntax
+3. **Test in dev tools**: Use browser responsive design mode
+
+### Fonts Not Loading
+1. **Check font paths**: Verify font file paths in `fonts.css`
+2. **Verify font files exist**: Check `src/lib/assets/fonts/` directory
+3. **Check font-family name**: Use exact font family name from `@font-face` declaration
+
+## Styling Strategy
+
+For recommendations on improving the styling approach and maintaining consistency, see:
+- **[STYLING_STRATEGY.md](./STYLING_STRATEGY.md)** - Styling strategy improvements and best practices
+
+## Related Documentation
+
+- **[BREAKPOINTS.md](./BREAKPOINTS.md)** - Detailed breakpoint usage and responsive patterns
+- **[design.md](./design.md)** - Design system principles and visual guidelines
+- **[STYLING_STRATEGY.md](./STYLING_STRATEGY.md)** - Styling strategy improvements and migration guide
+- **[TECHNICAL.md](./TECHNICAL.md)** - Technical architecture and build system
+- **[DEVELOPMENT.md](./DEVELOPMENT.md)** - Development setup and workflow
 
 ---
 
