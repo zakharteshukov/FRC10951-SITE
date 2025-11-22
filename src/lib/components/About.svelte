@@ -43,6 +43,7 @@
 		display: grid;
 		grid-template-columns: 1fr 420px;
 		gap: 3rem;
+		align-items: stretch;
 	}
 
 	.title {
@@ -93,10 +94,16 @@
 
 	.photo {
 		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
 	}
 
 	.photo img {
-		aspect-ratio: 3 / 2;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
 	}
 
 	@media (max-width: 968px) {

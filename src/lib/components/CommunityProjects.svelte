@@ -208,8 +208,8 @@
 		}
 
 		.grid {
-			grid-template-columns: 1fr;
-			grid-template-rows: auto;
+			display: flex;
+			flex-direction: column;
 			height: auto;
 			max-width: 100%;
 			gap: 1rem;
@@ -221,24 +221,19 @@
 		}
 
 		.card.about {
-			grid-column: 1;
-			grid-row: auto;
-			justify-content: flex-start;
+			order: -1; /* Make about card appear first on mobile */
 		}
 
 		.card.project-1 {
-			grid-column: 1;
-			grid-row: auto;
+			order: 0;
 		}
 
 		.card.project-2 {
-			grid-column: 1;
-			grid-row: auto;
+			order: 1;
 		}
 
 		.card.project-3 {
-			grid-column: 1;
-			grid-row: auto;
+			order: 2;
 		}
 
 		.card h4 {
