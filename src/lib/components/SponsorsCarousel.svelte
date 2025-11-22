@@ -34,15 +34,16 @@
 
 <style>
 	.sponsors {
-		padding: 3rem 2rem;
+		padding: 0;
+		margin: 0;
 		background: #f8f8f8;
 		overflow: hidden;
+		width: 100%;
 	}
 
 	.carousel-wrapper {
 		width: 100%;
-		max-width: 1200px;
-		margin: 0 auto;
+		margin: 0;
 		overflow: hidden;
 		position: relative;
 	}
@@ -91,7 +92,8 @@
 
 	@media (max-width: 768px) {
 		.sponsors {
-			padding: 2rem 1rem;
+			padding: 0;
+			margin: 0;
 		}
 
 		.logo-item {
