@@ -74,6 +74,8 @@
 				loading="eager"
 				fetchpriority="high"
 				decoding="async"
+				width="1920"
+				height="1080"
 			/>
 		</div>
 		<div class="hero-gradient"></div>
@@ -130,6 +132,63 @@
 		height: 100%;
 		transform: translateY(calc(var(--scroll-offset) * 0.2));
 		transition: transform 0.1s ease-out;
+		overflow: hidden;
+	}
+
+	.hero-image-wrapper::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: -100%;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(
+			90deg,
+			transparent 0%,
+			rgba(255, 255, 255, 0.1) 50%,
+			transparent 100%
+		);
+		animation: shimmer 6s ease-in-out infinite;
+		z-index: 2;
+		pointer-events: none;
+	}
+
+	.hero-image-wrapper::after {
+		content: '';
+		position: absolute;
+		inset: -2px;
+		background: radial-gradient(
+			ellipse at center,
+			rgba(255, 255, 255, 0.1) 0%,
+			transparent 70%
+		);
+		animation: pulseGlow 4s ease-in-out infinite;
+		z-index: 1;
+		pointer-events: none;
+		opacity: 0.5;
+	}
+
+	@keyframes shimmer {
+		0% {
+			left: -100%;
+		}
+		50% {
+			left: 100%;
+		}
+		100% {
+			left: 100%;
+		}
+	}
+
+	@keyframes pulseGlow {
+		0%, 100% {
+			opacity: 0.3;
+			transform: scale(1);
+		}
+		50% {
+			opacity: 0.6;
+			transform: scale(1.02);
+		}
 	}
 
 	.hero-image {
@@ -141,15 +200,40 @@
 		filter: brightness(0.8) contrast(1.1) saturate(1.1);
 		transform: scale(1.1);
 		transition: filter 0.3s ease;
-		animation: heroImageZoom 20s ease-in-out infinite alternate;
+		animation: 
+			heroImageComplex 20s ease-in-out infinite,
+			heroImageColorShift 15s ease-in-out infinite alternate;
+		aspect-ratio: 16 / 9;
+		position: relative;
 	}
 
-	@keyframes heroImageZoom {
+	@keyframes heroImageComplex {
 		0% {
-			transform: scale(1.1);
+			transform: scale(1.1) translateY(0) translateX(0) rotate(0deg);
+		}
+		20% {
+			transform: scale(1.12) translateY(-8px) translateX(4px) rotate(0.5deg);
+		}
+		40% {
+			transform: scale(1.14) translateY(-4px) translateX(-6px) rotate(-0.5deg);
+		}
+		60% {
+			transform: scale(1.15) translateY(-10px) translateX(2px) rotate(1deg);
+		}
+		80% {
+			transform: scale(1.13) translateY(-6px) translateX(-3px) rotate(-0.3deg);
 		}
 		100% {
-			transform: scale(1.15);
+			transform: scale(1.1) translateY(0) translateX(0) rotate(0deg);
+		}
+	}
+
+	@keyframes heroImageColorShift {
+		0% {
+			filter: brightness(0.8) contrast(1.1) saturate(1.1) hue-rotate(0deg);
+		}
+		100% {
+			filter: brightness(0.85) contrast(1.15) saturate(1.2) hue-rotate(5deg);
 		}
 	}
 
@@ -324,7 +408,9 @@
 		.hero-image,
 		.hero-gradient,
 		.team-number,
-		.scroll-arrow {
+		.scroll-arrow,
+		.hero-image-wrapper::before,
+		.hero-image-wrapper::after {
 			animation: none;
 		}
 
@@ -335,6 +421,11 @@
 
 		.hero-image {
 			transform: scale(1.05);
+		}
+
+		.hero-image-wrapper::before,
+		.hero-image-wrapper::after {
+			opacity: 0;
 		}
 	}
 </style>

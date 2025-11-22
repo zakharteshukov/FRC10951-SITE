@@ -1,9 +1,45 @@
+<script>
+	import { onMount } from 'svelte';
+
+	let imageLoaded = false;
+	/** @type {HTMLElement | null} */
+	let imageElement;
+
+	onMount(() => {
+		// Lazy load background image using Intersection Observer
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting && !imageLoaded) {
+						const img = new Image();
+						img.src = '/full-STEAM-ahead.webp';
+						img.onload = () => {
+							imageLoaded = true;
+							if (imageElement) {
+								imageElement.style.backgroundImage = "url('/full-STEAM-ahead.webp')";
+							}
+						};
+						observer.disconnect();
+					}
+				});
+			},
+			{ rootMargin: '50px' }
+		);
+
+		if (imageElement) {
+			observer.observe(imageElement);
+		}
+
+		return () => observer.disconnect();
+	});
+</script>
+
 <section class="events">
 	<div class="container">
 		<h2 class="section-title">Upcoming Events</h2>
 		<div class="events-grid">
 			<div class="event-card full-steam">
-				<div class="event-background"></div>
+				<div class="event-background" bind:this={imageElement}></div>
 				<div class="event-overlay"></div>
 				<div class="event-content">
 					<div class="event-date">
@@ -108,7 +144,8 @@
 	}
 
 	.event-card.full-steam .event-background {
-		background-image: url('/full-STEAM-ahead.webp');
+		/* Background image loaded via Intersection Observer */
+		transition: opacity 0.3s ease;
 	}
 
 	.event-card.stemsters .event-background {

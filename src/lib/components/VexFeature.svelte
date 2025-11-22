@@ -1,4 +1,41 @@
+<script>
+	import { onMount } from 'svelte';
+
+	let imageLoaded = false;
+	/** @type {HTMLElement | null} */
+	let imageElement;
+
+	onMount(() => {
+		// Lazy load background image using Intersection Observer
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting && !imageLoaded) {
+						const img = new Image();
+						img.src = '/vex.webp';
+						img.onload = () => {
+							imageLoaded = true;
+							if (imageElement) {
+								imageElement.style.backgroundImage = "url('/vex.webp')";
+							}
+						};
+						observer.disconnect();
+					}
+				});
+			},
+			{ rootMargin: '50px' }
+		);
+
+		if (imageElement) {
+			observer.observe(imageElement);
+		}
+
+		return () => observer.disconnect();
+	});
+</script>
+
 <section class="vex-feature">
+	<div class="background-image" bind:this={imageElement}></div>
 	<div class="content">
 		<div class="header">
 			<h4>1599W</h4>
@@ -15,27 +52,25 @@
 <style>
 	.vex-feature {
 		height: 100%;
-		min-height: 600px;
+		min-height: 570px;
 		padding: 3rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		position: relative;
-		border: 2px solid black;
 		overflow: hidden;
 		margin: 0;
 	}
 
-	.vex-feature::before {
-		content: '';
+	.background-image {
 		position: absolute;
 		inset: 0;
-		background-image: url('/vex.webp');
 		background-size: cover;
 		background-position: center;
 		background-repeat: no-repeat;
 		filter: brightness(0.85);
 		z-index: 0;
+		transition: opacity 0.3s ease;
 	}
 
 	.vex-feature::after {
@@ -100,7 +135,7 @@
 
 	@media (max-width: 768px) {
 		.vex-feature {
-			min-height: 400px;
+			min-height: 380px;
 			padding: 2rem 1.5rem;
 		}
 

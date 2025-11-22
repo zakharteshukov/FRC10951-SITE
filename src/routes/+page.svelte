@@ -184,19 +184,9 @@
 	}
 
 	.stem-community {
-		background: white;
-		border-radius: 12px;
-		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
 		margin: 4rem auto;
-		padding: 3rem 2rem;
 		max-width: 95%;
 		width: 100%;
-		transition: box-shadow 0.3s ease, transform 0.3s ease;
-	}
-
-	.stem-community:hover {
-		box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
-		transform: translateY(-2px);
 	}
 
 	.stem-community-heading {
@@ -215,8 +205,6 @@
 	@media (max-width: 768px) {
 		.stem-community {
 			margin: 3rem auto;
-			padding: 2rem 1.5rem;
-			border-radius: 8px;
 		}
 
 		.stem-community-heading {

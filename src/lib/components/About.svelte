@@ -22,7 +22,14 @@
 		</div>
 	</div>
 	<div class="photo">
-		<img src="/team.webp" alt="Team 10951" loading="lazy" decoding="async" />
+		<img
+			src="/team.webp"
+			alt="Team 10951"
+			loading="lazy"
+			decoding="async"
+			width="420"
+			height="280"
+		/>
 	</div>
 </section>
 
@@ -92,6 +99,7 @@
 		height: auto;
 		border-radius: 8px;
 		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+		aspect-ratio: 3 / 2;
 	}
 
 	@media (max-width: 968px) {

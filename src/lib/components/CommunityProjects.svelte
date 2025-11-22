@@ -2,18 +2,45 @@
 	<h3>Community Projects</h3>
 	<div class="grid">
 		<article class="card project-1">
+			<img
+				src="/project-1.webp"
+				alt="Project 1"
+				loading="lazy"
+				decoding="async"
+				class="project-image"
+				width="800"
+				height="600"
+			/>
 			<div class="content">
 				<h5>Project 1</h5>
 				<p>Description of community project 1...</p>
 			</div>
 		</article>
 		<article class="card project-2">
+			<img
+				src="/project-2.webp"
+				alt="Project 2"
+				loading="lazy"
+				decoding="async"
+				class="project-image"
+				width="600"
+				height="400"
+			/>
 			<div class="content">
 				<h5>Project 2</h5>
 				<p>Description of community project 2...</p>
 			</div>
 		</article>
 		<article class="card project-3">
+			<img
+				src="/project-3.webp"
+				alt="Project 3"
+				loading="lazy"
+				decoding="async"
+				class="project-image"
+				width="600"
+				height="800"
+			/>
 			<div class="content">
 				<h5>Project 3</h5>
 				<p>Description of community project 3...</p>
@@ -97,27 +124,30 @@
 	}
 
 	.card.project-1 {
-		background-image: url('/project-1.webp');
-		background-size: cover;
-		background-position: center;
 		grid-column: 1 / 3;
 		grid-row: 2 / 4;
 	}
 
 	.card.project-2 {
-		background-image: url('/project-2.webp');
-		background-size: cover;
-		background-position: center;
 		grid-column: 3;
 		grid-row: 3;
 	}
 
 	.card.project-3 {
-		background-image: url('/project-3.webp');
-		background-size: cover;
-		background-position: center;
 		grid-column: 3;
 		grid-row: 1 / 3;
+	}
+
+	.project-image {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+		filter: brightness(0.85);
+		z-index: 0;
+		aspect-ratio: 16 / 9;
 	}
 
 	.card .content {

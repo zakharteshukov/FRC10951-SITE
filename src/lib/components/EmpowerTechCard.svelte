@@ -1,4 +1,41 @@
+<script>
+	import { onMount } from 'svelte';
+
+	let imageLoaded = false;
+	/** @type {HTMLElement | null} */
+	let imageElement;
+
+	onMount(() => {
+		// Lazy load background image using Intersection Observer
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting && !imageLoaded) {
+						const img = new Image();
+						img.src = '/empowertech.webp';
+						img.onload = () => {
+							imageLoaded = true;
+							if (imageElement) {
+								imageElement.style.backgroundImage = "url('/empowertech.webp')";
+							}
+						};
+						observer.disconnect();
+					}
+				});
+			},
+			{ rootMargin: '50px' }
+		);
+
+		if (imageElement) {
+			observer.observe(imageElement);
+		}
+
+		return () => observer.disconnect();
+	});
+</script>
+
 <section class="empower">
+	<div class="background-image" bind:this={imageElement}></div>
 	<h5>Empower Tech</h5>
 	<p>Empowering communities through technology education and innovation.</p>
 	<a href="/projects/empowertech" class="learn-more-btn">Learn More</a>
@@ -8,27 +45,24 @@
 	.empower {
 		padding: 2rem;
 		height: 100%;
-		min-height: 400px;
+		min-height: 380px;
 		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
 		display: flex;
 		flex-direction: column;
 		position: relative;
-		border: 2px solid black;
 		overflow: hidden;
 		margin: 0;
 	}
 
-	.empower::before {
-		content: '';
+	.background-image {
 		position: absolute;
 		inset: 0;
-		background-image: url('/empowertech.webp');
 		background-size: cover;
 		background-position: center;
 		background-repeat: no-repeat;
 		filter: brightness(0.85);
 		z-index: 0;
-		transition: transform 0.3s ease;
+		transition: transform 0.3s ease, opacity 0.3s ease;
 	}
 
 	.empower::after {
@@ -39,7 +73,7 @@
 		z-index: 1;
 	}
 
-	.empower:hover::before {
+	.empower:hover .background-image {
 		transform: scale(1.02);
 	}
 
@@ -85,7 +119,7 @@
 
 	@media (max-width: 768px) {
 		.empower {
-			min-height: 300px;
+			min-height: 280px;
 			padding: 1.5rem;
 		}
 

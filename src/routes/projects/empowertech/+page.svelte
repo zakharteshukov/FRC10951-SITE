@@ -4,7 +4,15 @@
 		<div class="max-w-3xl mx-auto">
 			<div class="card mb-8">
 				<div class="image-container mb-6">
-					<img src="/empowertech.webp" alt="EmpowerTech" class="w-full rounded-lg" loading="lazy" decoding="async" />
+					<img
+						src="/empowertech.webp"
+						alt="EmpowerTech"
+						class="w-full rounded-lg"
+						loading="lazy"
+						decoding="async"
+						width="1200"
+						height="800"
+					/>
 				</div>
 				<h2 class="text-2xl font-bold mb-4 text-primary">About EmpowerTech</h2>
 				<p class="text-text-light mb-4">

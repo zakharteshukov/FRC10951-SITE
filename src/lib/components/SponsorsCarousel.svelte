@@ -19,13 +19,27 @@
 		<div class="carousel-track">
 		{#each duplicatedSlides as slide}
 			<div class="logo-item">
-				<img src={slide.src} alt={slide.alt} loading="lazy" decoding="async" />
+				<img
+					src={slide.src}
+					alt={slide.alt}
+					loading="lazy"
+					decoding="async"
+					width="200"
+					height="120"
+				/>
 			</div>
 		{/each}
 		<!-- Duplicate for seamless loop -->
 		{#each duplicatedSlides as slide}
 			<div class="logo-item">
-				<img src={slide.src} alt={slide.alt} loading="lazy" decoding="async" />
+				<img
+					src={slide.src}
+					alt={slide.alt}
+					loading="lazy"
+					decoding="async"
+					width="200"
+					height="120"
+				/>
 			</div>
 		{/each}
 		</div>
@@ -75,6 +89,7 @@
 		object-fit: contain;
 		filter: grayscale(0.3);
 		transition: filter 0.3s ease;
+		aspect-ratio: 5 / 3;
 	}
 
 	.logo-item:hover img {
