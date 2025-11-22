@@ -9,7 +9,7 @@
 			</div>
 		</div>
 		<div class="decorative">
-			<span class="age-text">AGE</span>
+			<img src="/FIRST-AGE.webp" alt="FIRST Age" class="age-image" />
 		</div>
 	</div>
 </section>
@@ -70,14 +70,23 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		width: 100%;
+		max-width: 500px;
 	}
 
-	.age-text {
-		font-size: 8rem;
-		font-weight: 100;
-		color: #f0f0f0;
-		letter-spacing: 0.1em;
-		line-height: 1;
+	.age-image {
+		width: 100%;
+		height: auto;
+		object-fit: contain;
+		object-position: center;
+		display: block;
+		filter: brightness(1) contrast(1);
+		transition: transform 0.3s ease, opacity 0.3s ease;
+	}
+
+	.age-image:hover {
+		transform: scale(1.02);
+		opacity: 0.95;
 	}
 
 	@media (max-width: 768px) {
@@ -92,7 +101,14 @@
 		}
 
 		.decorative {
-			display: none;
+			display: flex;
+			max-width: 100%;
+			order: -1;
+		}
+
+		.age-image {
+			max-width: 300px;
+			margin: 0 auto;
 		}
 
 		.meta h3 {
