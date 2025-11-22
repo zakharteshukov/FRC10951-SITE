@@ -62,7 +62,6 @@
 					<div class="event-date">
 						<span class="month">December</span>
 						<span class="day">8</span>
-						<span class="year">2025</span>
 					</div>
 					<h3>STEM-sters United</h3>
 					<p>
@@ -169,13 +168,20 @@
 		padding: 2.5rem;
 		width: 100%;
 		color: white;
+		display: grid;
+		grid-template-rows: auto auto 1fr auto;
+		gap: 1rem;
+		height: 100%;
+		min-height: 100%;
+		align-content: flex-end;
 	}
 
 	.event-date {
 		display: flex;
 		flex-direction: column;
-		margin-bottom: 1.5rem;
+		margin-bottom: 0;
 		line-height: 1;
+		min-height: 4.5rem;
 	}
 
 	.event-date .month {
@@ -192,16 +198,10 @@
 		line-height: 1;
 	}
 
-	.event-date .year {
-		font-size: 1rem;
-		opacity: 0.8;
-		margin-top: 0.25rem;
-	}
-
 	.event-content h3 {
 		font-size: 2rem;
 		font-weight: 300;
-		margin: 0 0 1rem 0;
+		margin: 0;
 		color: white;
 	}
 
@@ -209,7 +209,7 @@
 		font-size: 1.1rem;
 		line-height: 1.8;
 		color: rgba(255, 255, 255, 0.9);
-		margin: 0 0 1.5rem 0;
+		margin: 0;
 	}
 
 	.event-content button {
@@ -222,6 +222,8 @@
 		transition: all 0.3s ease;
 		font-weight: 500;
 		border-radius: 4px;
+		margin-top: 0;
+		align-self: flex-start;
 	}
 
 	.event-content button:hover {
